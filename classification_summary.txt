@@ -1,0 +1,20 @@
+Counts per class:
+burial_label
+exterior        23
+interior        13
+intermediate    10
+
+Preview (first 12 rows):
+res_label  degree_7A  eccentricity  deg_6A      z_6A  deg_10A     z_10A  sph_var_6A  sph_var_10A burial_label                     burial_reason  component_id  component_radius  component_diameter
+  A:1 THR          7             6       4 -0.754281       11 -0.778450    0.439894     0.483372     exterior               low Z or low degree             0                 4                   7
+  A:2 THR          7             5       4 -0.754281       19  0.989881    0.505407     0.699663     exterior               low Z or low degree             0                 4                   7
+  A:3 CYS         11             5       6  0.484895       22  1.653006    0.671613     0.787477     interior high Z or high degree, high homog             0                 4                   7
+  A:4 CYS         12             4       8  1.724072       23  1.874047    0.762500     0.901358     interior high Z or high degree, high homog             0                 4                   7
+  A:5 PRO         10             4       4 -0.754281       17  0.547798    0.393058     0.621172 intermediate                     mixed signals             0                 4                   7
+  A:6 SER          7             4       6  0.484895       15  0.105715    0.488132     0.451939 intermediate                     mixed signals             0                 4                   7
+  A:7 ILE          6             4       5 -0.134693       12 -0.557409    0.405502     0.386116     exterior               low Z or low degree             0                 4                   7
+  A:8 VAL          6             5       5 -0.134693       11 -0.778450    0.320294     0.312154     exterior    low Z or low degree, low homog             0                 4                   7
+  A:9 ALA         12             4       8  1.724072       19  0.989881    0.652277     0.623150     interior             high Z or high degree             0                 4                   7
+ A:10 ARG         10             4       7  1.104484       22  1.653006    0.560430     0.659519     interior             high Z or high degree             0                 4                   7
+ A:11 SER          8             5       6  0.484895       13 -0.336367    0.398481     0.459401 intermediate                     mixed signals             0                 4                   7
+ A:12 ASN          9             5       6  0.484895       17  0.547798    0.413846     0.498213     interior             high Z or high degree             0                 4                   7
