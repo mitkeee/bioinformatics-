@@ -1,0 +1,55 @@
+============================================================
+PROTEIN BURIAL STATISTICS REPORT
+============================================================
+
+CLASSIFICATION SUMMARY:
+----------------------------------------
+interior    : 214 ( 61.7%)
+intermediate:  94 ( 27.1%)
+exterior    :  39 ( 11.2%)
+TOTAL       : 347
+
+Z-SCORE STATISTICS:
+----------------------------------------
+z_6A:
+  Mean:  -0.000
+  Std:    1.001
+  Min:   -2.699
+  Max:    2.994
+
+z_10A:
+  Mean:  -0.000
+  Std:    1.001
+  Min:   -2.839
+  Max:    2.300
+
+HOMOGENEITY (Spherical Variance) STATISTICS:
+----------------------------------------
+sph_var_6A:
+  Mean:   0.549
+  Std:    0.171
+  Min:    0.232
+  Max:    0.944
+
+sph_var_10A:
+  Mean:   0.679
+  Std:    0.187
+  Min:    0.211
+  Max:    0.974
+
+PARAMETERS USED:
+----------------------------------------
+Sphere radii: 6.0Å, 10.0Å
+Z-score thresholds: low=-1.5, high=0.0
+Homogeneity thresholds: low=0.2, high=0.55
+Graph cutoff: 7.0Å
+Use degree in classification: False
+
+DSSP VALIDATION:
+----------------------------------------
+Accuracy: 0.810 (81.0%)
+
+STRIDE VALIDATION:
+----------------------------------------
+Accuracy: 0.764 (76.4%)
+
