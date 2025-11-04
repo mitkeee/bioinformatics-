@@ -23,7 +23,7 @@ AUT  J.A.KELLY,A.P.KUZIN                                                   3PTE
 REM                                                                        3PTE
 REM  -------------------- Secondary structure summary -------------------  3PTE
 REM                                                                        3PTE
-CHN  /Users/famnit/Desktop/pythonProject/3pte A                            3PTE
+CHN  3PTE.pdb A                                                            3PTE
 REM                                                                        3PTE
 REM                .         .         .         .         .               3PTE
 SEQ  1    ADLPAPDDTGLQAVLHTALSQGAPGAMVRVDDNGTIHQLSEGVADRATGR   50          3PTE
