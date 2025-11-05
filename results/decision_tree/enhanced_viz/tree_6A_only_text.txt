@@ -1,0 +1,166 @@
+================================================================================
+DECISION TREE STRUCTURE: 6Å Features Only
+================================================================================
+
+Reading the tree:
+  - Each line shows a decision rule
+  - Indentation shows tree depth
+  - 'class: X' shows the predicted class at that leaf
+  - Values are z-scores (normalized per protein)
+
+================================================================================
+
+|--- stride_asa_norm <= -0.06
+|   |--- ncps_sphere_6_uni_norm <= 0.21
+|   |   |--- ncps_sphere_6_norm <= -0.58
+|   |   |   |--- stride_asa_norm <= -0.31
+|   |   |   |   |--- ncps_sphere_6_uni_norm <= -1.03
+|   |   |   |   |   |--- stride_asa_norm <= -0.54
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- stride_asa_norm >  -0.54
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- ncps_sphere_6_uni_norm >  -1.03
+|   |   |   |   |   |--- ncps_sphere_6_uni_norm <= -0.86
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- ncps_sphere_6_uni_norm >  -0.86
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |--- stride_asa_norm >  -0.31
+|   |   |   |   |--- ncps_sphere_6_norm <= -1.23
+|   |   |   |   |   |--- class: 1
+|   |   |   |   |--- ncps_sphere_6_norm >  -1.23
+|   |   |   |   |   |--- class: 1
+|   |   |--- ncps_sphere_6_norm >  -0.58
+|   |   |   |--- ncps_sphere_6_uni_norm <= -0.64
+|   |   |   |   |--- stride_asa_norm <= -0.77
+|   |   |   |   |   |--- ncps_sphere_6_uni_norm <= -0.77
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- ncps_sphere_6_uni_norm >  -0.77
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- stride_asa_norm >  -0.77
+|   |   |   |   |   |--- stride_asa_norm <= -0.66
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- stride_asa_norm >  -0.66
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |--- ncps_sphere_6_uni_norm >  -0.64
+|   |   |   |   |--- stride_asa_norm <= -0.81
+|   |   |   |   |   |--- ncps_sphere_6_uni_norm <= -0.18
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- ncps_sphere_6_uni_norm >  -0.18
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- stride_asa_norm >  -0.81
+|   |   |   |   |   |--- ncps_sphere_6_norm <= 1.01
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- ncps_sphere_6_norm >  1.01
+|   |   |   |   |   |   |--- class: 0
+|   |--- ncps_sphere_6_uni_norm >  0.21
+|   |   |--- ncps_sphere_6_norm <= -1.60
+|   |   |   |--- class: 0
+|   |   |--- ncps_sphere_6_norm >  -1.60
+|   |   |   |--- ncps_sphere_6_uni_norm <= 1.35
+|   |   |   |   |--- stride_asa_norm <= -0.61
+|   |   |   |   |   |--- stride_asa_norm <= -0.78
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- stride_asa_norm >  -0.78
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- stride_asa_norm >  -0.61
+|   |   |   |   |   |--- ncps_sphere_6_norm <= 0.11
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- ncps_sphere_6_norm >  0.11
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |--- ncps_sphere_6_uni_norm >  1.35
+|   |   |   |   |--- class: 0
+|--- stride_asa_norm >  -0.06
+|   |--- ncps_sphere_6_uni_norm <= 0.05
+|   |   |--- ncps_sphere_6_norm <= -0.18
+|   |   |   |--- stride_asa_norm <= 0.43
+|   |   |   |   |--- stride_asa_norm <= 0.38
+|   |   |   |   |   |--- stride_asa_norm <= 0.13
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- stride_asa_norm >  0.13
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- stride_asa_norm >  0.38
+|   |   |   |   |   |--- class: 0
+|   |   |   |--- stride_asa_norm >  0.43
+|   |   |   |   |--- stride_asa_norm <= 1.05
+|   |   |   |   |   |--- ncps_sphere_6_norm <= -1.09
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- ncps_sphere_6_norm >  -1.09
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- stride_asa_norm >  1.05
+|   |   |   |   |   |--- stride_asa_norm <= 3.31
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- stride_asa_norm >  3.31
+|   |   |   |   |   |   |--- class: 1
+|   |   |--- ncps_sphere_6_norm >  -0.18
+|   |   |   |--- ncps_sphere_6_norm <= 0.07
+|   |   |   |   |--- ncps_sphere_6_uni_norm <= -0.70
+|   |   |   |   |   |--- stride_asa_norm <= 1.20
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- stride_asa_norm >  1.20
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- ncps_sphere_6_uni_norm >  -0.70
+|   |   |   |   |   |--- ncps_sphere_6_uni_norm <= -0.56
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- ncps_sphere_6_uni_norm >  -0.56
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |--- ncps_sphere_6_norm >  0.07
+|   |   |   |   |--- stride_asa_norm <= 0.03
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- stride_asa_norm >  0.03
+|   |   |   |   |   |--- ncps_sphere_6_uni_norm <= -0.38
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- ncps_sphere_6_uni_norm >  -0.38
+|   |   |   |   |   |   |--- class: 1
+|   |--- ncps_sphere_6_uni_norm >  0.05
+|   |   |--- ncps_sphere_6_norm <= -0.18
+|   |   |   |--- stride_asa_norm <= 0.72
+|   |   |   |   |--- stride_asa_norm <= 0.22
+|   |   |   |   |   |--- stride_asa_norm <= 0.11
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- stride_asa_norm >  0.11
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- stride_asa_norm >  0.22
+|   |   |   |   |   |--- class: 0
+|   |   |   |--- stride_asa_norm >  0.72
+|   |   |   |   |--- stride_asa_norm <= 1.00
+|   |   |   |   |   |--- class: 1
+|   |   |   |   |--- stride_asa_norm >  1.00
+|   |   |   |   |   |--- stride_asa_norm <= 1.58
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- stride_asa_norm >  1.58
+|   |   |   |   |   |   |--- class: 1
+|   |   |--- ncps_sphere_6_norm >  -0.18
+|   |   |   |--- stride_asa_norm <= 0.63
+|   |   |   |   |--- stride_asa_norm <= 0.44
+|   |   |   |   |   |--- ncps_sphere_6_norm <= 0.45
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- ncps_sphere_6_norm >  0.45
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- stride_asa_norm >  0.44
+|   |   |   |   |   |--- class: 0
+|   |   |   |--- stride_asa_norm >  0.63
+|   |   |   |   |--- ncps_sphere_6_uni_norm <= 0.64
+|   |   |   |   |   |--- ncps_sphere_6_norm <= 0.71
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- ncps_sphere_6_norm >  0.71
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- ncps_sphere_6_uni_norm >  0.64
+|   |   |   |   |   |--- ncps_sphere_6_norm <= 0.93
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- ncps_sphere_6_norm >  0.93
+|   |   |   |   |   |   |--- class: 0
+
+
+================================================================================
+FEATURE MEANINGS:
+================================================================================
+  stride_asa_norm:       STRIDE accessible surface area (z-score)
+  ncps_sphere_6_norm:    Neighbor count at 6Å radius (z-score)
+  ncps_sphere_10_norm:   Neighbor count at 10Å radius (z-score)
+  ncps_sphere_6_uni_norm: Uniformity at 6Å (z-score)
+  ncps_sphere_10_uni_norm: Uniformity at 10Å (z-score)
+
+Z-score interpretation:
+  Positive values: Above the protein's average
+  Negative values: Below the protein's average
+  Each protein normalized separately before training

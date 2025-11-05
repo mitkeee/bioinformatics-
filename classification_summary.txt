@@ -1,16 +1,16 @@
 Counts per class:
 burial_label
-interior        214
-intermediate     94
-exterior         39
+interior        220
+intermediate    119
+exterior          8
 
 Preview (first 12 rows):
 res_label  degree_7A  eccentricity  deg_6A      z_6A  deg_10A     z_10A  sph_var_6A  sph_var_10A burial_label      burial_reason  component_id  component_radius  component_diameter
   A:1 ALA          1            14       1 -2.698833        2 -2.838726         NaN          NaN     exterior              low Z             0                 8                  14
   A:2 ASP          2            13       2 -2.129535        7 -2.035793         NaN     0.464927     exterior              low Z             0                 8                  14
-  A:3 LEU          4            12       2 -2.129535       14 -0.911687         NaN     0.599460 intermediate      mixed signals             0                 8                  14
-  A:4 PRO          6            12       3 -1.560237       12 -1.232860    0.554817     0.419422     exterior              low Z             0                 8                  14
-  A:5 ALA          5            12       3 -1.560237       13 -1.072274    0.352582     0.431529     exterior              low Z             0                 8                  14
+  A:3 LEU          4            12       2 -2.129535       14 -0.911687         NaN     0.599460     interior high Z, high homog             0                 8                  14
+  A:4 PRO          6            12       3 -1.560237       12 -1.232860    0.554817     0.419422 intermediate      mixed signals             0                 8                  14
+  A:5 ALA          5            12       3 -1.560237       13 -1.072274    0.352582     0.431529 intermediate      mixed signals             0                 8                  14
   A:6 PRO          9            12       6  0.147657       21  0.212419    0.469207     0.649843     interior high Z, high homog             0                 8                  14
   A:7 ASP         10            12       8  1.286252       18 -0.269341    0.692885     0.633242     interior high Z, high homog             0                 8                  14
   A:8 ASP          6            13       4 -0.990939       18 -0.269341    0.297489     0.560435 intermediate      mixed signals             0                 8                  14

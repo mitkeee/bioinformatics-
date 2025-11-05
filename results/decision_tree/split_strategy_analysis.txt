@@ -1,0 +1,30 @@
+DECISION TREE SPLIT STRATEGY ANALYSIS
+================================================================================
+
+Question: Why binary (true/false) splits?
+
+Answer: Decision trees use binary splits because:
+  1. Mathematically optimal for continuous features
+  2. Computationally efficient (O(log n) lookup)
+  3. Can approximate any decision boundary with enough depth
+  4. Industry standard in sklearn, XGBoost, etc.
+
+Alternative Strategies Tested:
+--------------------------------------------------------------------------------
+
+Binary Splits            : 90.387%
+Categorical (3 bins)     : 88.838%
+Categorical (5 bins)     : 89.066%
+Rule-Based               : 77.904%
+
+Best: Binary Splits (90.387%)
+
+Recommendation:
+--------------------------------------------------------------------------------
+✅ STICK WITH BINARY SPLITS
+   - Best accuracy
+   - Standard approach
+   - Sklearn handles optimally
+
+Note: Binary splits are still Boolean (True/False), but operate on
+      continuous thresholds: 'feature <= value' → True or False

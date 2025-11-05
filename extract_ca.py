@@ -316,7 +316,7 @@ def classify_residues(df: pd.DataFrame) -> pd.DataFrame:
                 sv_low_flag = sv_mean < HOMOG_LOW
                 sv_high_flag = sv_mean > HOMOG_HIGH
 #------------------------------------------------------------------------------------------------
-        is_exterior = (z6 <= Z_LOW) or (z10 <= Z_LOW) or sv_low_flag
+        is_exterior = (z6 <= Z_LOW) and (z10 <= Z_LOW) or sv_low_flag # OLD is_exterior = (z6 <= Z_LOW) or (z10 <= Z_LOW) or sv_low_flag
         is_interior = (z6 >= Z_HIGH and z10 >= Z_HIGH) or sv_high_flag
 #------------------------------------------------------------------------------------------------
         if is_exterior and not is_interior:
