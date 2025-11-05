@@ -1,0 +1,1508 @@
+REM  --------------------------------------------------------------------  6WTI
+REM                                                                        6WTI
+REM  STRIDE: Knowledge-based secondary structure assignment                6WTI
+REM  Please cite: D.Frishman & P.Argos, Proteins XX, XXX-XXX, 1995         6WTI
+REM                                                                        6WTI
+REM  Residue accessible surface area calculation                           6WTI
+REM  Please cite: F.Eisenhaber & P.Argos, J.Comp.Chem. 14, 1272-1280, 1993 6WTI
+REM               F.Eisenhaber et al., J.Comp.Chem., 1994, submitted       6WTI
+REM                                                                        6WTI
+REM  ------------------------ General information -----------------------  6WTI
+REM                                                                        6WTI
+HDR  OXIDOREDUCTASE                          02-MAY-20   6WTI              6WTI
+CMP  MOL_ID: 1;                                                            6WTI
+CMP   MOLECULE: CYTOCHROME O UBIQUINOL OXIDASE, SUBUNIT I;                 6WTI
+CMP   CHAIN: A;                                                            6WTI
+CMP   EC: 1.10.3.-;                                                        6WTI
+CMP   ENGINEERED: YES;                                                     6WTI
+CMP   MOL_ID: 2;                                                           6WTI
+CMP   MOLECULE: UBIQUINOL OXIDASE SUBUNIT 2;                               6WTI
+CMP   CHAIN: B;                                                            6WTI
+CMP   ENGINEERED: YES;                                                     6WTI
+CMP   MOL_ID: 3;                                                           6WTI
+CMP   MOLECULE: CYTOCHROME O UBIQUINOL OXIDASE;                            6WTI
+CMP   CHAIN: C;                                                            6WTI
+CMP   ENGINEERED: YES;                                                     6WTI
+CMP   MOL_ID: 4;                                                           6WTI
+CMP   MOLECULE: CYTOCHROME O UBIQUINOL OXIDASE, SUBUNIT IV;                6WTI
+CMP   CHAIN: D;                                                            6WTI
+CMP   EC: 1.10.3.-;                                                        6WTI
+CMP   ENGINEERED: YES                                                      6WTI
+SRC  MOL_ID: 1;                                                            6WTI
+SRC   ORGANISM_SCIENTIFIC: ESCHERICHIA COLI;                               6WTI
+SRC   ORGANISM_TAXID: 562;                                                 6WTI
+SRC   GENE: CYOB, ECDEC2C_0430;                                            6WTI
+SRC   EXPRESSION_SYSTEM: ESCHERICHIA COLI;                                 6WTI
+SRC   EXPRESSION_SYSTEM_TAXID: 562;                                        6WTI
+SRC   MOL_ID: 2;                                                           6WTI
+SRC   ORGANISM_SCIENTIFIC: ESCHERICHIA COLI;                               6WTI
+SRC   ORGANISM_TAXID: 562;                                                 6WTI
+SRC   GENE: CYOA;                                                          6WTI
+SRC   EXPRESSION_SYSTEM: ESCHERICHIA COLI;                                 6WTI
+SRC   EXPRESSION_SYSTEM_TAXID: 562;                                        6WTI
+SRC   MOL_ID: 3;                                                           6WTI
+SRC   ORGANISM_SCIENTIFIC: ESCHERICHIA COLI;                               6WTI
+SRC   ORGANISM_TAXID: 562;                                                 6WTI
+SRC   GENE: ECDG_00226;                                                    6WTI
+SRC   EXPRESSION_SYSTEM: ESCHERICHIA COLI;                                 6WTI
+SRC   EXPRESSION_SYSTEM_TAXID: 562;                                        6WTI
+SRC   MOL_ID: 4;                                                           6WTI
+SRC   ORGANISM_SCIENTIFIC: ESCHERICHIA COLI;                               6WTI
+SRC   ORGANISM_TAXID: 562;                                                 6WTI
+SRC   GENE: CYOD, EC12741_3890;                                            6WTI
+SRC   EXPRESSION_SYSTEM: ESCHERICHIA COLI;                                 6WTI
+SRC   EXPRESSION_SYSTEM_TAXID: 562                                         6WTI
+AUT  C.-C.SU                                                               6WTI
+REM                                                                        6WTI
+REM  -------------------- Secondary structure summary -------------------  6WTI
+REM                                                                        6WTI
+CHN  6wti.pdb A                                                            6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  1    MFGKLSLDAVPFHEPIVMVTIAGIILGGLALVGLITYFGKWTYLWKEWLT   50          6WTI
+STR        TTTTTTTTTTTTTHHHHHHHHHHHHHHHHHHHHHHHH HHHHHHHTTTT               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  51   SVDHKRLGIMYIIVAIVMLLRGFADAIMMRSQQALASAGEAGFLPPHHYD  100          6WTI
+STR       T  HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH        HHHHH               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  101  QIFTAHGVIMIFFVAMPFVIGLMNLVVPLQIGARDVAFPFLNNLSFWFTV  150          6WTI
+STR       HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH    TTTHHHHHHHHHHHH               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  151  VGVILVNVSLGVGEFAQTGWLAYPPLSGIEYSPGVGVDYWIWSLQLSGIG  200          6WTI
+STR       HHHHHHHHHTTTT     TTTT  GGGTTTTTT HHHHHHHHHHHHHHHH               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  201  TTLTGINFFVTILKMRAPGMTMFKMPVFTWASLCANVLIIASFPILTVTV  250          6WTI
+STR       HHHHHHHHHHHHHHH TTTTTTTTT HHHHHHHHHHHHHHHHHHHHHHHH               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  251  ALLTLDRYLGTHFFTNDMGGNMMMYINLIWAWGHPEVYILILPVFGVFSE  300          6WTI
+STR       HHHHHHHHH  TTTT TTTT HHHHHHHHHHHHHHHHHHHHHHHHHHHHH               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  301  IAATFSRKRLFGYTSLVWATVCITVLSFIVWLHHFFTMGAGANVNAFFGI  350          6WTI
+STR       HHHHHH   TTTHHHHHHHHHHHHHHHTTTGGGGTTTTT  HHHHHHHHH               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  351  TTMIIAIPTGVKIFNWLFTMYQGRIVFHSAMLWTIGFIVTFSVGGMTGVL  400          6WTI
+STR       HHHHHHHHHHHHHHHHHHHHTTT BTTTHHHHHHHHHHHHHHHHHHHHHH               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  401  LAVPGADFVLHNSLFLIAHFHNVIIGGVVFGCFAGMTYWWPKAFGFKLNE  450          6WTI
+STR       HH HHHHHHHTTBHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH B   H               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  451  TWGKRAFWFWIIGFFVAFMPLYALGFMGMTRRLSQQIDPQFHTMLMIAAS  500          6WTI
+STR       HHHHHHHHHHHHHHHHHHHHHHHHHHH  B   TTTT GGGHHHHHHHHH               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  501  GAVLIALGILCLVIQMYVSIRDRDQNRDLTGDPWGGRTLEWATSSPPPFY  550          6WTI
+STR       HHHHHHHHHHHHHHHHHHHHHTTTTTBTTTTTTTT   GGGG TTTTTTT               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  551  NFAVVPHVHERDAFWEMKEKGEAYKKPDHYEEIHMPKNSGAGIVIAAFST  600          6WTI
+STR       TTTTT    TTTHHHHHHTTTTTTT       EEEE   HHHHHHHHHHH               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  601  IFGFAMIWHIWWLAIVGFAGMIITWIVKSFDEDVDYYVPVAEIEKLENQH  650          6WTI
+STR       HHHHHHHH  HHHHHHHHHHHHHHHHHHH     EEEE HHHHHHHHHHH               6WTI
+REM                                                                        6WTI
+REM                .                                                       6WTI
+SEQ  651  FDEITKAGLK                                          660          6WTI
+STR       HHHHHHHHH                                                        6WTI
+REM                                                                        6WTI
+CHN  6wti.pdb B                                                            6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  1    GCNSALLDPKGQIGLEQRSLILTAFGLMLIVVIPAILMAVGFAWKYRASN   50          6WTI
+STR       TTTTTTTTT BHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHBTTT               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  51   KDAKYSPNWSHSNKVEAVVWTVPILIIIFLAVLTWKTTHALEPSKPLAHD  100          6WTI
+STR       TTT  TTTT   HHHHHHHHHHHHHHHHHHHHHHHHHHHH TTTT   TT               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  101  EKPITIEVVSMDWKWFFIYPEQGIATVNEIAFPANTPVYFKVTSNSVMNS  150          6WTI
+STR       T  EEEEEEEETTEEEEEETTTTEEEETEEEEETTT EEEEEEETTT EE               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  151  FFIPRLGSQIYAMAGMQTRLHLIANEPGTYDGISASYSGPGFSGMKFKAI  200          6WTI
+STR       EETTTTT EEEETTTT EEEEE B   EEEEEEE    TTTTTTTEEEEE               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  201  ATPDRAAFDQWVAKAKQSPNTMSDMAAFEKLAAPSEYNQVEYFSNVKPDL  250          6WTI
+STR       EE  HHHHHHHHHHHH    EE  HHHHHHHH        EEE EETTTH               6WTI
+REM                                                                        6WTI
+REM                .                                                       6WTI
+SEQ  251  FADVINKFMAHG                                        262          6WTI
+STR       HHHHHHH                                                          6WTI
+REM                                                                        6WTI
+CHN  6wti.pdb C                                                            6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  1    HDAGGTKIFGFWIYLMSDCILFSILFATYAVLVNGTAGGPTGKDIFELPF   50          6WTI
+STR         HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHTTTTTTT TTTTTT HHH               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  51   VLVETFLLLFSSITYGMAAIAMYKNNKSQVISWLALTWLFGAGFIGMEIY  100          6WTI
+STR       HHHHHHHHHHHHHHHHHHHHHHHH  HHHHHHHHHHHHHHHHHHHHHHHH               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  101  EFHHLIVNGMGPDRSGFLSAFFALVGTHGLHVTSGLIWMAVLMVQIARRG  150          6WTI
+STR       HHHHHHH   TTTTTHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHT               6WTI
+REM                                                                        6WTI
+REM                .         .         .                                   6WTI
+SEQ  151  LTSTNRTRIMCLSLFWHFLDVVWICVFTVVYLMGAM                186          6WTI
+STR       TTHHHHHHHHHHHHHHHHHHHHHHHHHHHHTTTTT                              6WTI
+REM                                                                        6WTI
+CHN  6wti.pdb D                                                            6WTI
+REM                                                                        6WTI
+REM                .         .         .         .         .               6WTI
+SEQ  1    SHGSVKTYMTGFILSIILTVIPFWMVMTGAASPAVILGTILAMAVVQVLV   50          6WTI
+STR           HHHHHHHHHHHHHHHHHHHHHHHH    HHHHHHHHHHHHHHHHHH               6WTI
+REM                                                                        6WTI
+REM                .         .         .         .                         6WTI
+SEQ  51   HLVCFLHMNTKSDEGWNMTAFVFTVLIIAILVVGSIWIMWNLNYNMMMH    99          6WTI
+STR       HHHHH   TTTTGGGHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH                    6WTI
+REM                                                                        6WTI
+REM                                                                        6WTI
+REM                                                                        6WTI
+LOC  AlphaHelix   PRO    15 A      PHE     38 A                            6WTI
+LOC  AlphaHelix   LYS    40 A      LYS     46 A                            6WTI
+LOC  AlphaHelix   HIS    54 A      SER     87 A                            6WTI
+LOC  AlphaHelix   PRO    96 A      ILE    131 A                            6WTI
+LOC  AlphaHelix   PRO   139 A      SER    159 A                            6WTI
+LOC  AlphaHelix   VAL   185 A      MET    215 A                            6WTI
+LOC  AlphaHelix   VAL   227 A      LEU    259 A                            6WTI
+LOC  AlphaHelix   MET   272 A      SER    306 A                            6WTI
+LOC  AlphaHelix   TYR   313 A      SER    327 A                            6WTI
+LOC  AlphaHelix   ALA   342 A      MET    370 A                            6WTI
+LOC  AlphaHelix   SER   379 A      ALA    402 A                            6WTI
+LOC  AlphaHelix   PRO   404 A      LEU    410 A                            6WTI
+LOC  AlphaHelix   LEU   414 A      PHE    444 A                            6WTI
+LOC  AlphaHelix   GLU   450 A      MET    477 A                            6WTI
+LOC  AlphaHelix   HIS   492 A      ARG    521 A                            6WTI
+LOC  AlphaHelix   ALA   563 A      LYS    568 A                            6WTI
+LOC  AlphaHelix   GLY   590 A      TRP    608 A                            6WTI
+LOC  AlphaHelix   TRP   611 A      SER    629 A                            6WTI
+LOC  AlphaHelix   VAL   640 A      LEU    659 A                            6WTI
+LOC  AlphaHelix   GLN    35 B      TYR     69 B                            6WTI
+LOC  AlphaHelix   ASN    86 B      ALA    113 B                            6WTI
+LOC  AlphaHelix   ARG   228 B      LYS    239 B                            6WTI
+LOC  AlphaHelix   MET   248 B      ALA    255 B                            6WTI
+LOC  AlphaHelix   LEU   273 B      LYS    280 B                            6WTI
+LOC  AlphaHelix   ALA    21 C      LEU     50 C                            6WTI
+LOC  AlphaHelix   LEU    66 C      LYS     92 C                            6WTI
+LOC  AlphaHelix   LYS    95 C      VAL    125 C                            6WTI
+LOC  AlphaHelix   GLY   134 C      ARG    167 C                            6WTI
+LOC  AlphaHelix   SER   171 C      VAL    198 C                            6WTI
+LOC  AlphaHelix   VAL    15 D      THR     38 D                            6WTI
+LOC  AlphaHelix   PRO    43 D      PHE     65 D                            6WTI
+LOC  AlphaHelix   TRP    76 D      ASN    105 D                            6WTI
+LOC  310Helix     PRO   175 A      SER    177 A                            6WTI
+LOC  310Helix     TRP   331 A      HIS    334 A                            6WTI
+LOC  310Helix     PRO   489 A      PHE    491 A                            6WTI
+LOC  310Helix     LEU   539 A      ALA    542 A                            6WTI
+LOC  310Helix     ASP    73 D      GLY     75 D                            6WTI
+LOC  Strand       ILE   583 A      PRO    586 A                            6WTI
+LOC  Strand       ASP   635 A      VAL    638 A                            6WTI
+LOC  Strand       ILE   127 B      MET    134 B                            6WTI
+LOC  Strand       LYS   137 B      TYR    142 B                            6WTI
+LOC  Strand       ILE   147 B      VAL    150 B                            6WTI
+LOC  Strand       GLU   152 B      PRO    156 B                            6WTI
+LOC  Strand       VAL   161 B      SER    167 B                            6WTI
+LOC  Strand       ASN   172 B      PHE    175 B                            6WTI
+LOC  Strand       GLN   182 B      ALA    185 B                            6WTI
+LOC  Strand       THR   191 B      LEU    195 B                            6WTI
+LOC  Strand       GLY   201 B      SER    207 B                            6WTI
+LOC  Strand       LYS   219 B      THR    225 B                            6WTI
+LOC  Strand       THR   244 B      MET    245 B                            6WTI
+LOC  Strand       GLU   264 B      PHE    266 B                            6WTI
+LOC  Strand       ASN   268 B      VAL    269 B                            6WTI
+LOC  TurnIV       PHE     2 A      LEU      5 A                            6WTI
+LOC  TurnI        SER     6 A      ALA      9 A                            6WTI
+LOC  TurnIV       LEU     7 A      VAL     10 A                            6WTI
+LOC  TurnI        PRO    11 A      GLU     14 A                            6WTI
+LOC  TurnIV       LYS    46 A      LEU     49 A                            6WTI
+LOC  TurnIV       GLU    47 A      THR     50 A                            6WTI
+LOC  TurnI        TRP    48 A      SER     51 A                            6WTI
+LOC  TurnVIII     VAL   136 A      PRO    139 A                            6WTI
+LOC  TurnI        SER   159 A      VAL    162 A                            6WTI
+LOC  TurnVIII     LEU   160 A      GLY    163 A                            6WTI
+LOC  TurnI        GLY   169 A      ALA    172 A                            6WTI
+LOC  TurnIV       GLY   178 A      TYR    181 A                            6WTI
+LOC  TurnI        ILE   179 A      SER    182 A                            6WTI
+LOC  TurnVIII     GLU   180 A      PRO    183 A                            6WTI
+LOC  TurnII       ALA   217 A      MET    220 A                            6WTI
+LOC  TurnI        THR   221 A      LYS    224 A                            6WTI
+LOC  TurnIV       MET   222 A      MET    225 A                            6WTI
+LOC  TurnI        HIS   262 A      THR    265 A                            6WTI
+LOC  TurnI'       ASP   267 A      GLY    270 A                            6WTI
+LOC  TurnIV       LEU   310 A      TYR    313 A                            6WTI
+LOC  TurnIV       SER   327 A      VAL    330 A                            6WTI
+LOC  TurnI        PHE   335 A      MET    338 A                            6WTI
+LOC  TurnIV       PHE   336 A      GLY    339 A                            6WTI
+LOC  TurnIV       MET   370 A      GLY    373 A                            6WTI
+LOC  TurnII       LEU   410 A      SER    413 A                            6WTI
+LOC  TurnIV       SER   484 A      ILE    487 A                            6WTI
+LOC  TurnI        ASP   522 A      GLN    525 A                            6WTI
+LOC  TurnIV       ARG   523 A      ASN    526 A                            6WTI
+LOC  TurnIV       ASP   524 A      ARG    527 A                            6WTI
+LOC  TurnIV       ASP   528 A      GLY    531 A                            6WTI
+LOC  TurnI        ASP   532 A      GLY    535 A                            6WTI
+LOC  TurnVIII     SER   544 A      PRO    547 A                            6WTI
+LOC  TurnVIII     PRO   548 A      ASN    551 A                            6WTI
+LOC  TurnVIII     TYR   550 A      ALA    553 A                            6WTI
+LOC  TurnVIII     PHE   552 A      VAL    555 A                            6WTI
+LOC  TurnVIII     GLU   560 A      ALA    563 A                            6WTI
+LOC  TurnIV       LYS   568 A      GLY    571 A                            6WTI
+LOC  TurnIV       GLU   572 A      LYS    575 A                            6WTI
+LOC  GammaInv     VAL   376 A      HIS    378 A                            6WTI
+LOC  TurnI        GLY    24 B      SER     27 B                            6WTI
+LOC  TurnI        SER    27 B      LEU     30 B                            6WTI
+LOC  TurnI        ALA    28 B      ASP     31 B                            6WTI
+LOC  TurnIV       LEU    29 B      PRO     32 B                            6WTI
+LOC  TurnI        ARG    70 B      ASN     73 B                            6WTI
+LOC  TurnIV       ASN    73 B      ALA     76 B                            6WTI
+LOC  TurnI        SER    79 B      TRP     82 B                            6WTI
+LOC  TurnVIII     GLU   115 B      LYS    118 B                            6WTI
+LOC  TurnIV       MET   134 B      LYS    137 B                            6WTI
+LOC  TurnI        TYR   142 B      GLN    145 B                            6WTI
+LOC  TurnI        PRO   143 B      GLY    146 B                            6WTI
+LOC  TurnIV       THR   149 B      GLU    152 B                            6WTI
+LOC  TurnIV       PRO   156 B      THR    159 B                            6WTI
+LOC  TurnIV       SER   167 B      VAL    170 B                            6WTI
+LOC  TurnI        ILE   176 B      LEU    179 B                            6WTI
+LOC  TurnIV       PRO   177 B      GLY    180 B                            6WTI
+LOC  TurnII       MET   186 B      MET    189 B                            6WTI
+LOC  TurnI        GLY   212 B      PHE    215 B                            6WTI
+LOC  TurnI        GLY   214 B      GLY    217 B                            6WTI
+LOC  TurnI        PHE   215 B      MET    218 B                            6WTI
+LOC  TurnIV       LYS   270 B      LEU    273 B                            6WTI
+LOC  GammaInv     HIS   122 B      GLU    124 B                            6WTI
+LOC  TurnI        LEU    50 C      GLY     53 C                            6WTI
+LOC  TurnIV       THR    54 C      GLY     57 C                            6WTI
+LOC  TurnI        THR    59 C      ASP     62 C                            6WTI
+LOC  TurnI        GLY    60 C      ILE     63 C                            6WTI
+LOC  TurnIV       LYS    61 C      PHE     64 C                            6WTI
+LOC  TurnIV       GLY   129 C      ARG    132 C                            6WTI
+LOC  TurnIV       PRO   130 C      SER    133 C                            6WTI
+LOC  TurnIV       VAL   198 C      MET    201 C                            6WTI
+LOC  TurnI        TYR   199 C      GLY    202 C                            6WTI
+LOC  TurnIV       LEU   200 C      ALA    203 C                            6WTI
+LOC  GammaInv     GLY   168 C      THR    170 C                            6WTI
+LOC  TurnIV       ASN    69 D      SER     72 D                            6WTI
+REM                                                                        6WTI
+REM  --------------- Detailed secondary structure assignment-------------  6WTI
+REM                                                                        6WTI
+REM  |---Residue---|    |--Structure--|   |-Phi-|   |-Psi-|  |-Area-|      6WTI
+ASG  MET A    1    1    C          Coil    360.00     -2.35     196.3      6WTI
+ASG  PHE A    2    2    T          Turn   -149.61    169.46     122.4      6WTI
+ASG  GLY A    3    3    T          Turn    102.88   -169.37      43.3      6WTI
+ASG  LYS A    4    4    T          Turn    -59.91    -17.72      93.0      6WTI
+ASG  LEU A    5    5    T          Turn    -68.81    133.10      60.1      6WTI
+ASG  SER A    6    6    T          Turn   -140.73    169.14      57.4      6WTI
+ASG  LEU A    7    7    T          Turn    -62.12    -21.17     143.1      6WTI
+ASG  ASP A    8    8    T          Turn    -89.09     39.16     145.0      6WTI
+ASG  ALA A    9    9    T          Turn   -114.27     -3.65      14.9      6WTI
+ASG  VAL A   10   10    T          Turn   -112.66    139.72      53.6      6WTI
+ASG  PRO A   11   11    T          Turn    -68.98     72.72      28.6      6WTI
+ASG  PHE A   12   12    T          Turn    -61.27    -34.96     158.4      6WTI
+ASG  HIS A   13   13    T          Turn    -70.49    -35.94     146.8      6WTI
+ASG  GLU A   14   14    T          Turn    -66.42    111.70      30.1      6WTI
+ASG  PRO A   15   15    H    AlphaHelix    -61.44    -40.23      89.5      6WTI
+ASG  ILE A   16   16    H    AlphaHelix    -72.93    -49.91      91.2      6WTI
+ASG  VAL A   17   17    H    AlphaHelix    -64.85    -40.02      34.5      6WTI
+ASG  MET A   18   18    H    AlphaHelix    -74.86    -36.79      81.6      6WTI
+ASG  VAL A   19   19    H    AlphaHelix    -64.72    -38.28      91.4      6WTI
+ASG  THR A   20   20    H    AlphaHelix    -61.54    -41.71      59.3      6WTI
+ASG  ILE A   21   21    H    AlphaHelix    -66.68    -44.80      49.7      6WTI
+ASG  ALA A   22   22    H    AlphaHelix    -59.40    -44.12      45.1      6WTI
+ASG  GLY A   23   23    H    AlphaHelix    -66.35    -38.47      43.8      6WTI
+ASG  ILE A   24   24    H    AlphaHelix    -69.45    -39.59      99.2      6WTI
+ASG  ILE A   25   25    H    AlphaHelix    -73.53    -29.60     101.7      6WTI
+ASG  LEU A   26   26    H    AlphaHelix    -64.86    -42.55      98.6      6WTI
+ASG  GLY A   27   27    H    AlphaHelix    -65.77    -33.06      35.0      6WTI
+ASG  GLY A   28   28    H    AlphaHelix    -62.52    -51.87      35.2      6WTI
+ASG  LEU A   29   29    H    AlphaHelix    -47.67    -39.73     121.2      6WTI
+ASG  ALA A   30   30    H    AlphaHelix    -64.25    -55.31      49.0      6WTI
+ASG  LEU A   31   31    H    AlphaHelix    -64.07    -33.02     111.8      6WTI
+ASG  VAL A   32   32    H    AlphaHelix    -64.65    -48.92      78.0      6WTI
+ASG  GLY A   33   33    H    AlphaHelix    -62.20    -38.79      41.6      6WTI
+ASG  LEU A   34   34    H    AlphaHelix    -60.83    -52.37      98.3      6WTI
+ASG  ILE A   35   35    H    AlphaHelix    -62.32    -40.91      43.6      6WTI
+ASG  THR A   36   36    H    AlphaHelix    -78.61    -15.46      82.2      6WTI
+ASG  TYR A   37   37    H    AlphaHelix    -69.08    -59.26     188.9      6WTI
+ASG  PHE A   38   38    H    AlphaHelix    -54.16    -48.35     151.4      6WTI
+ASG  GLY A   39   39    C          Coil     89.69     53.11      54.7      6WTI
+ASG  LYS A   40   40    H    AlphaHelix   -110.86     25.53      95.2      6WTI
+ASG  TRP A   41   41    H    AlphaHelix    -72.80    -69.34     114.2      6WTI
+ASG  THR A   42   42    H    AlphaHelix    -42.79    -41.09      94.8      6WTI
+ASG  TYR A   43   43    H    AlphaHelix    -60.56    -51.61      98.4      6WTI
+ASG  LEU A   44   44    H    AlphaHelix    -53.37    -50.94      44.5      6WTI
+ASG  TRP A   45   45    H    AlphaHelix    -56.62    -53.48     111.2      6WTI
+ASG  LYS A   46   46    H    AlphaHelix    -84.51      3.00     127.9      6WTI
+ASG  GLU A   47   47    T          Turn   -128.54    -31.37      74.7      6WTI
+ASG  TRP A   48   48    T          Turn   -122.49    -41.51      46.1      6WTI
+ASG  LEU A   49   49    T          Turn    -74.49    -35.25      44.6      6WTI
+ASG  THR A   50   50    T          Turn   -103.27     10.49       7.0      6WTI
+ASG  SER A   51   51    T          Turn    -71.57    141.72       2.8      6WTI
+ASG  VAL A   52   52    C          Coil   -110.09     26.63       9.4      6WTI
+ASG  ASP A   53   53    C          Coil    -94.69    123.23      26.1      6WTI
+ASG  HIS A   54   54    H    AlphaHelix    -57.96    -30.69       0.2      6WTI
+ASG  LYS A   55   55    H    AlphaHelix    -64.29    -53.53      18.6      6WTI
+ASG  ARG A   56   56    H    AlphaHelix    -59.60    -45.01      66.5      6WTI
+ASG  LEU A   57   57    H    AlphaHelix    -66.21    -38.52       0.6      6WTI
+ASG  GLY A   58   58    H    AlphaHelix    -62.71    -39.29       0.0      6WTI
+ASG  ILE A   59   59    H    AlphaHelix    -60.33    -46.41      17.5      6WTI
+ASG  MET A   60   60    H    AlphaHelix    -68.41    -34.66      16.8      6WTI
+ASG  TYR A   61   61    H    AlphaHelix    -55.06    -50.75       1.6      6WTI
+ASG  ILE A   62   62    H    AlphaHelix    -66.79    -30.63      20.6      6WTI
+ASG  ILE A   63   63    H    AlphaHelix    -64.23    -49.02      87.7      6WTI
+ASG  VAL A   64   64    H    AlphaHelix    -56.53    -43.37      23.5      6WTI
+ASG  ALA A   65   65    H    AlphaHelix    -58.66    -50.74       0.2      6WTI
+ASG  ILE A   66   66    H    AlphaHelix    -62.86    -39.05      31.9      6WTI
+ASG  VAL A   67   67    H    AlphaHelix    -83.29    -14.15      85.6      6WTI
+ASG  MET A   68   68    H    AlphaHelix    -92.75    -18.73       5.4      6WTI
+ASG  LEU A   69   69    H    AlphaHelix    -53.23    -28.63      15.8      6WTI
+ASG  LEU A   70   70    H    AlphaHelix    -67.72    -48.58     103.3      6WTI
+ASG  ARG A   71   71    H    AlphaHelix    -59.73    -43.77      46.1      6WTI
+ASG  GLY A   72   72    H    AlphaHelix    -55.56    -48.77       0.0      6WTI
+ASG  PHE A   73   73    H    AlphaHelix    -73.50    -31.24      38.5      6WTI
+ASG  ALA A   74   74    H    AlphaHelix    -56.46    -48.81      48.0      6WTI
+ASG  ASP A   75   75    H    AlphaHelix    -62.67    -41.62      13.2      6WTI
+ASG  ALA A   76   76    H    AlphaHelix    -60.95    -44.31      27.4      6WTI
+ASG  ILE A   77   77    H    AlphaHelix    -62.89    -43.92      52.3      6WTI
+ASG  MET A   78   78    H    AlphaHelix    -60.30    -41.98      49.6      6WTI
+ASG  MET A   79   79    H    AlphaHelix    -62.15    -46.55      28.1      6WTI
+ASG  ARG A   80   80    H    AlphaHelix    -59.51    -40.58      36.6      6WTI
+ASG  SER A   81   81    H    AlphaHelix    -62.43    -50.26      55.2      6WTI
+ASG  GLN A   82   82    H    AlphaHelix    -54.82    -41.31       0.0      6WTI
+ASG  GLN A   83   83    H    AlphaHelix    -70.51    -50.67      13.4      6WTI
+ASG  ALA A   84   84    H    AlphaHelix    -56.53    -26.81      16.0      6WTI
+ASG  LEU A   85   85    H    AlphaHelix    -81.53    -46.70      68.9      6WTI
+ASG  ALA A   86   86    H    AlphaHelix    -62.15    -27.62       1.4      6WTI
+ASG  SER A   87   87    H    AlphaHelix    -63.35    -26.48       2.3      6WTI
+ASG  ALA A   88   88    C          Coil    -93.93     11.25      57.0      6WTI
+ASG  GLY A   89   89    C          Coil     80.34     32.38      70.5      6WTI
+ASG  GLU A   90   90    C          Coil   -120.59    148.76     123.0      6WTI
+ASG  ALA A   91   91    C          Coil    -60.91    -37.89      79.7      6WTI
+ASG  GLY A   92   92    C          Coil     81.38   -157.20      32.4      6WTI
+ASG  PHE A   93   93    C          Coil   -133.59     -8.45      96.0      6WTI
+ASG  LEU A   94   94    C          Coil   -115.40    100.19      12.7      6WTI
+ASG  PRO A   95   95    C          Coil    -61.59    169.43      62.3      6WTI
+ASG  PRO A   96   96    H    AlphaHelix    -62.64    -40.87      25.7      6WTI
+ASG  HIS A   97   97    H    AlphaHelix    -42.30    -48.21      99.4      6WTI
+ASG  HIS A   98   98    H    AlphaHelix    -83.82    -46.75      35.4      6WTI
+ASG  TYR A   99   99    H    AlphaHelix    -54.16    -39.05       4.2      6WTI
+ASG  ASP A  100  100    H    AlphaHelix    -74.63    -44.64       2.6      6WTI
+ASG  GLN A  101  101    H    AlphaHelix    -42.00    -48.51      33.6      6WTI
+ASG  ILE A  102  102    H    AlphaHelix    -62.51    -49.72      18.5      6WTI
+ASG  PHE A  103  103    H    AlphaHelix    -67.17    -35.91      21.4      6WTI
+ASG  THR A  104  104    H    AlphaHelix    -60.71    -56.41       0.0      6WTI
+ASG  ALA A  105  105    H    AlphaHelix    -55.67    -42.73       1.8      6WTI
+ASG  HIS A  106  106    H    AlphaHelix    -65.67    -51.41      25.1      6WTI
+ASG  GLY A  107  107    H    AlphaHelix    -52.25    -47.19      17.2      6WTI
+ASG  VAL A  108  108    H    AlphaHelix    -62.26    -50.77       0.2      6WTI
+ASG  ILE A  109  109    H    AlphaHelix    -57.69    -54.96       0.0      6WTI
+ASG  MET A  110  110    H    AlphaHelix    -65.27    -21.90      52.8      6WTI
+ASG  ILE A  111  111    H    AlphaHelix    -91.07    -34.82      19.2      6WTI
+ASG  PHE A  112  112    H    AlphaHelix   -103.60    -27.63      11.0      6WTI
+ASG  PHE A  113  113    H    AlphaHelix   -119.50    -27.40       0.2      6WTI
+ASG  VAL A  114  114    H    AlphaHelix    -90.67    -55.13      10.1      6WTI
+ASG  ALA A  115  115    H    AlphaHelix    -71.87    -43.48      10.8      6WTI
+ASG  MET A  116  116    H    AlphaHelix    -68.65    -56.82       5.2      6WTI
+ASG  PRO A  117  117    H    AlphaHelix    -62.90    -34.23       0.8      6WTI
+ASG  PHE A  118  118    H    AlphaHelix    -55.27    -52.97      14.2      6WTI
+ASG  VAL A  119  119    H    AlphaHelix    -64.97    -44.42       6.1      6WTI
+ASG  ILE A  120  120    H    AlphaHelix    -65.09    -33.30       2.4      6WTI
+ASG  GLY A  121  121    H    AlphaHelix    -75.80    -39.58       0.0      6WTI
+ASG  LEU A  122  122    H    AlphaHelix    -61.60    -42.20       7.8      6WTI
+ASG  MET A  123  123    H    AlphaHelix    -52.61    -58.24       1.4      6WTI
+ASG  ASN A  124  124    H    AlphaHelix    -48.60    -39.12       0.2      6WTI
+ASG  LEU A  125  125    H    AlphaHelix    -69.28    -52.03       9.4      6WTI
+ASG  VAL A  126  126    H    AlphaHelix   -104.60    -12.33       2.4      6WTI
+ASG  VAL A  127  127    H    AlphaHelix    -74.98    -47.51       0.2      6WTI
+ASG  PRO A  128  128    H    AlphaHelix    -63.51    -36.79       0.6      6WTI
+ASG  LEU A  129  129    H    AlphaHelix    -69.53    -21.65       1.0      6WTI
+ASG  GLN A  130  130    H    AlphaHelix    -84.92    -36.49       2.0      6WTI
+ASG  ILE A  131  131    H    AlphaHelix    -84.74     -7.29       0.2      6WTI
+ASG  GLY A  132  132    C          Coil     85.05     47.54       1.2      6WTI
+ASG  ALA A  133  133    C          Coil   -123.00    159.10       5.8      6WTI
+ASG  ARG A  134  134    C          Coil    -86.03    -24.21      72.0      6WTI
+ASG  ASP A  135  135    C          Coil   -165.06   -173.54      17.6      6WTI
+ASG  VAL A  136  136    T          Turn    -90.46    163.49       2.2      6WTI
+ASG  ALA A  137  137    T          Turn    -56.68    -29.77      13.7      6WTI
+ASG  PHE A  138  138    T          Turn   -138.68     97.37      30.6      6WTI
+ASG  PRO A  139  139    H    AlphaHelix    -70.73    -56.36      26.9      6WTI
+ASG  PHE A  140  140    H    AlphaHelix    -55.66    -33.23      48.0      6WTI
+ASG  LEU A  141  141    H    AlphaHelix    -64.36    -35.82      50.2      6WTI
+ASG  ASN A  142  142    H    AlphaHelix    -62.74    -48.76       3.0      6WTI
+ASG  ASN A  143  143    H    AlphaHelix    -51.57    -51.09       0.8      6WTI
+ASG  LEU A  144  144    H    AlphaHelix    -66.00    -36.88      18.2      6WTI
+ASG  SER A  145  145    H    AlphaHelix    -63.96    -46.15       0.0      6WTI
+ASG  PHE A  146  146    H    AlphaHelix    -54.62    -45.59       7.8      6WTI
+ASG  TRP A  147  147    H    AlphaHelix    -74.80    -23.72      25.4      6WTI
+ASG  PHE A  148  148    H    AlphaHelix    -68.51    -38.68      14.6      6WTI
+ASG  THR A  149  149    H    AlphaHelix    -58.32    -40.56       5.8      6WTI
+ASG  VAL A  150  150    H    AlphaHelix    -67.19    -36.83      24.3      6WTI
+ASG  VAL A  151  151    H    AlphaHelix    -62.95    -44.50       2.4      6WTI
+ASG  GLY A  152  152    H    AlphaHelix    -57.40    -44.23       0.0      6WTI
+ASG  VAL A  153  153    H    AlphaHelix    -65.03    -42.91      15.2      6WTI
+ASG  ILE A  154  154    H    AlphaHelix    -60.14    -37.23      72.9      6WTI
+ASG  LEU A  155  155    H    AlphaHelix    -68.49    -49.35       2.6      6WTI
+ASG  VAL A  156  156    H    AlphaHelix    -66.54    -15.45       0.5      6WTI
+ASG  ASN A  157  157    H    AlphaHelix    -99.54    -23.49      60.5      6WTI
+ASG  VAL A  158  158    H    AlphaHelix    -68.24    -38.33      54.9      6WTI
+ASG  SER A  159  159    H    AlphaHelix    -48.72    -26.52       0.8      6WTI
+ASG  LEU A  160  160    T          Turn    -69.01    -38.63      34.0      6WTI
+ASG  GLY A  161  161    T          Turn    -96.57    -28.69      16.1      6WTI
+ASG  VAL A  162  162    T          Turn   -124.34    113.37      26.2      6WTI
+ASG  GLY A  163  163    T          Turn     83.46   -161.78      14.6      6WTI
+ASG  GLU A  164  164    C          Coil   -133.45    172.34      37.9      6WTI
+ASG  PHE A  165  165    C          Coil   -109.01    162.45       4.2      6WTI
+ASG  ALA A  166  166    C          Coil    -54.74    132.48       0.6      6WTI
+ASG  GLN A  167  167    C          Coil   -100.34     33.86      41.7      6WTI
+ASG  THR A  168  168    C          Coil   -114.31      1.75      12.3      6WTI
+ASG  GLY A  169  169    T          Turn     83.71    164.53       0.8      6WTI
+ASG  TRP A  170  170    T          Turn    -71.05    -18.85      41.6      6WTI
+ASG  LEU A  171  171    T          Turn   -103.28      5.23       7.8      6WTI
+ASG  ALA A  172  172    T          Turn     49.44     60.15       0.5      6WTI
+ASG  TYR A  173  173    C          Coil    -46.89    144.33      55.1      6WTI
+ASG  PRO A  174  174    C          Coil    -64.91    -58.21       6.0      6WTI
+ASG  PRO A  175  175    G      310Helix    -58.49    -48.63      11.7      6WTI
+ASG  LEU A  176  176    G      310Helix    -58.42    -34.52      21.8      6WTI
+ASG  SER A  177  177    G      310Helix    -90.82      5.98       0.4      6WTI
+ASG  GLY A  178  178    T          Turn    -75.66    170.21      15.3      6WTI
+ASG  ILE A  179  179    T          Turn    -66.66    -21.26      85.1      6WTI
+ASG  GLU A  180  180    T          Turn    -75.94    -51.52     133.6      6WTI
+ASG  TYR A  181  181    T          Turn    -84.75    -29.20      66.4      6WTI
+ASG  SER A  182  182    T          Turn   -125.38     77.44      24.7      6WTI
+ASG  PRO A  183  183    T          Turn    -65.32    -25.40      87.3      6WTI
+ASG  GLY A  184  184    C          Coil    -67.37    164.11      32.2      6WTI
+ASG  VAL A  185  185    H    AlphaHelix    -69.69     -9.30      12.8      6WTI
+ASG  GLY A  186  186    H    AlphaHelix    -55.07    -38.90       1.4      6WTI
+ASG  VAL A  187  187    H    AlphaHelix    -68.67    -35.68       2.1      6WTI
+ASG  ASP A  188  188    H    AlphaHelix    -64.51    -47.64       2.2      6WTI
+ASG  TYR A  189  189    H    AlphaHelix    -46.73    -49.24       0.0      6WTI
+ASG  TRP A  190  190    H    AlphaHelix    -60.89    -38.14       1.2      6WTI
+ASG  ILE A  191  191    H    AlphaHelix    -64.09    -47.32       0.8      6WTI
+ASG  TRP A  192  192    H    AlphaHelix    -89.41    -20.45      30.1      6WTI
+ASG  SER A  193  193    H    AlphaHelix    -59.49    -47.41       0.4      6WTI
+ASG  LEU A  194  194    H    AlphaHelix    -82.38    -43.38       2.5      6WTI
+ASG  GLN A  195  195    H    AlphaHelix    -52.48    -59.31      24.7      6WTI
+ASG  LEU A  196  196    H    AlphaHelix    -49.06    -54.80      14.6      6WTI
+ASG  SER A  197  197    H    AlphaHelix    -56.86    -40.60       4.6      6WTI
+ASG  GLY A  198  198    H    AlphaHelix    -58.93    -42.50       3.8      6WTI
+ASG  ILE A  199  199    H    AlphaHelix    -53.69    -26.56      72.8      6WTI
+ASG  GLY A  200  200    H    AlphaHelix    -81.01    -51.98       0.0      6WTI
+ASG  THR A  201  201    H    AlphaHelix    -52.50    -51.29       6.4      6WTI
+ASG  THR A  202  202    H    AlphaHelix    -47.39    -53.21      17.0      6WTI
+ASG  LEU A  203  203    H    AlphaHelix    -50.97    -51.97      38.7      6WTI
+ASG  THR A  204  204    H    AlphaHelix    -51.22    -41.69       0.2      6WTI
+ASG  GLY A  205  205    H    AlphaHelix    -64.96    -42.13       0.0      6WTI
+ASG  ILE A  206  206    H    AlphaHelix    -64.03    -43.78       8.0      6WTI
+ASG  ASN A  207  207    H    AlphaHelix    -52.75    -44.71       0.0      6WTI
+ASG  PHE A  208  208    H    AlphaHelix    -81.00    -40.21       1.6      6WTI
+ASG  PHE A  209  209    H    AlphaHelix    -55.00    -35.00      22.8      6WTI
+ASG  VAL A  210  210    H    AlphaHelix    -67.03    -55.97       0.0      6WTI
+ASG  THR A  211  211    H    AlphaHelix    -45.29    -63.84       1.2      6WTI
+ASG  ILE A  212  212    H    AlphaHelix    -55.62    -15.35       0.4      6WTI
+ASG  LEU A  213  213    H    AlphaHelix   -102.46    -46.06       9.9      6WTI
+ASG  LYS A  214  214    H    AlphaHelix    -90.65    -37.18      65.8      6WTI
+ASG  MET A  215  215    H    AlphaHelix    -98.25     25.02      66.3      6WTI
+ASG  ARG A  216  216    C          Coil    -72.75    178.80      48.1      6WTI
+ASG  ALA A  217  217    T          Turn    -98.63    151.06       5.3      6WTI
+ASG  PRO A  218  218    T          Turn    -71.00    129.16      68.2      6WTI
+ASG  GLY A  219  219    T          Turn    109.88    -11.10      36.3      6WTI
+ASG  MET A  220  220    T          Turn    -96.22     88.97      12.1      6WTI
+ASG  THR A  221  221    T          Turn    -57.44    162.47      75.5      6WTI
+ASG  MET A  222  222    T          Turn    -62.77    -27.45      41.4      6WTI
+ASG  PHE A  223  223    T          Turn    -86.86     24.09      64.3      6WTI
+ASG  LYS A  224  224    T          Turn   -122.92    -12.29      52.4      6WTI
+ASG  MET A  225  225    T          Turn    -59.09    154.71       0.4      6WTI
+ASG  PRO A  226  226    C          Coil    -70.86    147.34       9.4      6WTI
+ASG  VAL A  227  227    H    AlphaHelix    -53.71    -28.74       8.0      6WTI
+ASG  PHE A  228  228    H    AlphaHelix    -62.39    -44.41       2.0      6WTI
+ASG  THR A  229  229    H    AlphaHelix    -61.66    -44.87       0.0      6WTI
+ASG  TRP A  230  230    H    AlphaHelix    -51.60    -51.59      14.0      6WTI
+ASG  ALA A  231  231    H    AlphaHelix    -66.45    -39.20       4.0      6WTI
+ASG  SER A  232  232    H    AlphaHelix    -63.46    -41.32       0.0      6WTI
+ASG  LEU A  233  233    H    AlphaHelix    -62.70    -42.66      13.6      6WTI
+ASG  CYS A  234  234    H    AlphaHelix    -63.07    -41.67       7.3      6WTI
+ASG  ALA A  235  235    H    AlphaHelix    -63.17    -39.23       0.6      6WTI
+ASG  ASN A  236  236    H    AlphaHelix    -65.81    -46.17       0.0      6WTI
+ASG  VAL A  237  237    H    AlphaHelix    -48.83    -53.10      26.7      6WTI
+ASG  LEU A  238  238    H    AlphaHelix    -62.46    -36.99       0.0      6WTI
+ASG  ILE A  239  239    H    AlphaHelix    -60.18    -49.15       1.4      6WTI
+ASG  ILE A  240  240    H    AlphaHelix    -57.22    -43.04      16.4      6WTI
+ASG  ALA A  241  241    H    AlphaHelix    -74.31    -32.21       8.3      6WTI
+ASG  SER A  242  242    H    AlphaHelix    -89.52    -42.74       0.0      6WTI
+ASG  PHE A  243  243    H    AlphaHelix    -74.85    -20.24       3.0      6WTI
+ASG  PRO A  244  244    H    AlphaHelix    -59.19    -34.77       3.3      6WTI
+ASG  ILE A  245  245    H    AlphaHelix    -60.60    -48.10       0.0      6WTI
+ASG  LEU A  246  246    H    AlphaHelix    -61.91    -41.80       5.0      6WTI
+ASG  THR A  247  247    H    AlphaHelix    -52.18    -53.17      25.2      6WTI
+ASG  VAL A  248  248    H    AlphaHelix    -71.68    -35.41       5.8      6WTI
+ASG  THR A  249  249    H    AlphaHelix    -65.37    -48.67       0.0      6WTI
+ASG  VAL A  250  250    H    AlphaHelix    -63.44    -31.72       0.2      6WTI
+ASG  ALA A  251  251    H    AlphaHelix    -67.51    -44.02      33.8      6WTI
+ASG  LEU A  252  252    H    AlphaHelix    -62.90    -35.15       1.2      6WTI
+ASG  LEU A  253  253    H    AlphaHelix    -72.56    -41.74       4.8      6WTI
+ASG  THR A  254  254    H    AlphaHelix    -61.09    -33.62      18.4      6WTI
+ASG  LEU A  255  255    H    AlphaHelix    -62.81    -48.85      54.2      6WTI
+ASG  ASP A  256  256    H    AlphaHelix    -51.35    -36.47      18.8      6WTI
+ASG  ARG A  257  257    H    AlphaHelix    -89.02    -28.33      15.2      6WTI
+ASG  TYR A  258  258    H    AlphaHelix   -101.39    -25.28      49.0      6WTI
+ASG  LEU A  259  259    H    AlphaHelix   -125.16     -1.26     108.5      6WTI
+ASG  GLY A  260  260    C          Coil     82.83     26.60      33.2      6WTI
+ASG  THR A  261  261    C          Coil    -74.52    172.50       4.4      6WTI
+ASG  HIS A  262  262    T          Turn   -130.25     48.85      33.1      6WTI
+ASG  PHE A  263  263    T          Turn    -75.44    -44.70       1.2      6WTI
+ASG  PHE A  264  264    T          Turn   -127.18     10.90       3.0      6WTI
+ASG  THR A  265  265    T          Turn    -64.53    172.80      32.8      6WTI
+ASG  ASN A  266  266    C          Coil    -84.95    -39.71      26.7      6WTI
+ASG  ASP A  267  267    T          Turn    -96.11    170.77      71.0      6WTI
+ASG  MET A  268  268    T          Turn     58.30     43.48      59.9      6WTI
+ASG  GLY A  269  269    T          Turn     94.56    -23.00      27.6      6WTI
+ASG  GLY A  270  270    T          Turn    -56.99    165.97      16.0      6WTI
+ASG  ASN A  271  271    C          Coil   -143.23    114.96      21.2      6WTI
+ASG  MET A  272  272    H    AlphaHelix    -68.52    -38.32       5.6      6WTI
+ASG  MET A  273  273    H    AlphaHelix    -53.13    -38.03       1.0      6WTI
+ASG  MET A  274  274    H    AlphaHelix    -56.43    -43.47       0.4      6WTI
+ASG  TYR A  275  275    H    AlphaHelix    -52.79    -54.41       0.2      6WTI
+ASG  ILE A  276  276    H    AlphaHelix    -55.40    -32.31       0.4      6WTI
+ASG  ASN A  277  277    H    AlphaHelix    -73.51    -42.67       0.0      6WTI
+ASG  LEU A  278  278    H    AlphaHelix    -69.27    -52.79       0.8      6WTI
+ASG  ILE A  279  279    H    AlphaHelix    -60.98    -38.85       0.2      6WTI
+ASG  TRP A  280  280    H    AlphaHelix    -70.63    -27.13      28.9      6WTI
+ASG  ALA A  281  281    H    AlphaHelix    -55.26    -31.75       3.6      6WTI
+ASG  TRP A  282  282    H    AlphaHelix    -87.42    -32.42       0.0      6WTI
+ASG  GLY A  283  283    H    AlphaHelix    -66.44    -34.92       1.1      6WTI
+ASG  HIS A  284  284    H    AlphaHelix    -81.57    -38.95      11.8      6WTI
+ASG  PRO A  285  285    H    AlphaHelix    -52.88    -37.27       1.8      6WTI
+ASG  GLU A  286  286    H    AlphaHelix    -68.13    -40.56       0.4      6WTI
+ASG  VAL A  287  287    H    AlphaHelix    -54.89    -40.82      52.5      6WTI
+ASG  TYR A  288  288    H    AlphaHelix    -66.86    -37.63      28.7      6WTI
+ASG  ILE A  289  289    H    AlphaHelix    -54.25    -18.83       1.7      6WTI
+ASG  LEU A  290  290    H    AlphaHelix   -100.85    -39.61       2.6      6WTI
+ASG  ILE A  291  291    H    AlphaHelix    -74.52    -18.16      18.0      6WTI
+ASG  LEU A  292  292    H    AlphaHelix    -78.49    -46.07       0.2      6WTI
+ASG  PRO A  293  293    H    AlphaHelix    -62.36    -50.99       1.8      6WTI
+ASG  VAL A  294  294    H    AlphaHelix    -52.65    -40.70       2.2      6WTI
+ASG  PHE A  295  295    H    AlphaHelix    -48.95    -57.62       2.8      6WTI
+ASG  GLY A  296  296    H    AlphaHelix    -45.01    -51.93       0.8      6WTI
+ASG  VAL A  297  297    H    AlphaHelix    -47.45    -55.65       2.8      6WTI
+ASG  PHE A  298  298    H    AlphaHelix    -55.27    -46.93       0.2      6WTI
+ASG  SER A  299  299    H    AlphaHelix    -47.57    -57.91       1.2      6WTI
+ASG  GLU A  300  300    H    AlphaHelix    -49.26    -52.00      14.6      6WTI
+ASG  ILE A  301  301    H    AlphaHelix    -64.66    -42.77       0.0      6WTI
+ASG  ALA A  302  302    H    AlphaHelix    -52.50    -34.19       2.2      6WTI
+ASG  ALA A  303  303    H    AlphaHelix    -85.12    -27.14       8.6      6WTI
+ASG  THR A  304  304    H    AlphaHelix    -77.45    -54.95       7.1      6WTI
+ASG  PHE A  305  305    H    AlphaHelix    -84.35    -25.85      11.9      6WTI
+ASG  SER A  306  306    H    AlphaHelix    -72.24    -20.76       0.0      6WTI
+ASG  ARG A  307  307    C          Coil     67.36     37.33     109.8      6WTI
+ASG  LYS A  308  308    C          Coil   -143.45    173.16       0.0      6WTI
+ASG  ARG A  309  309    C          Coil    -76.54    143.44      81.7      6WTI
+ASG  LEU A  310  310    T          Turn    -53.16    136.57      15.4      6WTI
+ASG  PHE A  311  311    T          Turn    -86.89    138.08       2.6      6WTI
+ASG  GLY A  312  312    T          Turn     62.95     49.61       2.3      6WTI
+ASG  TYR A  313  313    H    AlphaHelix    -55.14    -57.86      15.7      6WTI
+ASG  THR A  314  314    H    AlphaHelix    -54.91    -44.80      40.9      6WTI
+ASG  SER A  315  315    H    AlphaHelix    -61.73    -36.67       1.5      6WTI
+ASG  LEU A  316  316    H    AlphaHelix    -67.52    -38.97       0.2      6WTI
+ASG  VAL A  317  317    H    AlphaHelix    -70.69    -40.11       0.6      6WTI
+ASG  TRP A  318  318    H    AlphaHelix    -68.32    -34.45     135.5      6WTI
+ASG  ALA A  319  319    H    AlphaHelix    -59.77    -49.04       0.2      6WTI
+ASG  THR A  320  320    H    AlphaHelix    -65.37    -35.00       3.0      6WTI
+ASG  VAL A  321  321    H    AlphaHelix    -68.67    -46.52      44.7      6WTI
+ASG  CYS A  322  322    H    AlphaHelix    -55.64    -41.60      50.2      6WTI
+ASG  ILE A  323  323    H    AlphaHelix    -60.35    -46.65       1.0      6WTI
+ASG  THR A  324  324    H    AlphaHelix    -53.42    -47.62       9.2      6WTI
+ASG  VAL A  325  325    H    AlphaHelix    -62.86    -58.02      69.8      6WTI
+ASG  LEU A  326  326    H    AlphaHelix    -65.47     -9.59      34.5      6WTI
+ASG  SER A  327  327    H    AlphaHelix    -75.22      7.64       1.1      6WTI
+ASG  PHE A  328  328    T          Turn   -116.42      6.21       8.3      6WTI
+ASG  ILE A  329  329    T          Turn   -131.94     44.32      44.3      6WTI
+ASG  VAL A  330  330    T          Turn   -147.44      5.82       0.0      6WTI
+ASG  TRP A  331  331    G      310Helix    -65.33    -31.44       6.8      6WTI
+ASG  LEU A  332  332    G      310Helix    -53.53    -25.05       0.2      6WTI
+ASG  HIS A  333  333    G      310Helix    -69.39     -2.30      28.9      6WTI
+ASG  HIS A  334  334    G      310Helix    -90.69      5.02      41.3      6WTI
+ASG  PHE A  335  335    T          Turn   -151.75     51.73       1.2      6WTI
+ASG  PHE A  336  336    T          Turn    -61.36    -19.11       2.0      6WTI
+ASG  THR A  337  337    T          Turn    -98.48      7.56       4.5      6WTI
+ASG  MET A  338  338    T          Turn    -87.54      6.06       0.2      6WTI
+ASG  GLY A  339  339    T          Turn    112.70    -17.52       9.2      6WTI
+ASG  ALA A  340  340    C          Coil    -50.83    153.18       1.7      6WTI
+ASG  GLY A  341  341    C          Coil    -70.76   -166.08      13.2      6WTI
+ASG  ALA A  342  342    H    AlphaHelix    -74.16    -29.45       8.9      6WTI
+ASG  ASN A  343  343    H    AlphaHelix    -77.51    -48.52      88.9      6WTI
+ASG  VAL A  344  344    H    AlphaHelix    -58.34    -43.64       1.7      6WTI
+ASG  ASN A  345  345    H    AlphaHelix    -62.67    -48.91       0.6      6WTI
+ASG  ALA A  346  346    H    AlphaHelix    -59.39    -46.53       0.0      6WTI
+ASG  PHE A  347  347    H    AlphaHelix    -59.52    -49.59      94.1      6WTI
+ASG  PHE A  348  348    H    AlphaHelix    -71.58    -31.62       6.6      6WTI
+ASG  GLY A  349  349    H    AlphaHelix    -63.88    -42.05       0.0      6WTI
+ASG  ILE A  350  350    H    AlphaHelix    -58.47    -52.01      43.6      6WTI
+ASG  THR A  351  351    H    AlphaHelix    -61.86    -29.60      11.6      6WTI
+ASG  THR A  352  352    H    AlphaHelix    -71.87    -38.02      15.8      6WTI
+ASG  MET A  353  353    H    AlphaHelix    -72.74    -22.46       0.6      6WTI
+ASG  ILE A  354  354    H    AlphaHelix    -76.22    -17.33      74.6      6WTI
+ASG  ILE A  355  355    H    AlphaHelix    -73.21    -16.72      13.0      6WTI
+ASG  ALA A  356  356    H    AlphaHelix    -63.83    -41.60      23.7      6WTI
+ASG  ILE A  357  357    H    AlphaHelix    -50.59    -47.40      17.0      6WTI
+ASG  PRO A  358  358    H    AlphaHelix    -53.00    -53.09       8.4      6WTI
+ASG  THR A  359  359    H    AlphaHelix    -65.63    -32.32      33.0      6WTI
+ASG  GLY A  360  360    H    AlphaHelix    -67.03    -44.20      16.7      6WTI
+ASG  VAL A  361  361    H    AlphaHelix    -56.43    -39.33       0.0      6WTI
+ASG  LYS A  362  362    H    AlphaHelix    -60.82    -50.79       4.4      6WTI
+ASG  ILE A  363  363    H    AlphaHelix    -68.90    -32.85      20.2      6WTI
+ASG  PHE A  364  364    H    AlphaHelix    -70.80    -34.94      28.7      6WTI
+ASG  ASN A  365  365    H    AlphaHelix    -66.81    -40.51       3.0      6WTI
+ASG  TRP A  366  366    H    AlphaHelix    -55.41    -46.41       3.4      6WTI
+ASG  LEU A  367  367    H    AlphaHelix    -64.76    -41.60       0.4      6WTI
+ASG  PHE A  368  368    H    AlphaHelix    -76.79     -8.24      35.5      6WTI
+ASG  THR A  369  369    H    AlphaHelix    -66.18    -54.51       0.0      6WTI
+ASG  MET A  370  370    H    AlphaHelix    -61.68    -10.70       2.8      6WTI
+ASG  TYR A  371  371    T          Turn    -61.93    -56.68      57.9      6WTI
+ASG  GLN A  372  372    T          Turn   -120.10     47.26      24.3      6WTI
+ASG  GLY A  373  373    T          Turn   -101.29   -153.27       0.3      6WTI
+ASG  ARG A  374  374    C          Coil   -131.95    109.03      54.9      6WTI
+ASG  ILE A  375  375    B        Bridge    -90.93    112.68       0.3      6WTI
+ASG  VAL A  376  376    T          Turn    -89.54    124.31      57.8      6WTI
+ASG  PHE A  377  377    T          Turn    -87.22     73.28      83.4      6WTI
+ASG  HIS A  378  378    T          Turn    -87.37    159.63      25.9      6WTI
+ASG  SER A  379  379    H    AlphaHelix    -50.02    -39.52       1.0      6WTI
+ASG  ALA A  380  380    H    AlphaHelix    -65.59    -42.93       0.0      6WTI
+ASG  MET A  381  381    H    AlphaHelix    -76.31    -23.43       0.0      6WTI
+ASG  LEU A  382  382    H    AlphaHelix    -58.74    -52.87      22.0      6WTI
+ASG  TRP A  383  383    H    AlphaHelix    -51.12    -36.58      12.2      6WTI
+ASG  THR A  384  384    H    AlphaHelix    -73.36    -48.86       4.2      6WTI
+ASG  ILE A  385  385    H    AlphaHelix    -60.60    -40.15      20.4      6WTI
+ASG  GLY A  386  386    H    AlphaHelix    -63.24    -38.67       6.9      6WTI
+ASG  PHE A  387  387    H    AlphaHelix    -57.74    -51.18       0.4      6WTI
+ASG  ILE A  388  388    H    AlphaHelix    -51.14    -54.74       6.8      6WTI
+ASG  VAL A  389  389    H    AlphaHelix    -60.59    -47.29      38.0      6WTI
+ASG  THR A  390  390    H    AlphaHelix    -71.05    -52.66       0.4      6WTI
+ASG  PHE A  391  391    H    AlphaHelix    -58.25    -32.11      24.7      6WTI
+ASG  SER A  392  392    H    AlphaHelix    -53.50    -54.81      18.1      6WTI
+ASG  VAL A  393  393    H    AlphaHelix    -65.27    -40.12      33.9      6WTI
+ASG  GLY A  394  394    H    AlphaHelix    -59.04    -48.28       0.0      6WTI
+ASG  GLY A  395  395    H    AlphaHelix    -68.04    -28.02      25.7      6WTI
+ASG  MET A  396  396    H    AlphaHelix    -66.01    -50.11      14.9      6WTI
+ASG  THR A  397  397    H    AlphaHelix    -52.51    -40.67      12.2      6WTI
+ASG  GLY A  398  398    H    AlphaHelix    -62.72    -51.30      15.3      6WTI
+ASG  VAL A  399  399    H    AlphaHelix    -50.88    -46.33      25.6      6WTI
+ASG  LEU A  400  400    H    AlphaHelix    -63.63    -31.53       6.8      6WTI
+ASG  LEU A  401  401    H    AlphaHelix    -82.73     -8.54      13.8      6WTI
+ASG  ALA A  402  402    H    AlphaHelix    -79.27     -5.55       7.2      6WTI
+ASG  VAL A  403  403    C          Coil    -87.37    113.70       3.2      6WTI
+ASG  PRO A  404  404    H    AlphaHelix    -58.71    -37.94       0.0      6WTI
+ASG  GLY A  405  405    H    AlphaHelix    -59.54    -29.51       0.0      6WTI
+ASG  ALA A  406  406    H    AlphaHelix    -82.55    -38.09       1.2      6WTI
+ASG  ASP A  407  407    H    AlphaHelix    -57.42    -25.12       8.0      6WTI
+ASG  PHE A  408  408    H    AlphaHelix    -59.36    -28.01       1.6      6WTI
+ASG  VAL A  409  409    H    AlphaHelix   -102.30    -41.39       2.9      6WTI
+ASG  LEU A  410  410    H    AlphaHelix    -91.48      1.72       0.0      6WTI
+ASG  HIS A  411  411    T          Turn    -64.59    131.58      10.9      6WTI
+ASG  ASN A  412  412    T          Turn     64.49     -1.51      11.6      6WTI
+ASG  SER A  413  413    B        Bridge    -69.78    173.36       6.8      6WTI
+ASG  LEU A  414  414    H    AlphaHelix    -62.82    -13.91       4.8      6WTI
+ASG  PHE A  415  415    H    AlphaHelix    -58.46    -38.82      10.8      6WTI
+ASG  LEU A  416  416    H    AlphaHelix    -66.17    -46.40      36.1      6WTI
+ASG  ILE A  417  417    H    AlphaHelix    -66.31    -38.80      23.1      6WTI
+ASG  ALA A  418  418    H    AlphaHelix    -54.03    -53.60       0.5      6WTI
+ASG  HIS A  419  419    H    AlphaHelix    -64.99    -47.34      35.3      6WTI
+ASG  PHE A  420  420    H    AlphaHelix    -77.31    -15.49      58.9      6WTI
+ASG  HIS A  421  421    H    AlphaHelix    -79.39    -41.48      40.3      6WTI
+ASG  ASN A  422  422    H    AlphaHelix    -51.67    -57.59       0.8      6WTI
+ASG  VAL A  423  423    H    AlphaHelix    -67.34    -41.41      26.2      6WTI
+ASG  ILE A  424  424    H    AlphaHelix    -66.67    -56.24      40.7      6WTI
+ASG  ILE A  425  425    H    AlphaHelix    -61.63    -45.05      17.4      6WTI
+ASG  GLY A  426  426    H    AlphaHelix    -62.94    -68.16       0.0      6WTI
+ASG  GLY A  427  427    H    AlphaHelix    -65.89    -40.82       0.0      6WTI
+ASG  VAL A  428  428    H    AlphaHelix    -89.89    -72.34       6.0      6WTI
+ASG  VAL A  429  429    H    AlphaHelix    -52.78    -40.90      31.4      6WTI
+ASG  PHE A  430  430    H    AlphaHelix    -53.05    -49.78       0.0      6WTI
+ASG  GLY A  431  431    H    AlphaHelix    -73.40    -29.37       0.2      6WTI
+ASG  CYS A  432  432    H    AlphaHelix    -71.13    -37.25       2.6      6WTI
+ASG  PHE A  433  433    H    AlphaHelix    -65.93    -42.32      10.8      6WTI
+ASG  ALA A  434  434    H    AlphaHelix    -53.65    -42.08       0.0      6WTI
+ASG  GLY A  435  435    H    AlphaHelix    -71.26    -35.90       0.0      6WTI
+ASG  MET A  436  436    H    AlphaHelix    -70.75    -44.57      16.2      6WTI
+ASG  THR A  437  437    H    AlphaHelix    -62.52    -24.59       8.4      6WTI
+ASG  TYR A  438  438    H    AlphaHelix    -81.58    -43.62       0.0      6WTI
+ASG  TRP A  439  439    H    AlphaHelix   -107.14     17.21       4.3      6WTI
+ASG  TRP A  440  440    H    AlphaHelix    -67.74    -46.47      27.4      6WTI
+ASG  PRO A  441  441    H    AlphaHelix    -59.52    -29.64       0.8      6WTI
+ASG  LYS A  442  442    H    AlphaHelix    -74.56    -12.43       3.0      6WTI
+ASG  ALA A  443  443    H    AlphaHelix   -108.51    -23.11      22.0      6WTI
+ASG  PHE A  444  444    H    AlphaHelix   -132.12    -14.97      70.1      6WTI
+ASG  GLY A  445  445    C          Coil     99.94    -19.33       7.0      6WTI
+ASG  PHE A  446  446    B        Bridge   -115.43    165.56      25.1      6WTI
+ASG  LYS A  447  447    C          Coil   -101.99    140.50      64.6      6WTI
+ASG  LEU A  448  448    C          Coil    -54.82    165.13      17.3      6WTI
+ASG  ASN A  449  449    C          Coil    -86.27    130.53      45.2      6WTI
+ASG  GLU A  450  450    H    AlphaHelix    -74.12    -39.94      44.8      6WTI
+ASG  THR A  451  451    H    AlphaHelix    -62.77    -53.42      74.9      6WTI
+ASG  TRP A  452  452    H    AlphaHelix    -64.42    -28.59      69.4      6WTI
+ASG  GLY A  453  453    H    AlphaHelix    -71.66    -41.19       2.0      6WTI
+ASG  LYS A  454  454    H    AlphaHelix    -61.42    -41.68      72.4      6WTI
+ASG  ARG A  455  455    H    AlphaHelix    -58.92    -45.54     117.8      6WTI
+ASG  ALA A  456  456    H    AlphaHelix    -57.48    -47.45       2.8      6WTI
+ASG  PHE A  457  457    H    AlphaHelix    -62.29    -44.58       8.6      6WTI
+ASG  TRP A  458  458    H    AlphaHelix    -64.75    -44.64     144.1      6WTI
+ASG  PHE A  459  459    H    AlphaHelix    -58.66    -43.16      66.2      6WTI
+ASG  TRP A  460  460    H    AlphaHelix    -61.53    -47.11      15.2      6WTI
+ASG  ILE A  461  461    H    AlphaHelix    -69.07    -46.97      19.4      6WTI
+ASG  ILE A  462  462    H    AlphaHelix    -63.14    -40.07      87.2      6WTI
+ASG  GLY A  463  463    H    AlphaHelix    -71.00    -35.42       0.0      6WTI
+ASG  PHE A  464  464    H    AlphaHelix    -62.34    -45.38       1.0      6WTI
+ASG  PHE A  465  465    H    AlphaHelix    -58.25    -59.37      62.6      6WTI
+ASG  VAL A  466  466    H    AlphaHelix    -64.55    -11.92      54.7      6WTI
+ASG  ALA A  467  467    H    AlphaHelix    -89.53    -48.92       4.0      6WTI
+ASG  PHE A  468  468    H    AlphaHelix   -100.86    -25.91      27.1      6WTI
+ASG  MET A  469  469    H    AlphaHelix    -70.40    -17.68      79.6      6WTI
+ASG  PRO A  470  470    H    AlphaHelix    -70.93    -22.17      14.6      6WTI
+ASG  LEU A  471  471    H    AlphaHelix    -75.30    -23.11       0.2      6WTI
+ASG  TYR A  472  472    H    AlphaHelix    -58.93    -52.97      26.3      6WTI
+ASG  ALA A  473  473    H    AlphaHelix    -60.20    -36.21      22.6      6WTI
+ASG  LEU A  474  474    H    AlphaHelix    -68.01    -49.93       0.0      6WTI
+ASG  GLY A  475  475    H    AlphaHelix    -61.82    -18.44       1.5      6WTI
+ASG  PHE A  476  476    H    AlphaHelix    -76.16    -29.32      27.1      6WTI
+ASG  MET A  477  477    H    AlphaHelix    -96.29      5.84      40.4      6WTI
+ASG  GLY A  478  478    C          Coil    119.05    -14.50      18.0      6WTI
+ASG  MET A  479  479    C          Coil    -66.48    127.43       2.3      6WTI
+ASG  THR A  480  480    B        Bridge   -102.21   -173.77       8.0      6WTI
+ASG  ARG A  481  481    C          Coil    -78.95    150.54      37.1      6WTI
+ASG  ARG A  482  482    C          Coil     62.80     30.71      47.9      6WTI
+ASG  LEU A  483  483    C          Coil    -88.73    145.23      29.1      6WTI
+ASG  SER A  484  484    T          Turn   -134.37     -9.89       1.6      6WTI
+ASG  GLN A  485  485    T          Turn   -136.42    154.35      29.9      6WTI
+ASG  GLN A  486  486    T          Turn     34.42     49.10     115.1      6WTI
+ASG  ILE A  487  487    T          Turn    -69.20    143.50       9.6      6WTI
+ASG  ASP A  488  488    C          Coil    -53.70    125.46      42.1      6WTI
+ASG  PRO A  489  489    G      310Helix    -63.07    -21.72      89.2      6WTI
+ASG  GLN A  490  490    G      310Helix    -73.35      7.13     113.2      6WTI
+ASG  PHE A  491  491    G      310Helix   -105.62      4.90      14.4      6WTI
+ASG  HIS A  492  492    H    AlphaHelix    -65.28    -59.28      43.1      6WTI
+ASG  THR A  493  493    H    AlphaHelix    -51.71    -59.50      85.3      6WTI
+ASG  MET A  494  494    H    AlphaHelix    -49.38    -47.29      59.3      6WTI
+ASG  LEU A  495  495    H    AlphaHelix    -65.01    -43.37       1.5      6WTI
+ASG  MET A  496  496    H    AlphaHelix    -62.56    -23.66     103.4      6WTI
+ASG  ILE A  497  497    H    AlphaHelix    -75.01    -43.67      70.2      6WTI
+ASG  ALA A  498  498    H    AlphaHelix    -53.41    -51.15       0.0      6WTI
+ASG  ALA A  499  499    H    AlphaHelix    -53.20    -40.74      21.8      6WTI
+ASG  SER A  500  500    H    AlphaHelix    -51.22    -54.27      56.2      6WTI
+ASG  GLY A  501  501    H    AlphaHelix    -53.71    -40.50       0.0      6WTI
+ASG  ALA A  502  502    H    AlphaHelix    -56.55    -45.69      10.9      6WTI
+ASG  VAL A  503  503    H    AlphaHelix    -51.44    -50.95      83.4      6WTI
+ASG  LEU A  504  504    H    AlphaHelix    -51.64    -44.55      51.5      6WTI
+ASG  ILE A  505  505    H    AlphaHelix    -61.51    -42.59      11.4      6WTI
+ASG  ALA A  506  506    H    AlphaHelix    -47.22    -50.37      28.4      6WTI
+ASG  LEU A  507  507    H    AlphaHelix    -57.02    -47.76      69.5      6WTI
+ASG  GLY A  508  508    H    AlphaHelix    -50.32    -52.82       0.2      6WTI
+ASG  ILE A  509  509    H    AlphaHelix    -60.36    -41.62      19.2      6WTI
+ASG  LEU A  510  510    H    AlphaHelix    -56.77    -49.39      98.5      6WTI
+ASG  CYS A  511  511    H    AlphaHelix    -47.96    -46.70       5.2      6WTI
+ASG  LEU A  512  512    H    AlphaHelix    -50.39    -52.11      12.8      6WTI
+ASG  VAL A  513  513    H    AlphaHelix    -56.02    -50.86      88.4      6WTI
+ASG  ILE A  514  514    H    AlphaHelix    -58.43    -45.25      47.4      6WTI
+ASG  GLN A  515  515    H    AlphaHelix    -53.33    -45.37      13.4      6WTI
+ASG  MET A  516  516    H    AlphaHelix    -62.21    -50.01      38.5      6WTI
+ASG  TYR A  517  517    H    AlphaHelix    -58.22    -65.32     143.1      6WTI
+ASG  VAL A  518  518    H    AlphaHelix    -55.97    -12.62      14.0      6WTI
+ASG  SER A  519  519    H    AlphaHelix    -78.74    -57.32       6.8      6WTI
+ASG  ILE A  520  520    H    AlphaHelix    -60.78    -47.06      70.1      6WTI
+ASG  ARG A  521  521    H    AlphaHelix    -48.92    -29.97     137.3      6WTI
+ASG  ASP A  522  522    T          Turn   -120.93     32.17      65.1      6WTI
+ASG  ARG A  523  523    T          Turn    -65.14    -21.67     120.5      6WTI
+ASG  ASP A  524  524    T          Turn    -87.15      8.42      86.0      6WTI
+ASG  GLN A  525  525    T          Turn   -122.74    -19.52     161.6      6WTI
+ASG  ASN A  526  526    T          Turn   -115.02     58.27      77.6      6WTI
+ASG  ARG A  527  527    B        Bridge    -98.89    150.30     131.2      6WTI
+ASG  ASP A  528  528    T          Turn    -96.06    101.87       4.2      6WTI
+ASG  LEU A  529  529    T          Turn    -95.03    -11.80      84.9      6WTI
+ASG  THR A  530  530    T          Turn    -86.52    -41.24      40.0      6WTI
+ASG  GLY A  531  531    T          Turn    106.78     -8.33       0.0      6WTI
+ASG  ASP A  532  532    T          Turn   -129.58     79.16      24.2      6WTI
+ASG  PRO A  533  533    T          Turn    -81.58     -6.92      25.3      6WTI
+ASG  TRP A  534  534    T          Turn   -124.98     -8.73      51.8      6WTI
+ASG  GLY A  535  535    T          Turn     82.17     43.76      31.1      6WTI
+ASG  GLY A  536  536    C          Coil    -64.88   -174.65       0.0      6WTI
+ASG  ARG A  537  537    C          Coil   -129.58    -25.98       7.4      6WTI
+ASG  THR A  538  538    C          Coil   -104.42    178.87       5.0      6WTI
+ASG  LEU A  539  539    G      310Helix    -73.18    -26.72       6.3      6WTI
+ASG  GLU A  540  540    G      310Helix    -54.82    -36.58       1.2      6WTI
+ASG  TRP A  541  541    G      310Helix    -72.36    -16.39       0.2      6WTI
+ASG  ALA A  542  542    G      310Helix    -73.12    -15.27      25.3      6WTI
+ASG  THR A  543  543    C          Coil    -77.71   -171.07       8.3      6WTI
+ASG  SER A  544  544    T          Turn    -72.75    174.25      16.6      6WTI
+ASG  SER A  545  545    T          Turn    -46.92    -68.50      22.8      6WTI
+ASG  PRO A  546  546    T          Turn   -105.78    120.52      64.3      6WTI
+ASG  PRO A  547  547    T          Turn    -67.32    163.99      17.7      6WTI
+ASG  PRO A  548  548    T          Turn    -69.89    156.30      13.8      6WTI
+ASG  PHE A  549  549    T          Turn    -51.64    -25.26      63.1      6WTI
+ASG  TYR A  550  550    T          Turn   -106.94    127.70       0.0      6WTI
+ASG  ASN A  551  551    T          Turn    -58.52    -44.94       0.8      6WTI
+ASG  PHE A  552  552    T          Turn   -132.44    143.26      22.0      6WTI
+ASG  ALA A  553  553    T          Turn    -79.37    -21.68       5.0      6WTI
+ASG  VAL A  554  554    T          Turn   -142.61    110.54      62.3      6WTI
+ASG  VAL A  555  555    T          Turn    -48.50    126.86      55.9      6WTI
+ASG  PRO A  556  556    C          Coil    -66.66    162.87      26.4      6WTI
+ASG  HIS A  557  557    C          Coil   -116.69    117.92     114.3      6WTI
+ASG  VAL A  558  558    C          Coil    -87.71    153.60       7.0      6WTI
+ASG  HIS A  559  559    C          Coil   -133.96    -14.79     110.7      6WTI
+ASG  GLU A  560  560    T          Turn   -142.32    176.70      99.1      6WTI
+ASG  ARG A  561  561    T          Turn    -63.02    -45.86      96.0      6WTI
+ASG  ASP A  562  562    T          Turn   -103.49    115.44      27.7      6WTI
+ASG  ALA A  563  563    H    AlphaHelix    -80.18    -48.82      16.1      6WTI
+ASG  PHE A  564  564    H    AlphaHelix    -70.49    -34.93       0.2      6WTI
+ASG  TRP A  565  565    H    AlphaHelix    -68.02    -44.14      42.5      6WTI
+ASG  GLU A  566  566    H    AlphaHelix    -66.87    -29.48      68.1      6WTI
+ASG  MET A  567  567    H    AlphaHelix    -65.25    -44.85      45.5      6WTI
+ASG  LYS A  568  568    H    AlphaHelix    -62.57    -15.13      67.6      6WTI
+ASG  GLU A  569  569    T          Turn   -100.72    -40.99     109.8      6WTI
+ASG  LYS A  570  570    T          Turn    -57.43    -29.99     106.2      6WTI
+ASG  GLY A  571  571    T          Turn    105.78     14.88      48.5      6WTI
+ASG  GLU A  572  572    T          Turn   -144.75     87.73     104.6      6WTI
+ASG  ALA A  573  573    T          Turn   -129.48    -19.15      23.0      6WTI
+ASG  TYR A  574  574    T          Turn   -134.71     88.18      62.7      6WTI
+ASG  LYS A  575  575    T          Turn   -127.89     92.73     125.0      6WTI
+ASG  LYS A  576  576    C          Coil    -52.46    117.18     112.3      6WTI
+ASG  PRO A  577  577    C          Coil    -57.03    162.57      50.2      6WTI
+ASG  ASP A  578  578    C          Coil    -80.73    -53.35     150.2      6WTI
+ASG  HIS A  579  579    C          Coil   -122.96    127.37     113.5      6WTI
+ASG  TYR A  580  580    C          Coil    -89.53    148.52      24.5      6WTI
+ASG  GLU A  581  581    C          Coil   -124.76    142.57     105.2      6WTI
+ASG  GLU A  582  582    C          Coil    -50.74    143.12     101.9      6WTI
+ASG  ILE A  583  583    E        Strand   -116.83    128.78       1.6      6WTI
+ASG  HIS A  584  584    E        Strand    -88.00    121.55      79.7      6WTI
+ASG  MET A  585  585    E        Strand   -135.02    160.92      11.4      6WTI
+ASG  PRO A  586  586    E        Strand    -91.47    157.40      34.9      6WTI
+ASG  LYS A  587  587    C          Coil    -95.45    168.35      79.9      6WTI
+ASG  ASN A  588  588    C          Coil    -87.18    139.37      75.7      6WTI
+ASG  SER A  589  589    C          Coil   -130.35    136.09      20.9      6WTI
+ASG  GLY A  590  590    H    AlphaHelix    -92.25      4.35      24.8      6WTI
+ASG  ALA A  591  591    H    AlphaHelix    -71.97    -34.27      18.1      6WTI
+ASG  GLY A  592  592    H    AlphaHelix    -65.53    -48.39       0.0      6WTI
+ASG  ILE A  593  593    H    AlphaHelix    -60.54    -24.87      46.8      6WTI
+ASG  VAL A  594  594    H    AlphaHelix    -78.41    -46.95      59.2      6WTI
+ASG  ILE A  595  595    H    AlphaHelix    -49.18    -42.45      12.4      6WTI
+ASG  ALA A  596  596    H    AlphaHelix    -71.14    -37.62       3.6      6WTI
+ASG  ALA A  597  597    H    AlphaHelix    -63.01    -45.86      50.5      6WTI
+ASG  PHE A  598  598    H    AlphaHelix    -60.02    -37.61      58.5      6WTI
+ASG  SER A  599  599    H    AlphaHelix    -64.99    -41.12       0.8      6WTI
+ASG  THR A  600  600    H    AlphaHelix    -58.85    -48.23      28.1      6WTI
+ASG  ILE A  601  601    H    AlphaHelix    -60.68    -41.58      63.1      6WTI
+ASG  PHE A  602  602    H    AlphaHelix    -60.69    -49.46      29.1      6WTI
+ASG  GLY A  603  603    H    AlphaHelix    -63.10    -45.16       0.0      6WTI
+ASG  PHE A  604  604    H    AlphaHelix    -65.26    -28.06      58.9      6WTI
+ASG  ALA A  605  605    H    AlphaHelix    -75.97    -36.97       0.0      6WTI
+ASG  MET A  606  606    H    AlphaHelix    -64.02    -31.40      29.5      6WTI
+ASG  ILE A  607  607    H    AlphaHelix    -78.78    -26.80       0.0      6WTI
+ASG  TRP A  608  608    H    AlphaHelix   -110.09     17.05      10.6      6WTI
+ASG  HIS A  609  609    C          Coil     63.56     28.63      58.3      6WTI
+ASG  ILE A  610  610    C          Coil    -91.55    104.19      10.7      6WTI
+ASG  TRP A  611  611    H    AlphaHelix    -82.74    -39.48     124.8      6WTI
+ASG  TRP A  612  612    H    AlphaHelix    -63.10    -34.95     143.1      6WTI
+ASG  LEU A  613  613    H    AlphaHelix    -80.99    -32.59      36.1      6WTI
+ASG  ALA A  614  614    H    AlphaHelix    -58.96    -39.06       5.6      6WTI
+ASG  ILE A  615  615    H    AlphaHelix    -65.05    -46.59     119.1      6WTI
+ASG  VAL A  616  616    H    AlphaHelix    -60.40    -36.85      71.2      6WTI
+ASG  GLY A  617  617    H    AlphaHelix    -65.81    -57.56       0.0      6WTI
+ASG  PHE A  618  618    H    AlphaHelix    -52.85    -48.00     114.4      6WTI
+ASG  ALA A  619  619    H    AlphaHelix    -55.98    -54.23      35.1      6WTI
+ASG  GLY A  620  620    H    AlphaHelix    -60.40    -41.15       9.6      6WTI
+ASG  MET A  621  621    H    AlphaHelix    -62.07    -47.61      27.4      6WTI
+ASG  ILE A  622  622    H    AlphaHelix    -69.32    -35.30      48.1      6WTI
+ASG  ILE A  623  623    H    AlphaHelix    -62.76    -49.62      89.6      6WTI
+ASG  THR A  624  624    H    AlphaHelix    -57.83    -36.90      29.5      6WTI
+ASG  TRP A  625  625    H    AlphaHelix    -57.69    -41.47     184.3      6WTI
+ASG  ILE A  626  626    H    AlphaHelix    -75.68    -19.31      48.5      6WTI
+ASG  VAL A  627  627    H    AlphaHelix    -94.35    -25.75      76.4      6WTI
+ASG  LYS A  628  628    H    AlphaHelix    -76.35     -7.87      69.6      6WTI
+ASG  SER A  629  629    H    AlphaHelix    -85.39     -2.89      26.4      6WTI
+ASG  PHE A  630  630    C          Coil    -93.89    -37.17      78.9      6WTI
+ASG  ASP A  631  631    C          Coil    -90.62    134.95     124.5      6WTI
+ASG  GLU A  632  632    C          Coil   -108.89     10.72     113.7      6WTI
+ASG  ASP A  633  633    C          Coil    -83.33     54.35     119.7      6WTI
+ASG  VAL A  634  634    C          Coil   -100.66     -7.02      77.6      6WTI
+ASG  ASP A  635  635    E        Strand   -152.17    156.95      64.0      6WTI
+ASG  TYR A  636  636    E        Strand   -137.50    173.94      90.1      6WTI
+ASG  TYR A  637  637    E        Strand   -118.43    133.52     105.2      6WTI
+ASG  VAL A  638  638    E        Strand    -89.35    118.71       2.6      6WTI
+ASG  PRO A  639  639    C          Coil    -68.79    176.79      55.7      6WTI
+ASG  VAL A  640  640    H    AlphaHelix    -84.06    -23.59      39.3      6WTI
+ASG  ALA A  641  641    H    AlphaHelix    -55.21    -49.00      72.7      6WTI
+ASG  GLU A  642  642    H    AlphaHelix    -71.12    -37.76      92.2      6WTI
+ASG  ILE A  643  643    H    AlphaHelix    -64.93    -42.86       0.4      6WTI
+ASG  GLU A  644  644    H    AlphaHelix    -63.31    -46.04      82.8      6WTI
+ASG  LYS A  645  645    H    AlphaHelix    -50.68    -56.16     153.5      6WTI
+ASG  LEU A  646  646    H    AlphaHelix    -65.39    -42.39      62.3      6WTI
+ASG  GLU A  647  647    H    AlphaHelix    -71.96    -30.80      22.9      6WTI
+ASG  ASN A  648  648    H    AlphaHelix    -60.73    -44.91     109.7      6WTI
+ASG  GLN A  649  649    H    AlphaHelix    -53.92    -51.43     114.1      6WTI
+ASG  HIS A  650  650    H    AlphaHelix    -69.46    -36.90       6.8      6WTI
+ASG  PHE A  651  651    H    AlphaHelix    -76.64    -25.59      23.2      6WTI
+ASG  ASP A  652  652    H    AlphaHelix    -58.73    -52.00      88.1      6WTI
+ASG  GLU A  653  653    H    AlphaHelix    -56.42    -37.15      49.7      6WTI
+ASG  ILE A  654  654    H    AlphaHelix    -72.54    -51.51      22.9      6WTI
+ASG  THR A  655  655    H    AlphaHelix    -56.07    -30.26      90.1      6WTI
+ASG  LYS A  656  656    H    AlphaHelix    -74.00    -27.88     121.9      6WTI
+ASG  ALA A  657  657    H    AlphaHelix    -82.78    -50.53      32.3      6WTI
+ASG  GLY A  658  658    H    AlphaHelix    -57.21    -21.64      81.2      6WTI
+ASG  LEU A  659  659    H    AlphaHelix    -76.68    -40.54     128.7      6WTI
+ASG  LYS A  660  660    C          Coil   -160.23    360.00     206.7      6WTI
+ASG  GLY B   24    1    T          Turn    360.00    116.43      53.7      6WTI
+ASG  CYS B   25    2    T          Turn    -66.62    -41.68     107.8      6WTI
+ASG  ASN B   26    3    T          Turn    -80.76     13.28     139.4      6WTI
+ASG  SER B   27    4    T          Turn    -56.30    161.80       2.0      6WTI
+ASG  ALA B   28    5    T          Turn    -68.50    -26.54       6.2      6WTI
+ASG  LEU B   29    6    T          Turn    -93.36    -30.41      12.3      6WTI
+ASG  LEU B   30    7    T          Turn    -95.59     -2.76      37.3      6WTI
+ASG  ASP B   31    8    T          Turn   -139.02     60.55      61.7      6WTI
+ASG  PRO B   32    9    T          Turn    -78.69    169.61      10.2      6WTI
+ASG  LYS B   33   10    C          Coil   -124.62     -6.87      45.4      6WTI
+ASG  GLY B   34   11    B        Bridge   -104.87    151.46       0.0      6WTI
+ASG  GLN B   35   12    H    AlphaHelix    -55.67    -48.80      65.3      6WTI
+ASG  ILE B   36   13    H    AlphaHelix    -55.85    -49.40      20.6      6WTI
+ASG  GLY B   37   14    H    AlphaHelix    -60.92    -27.43       4.5      6WTI
+ASG  LEU B   38   15    H    AlphaHelix    -64.37    -53.41      55.4      6WTI
+ASG  GLU B   39   16    H    AlphaHelix    -67.49    -29.37      83.5      6WTI
+ASG  GLN B   40   17    H    AlphaHelix    -55.61    -46.00       2.4      6WTI
+ASG  ARG B   41   18    H    AlphaHelix    -72.10    -39.90      91.4      6WTI
+ASG  SER B   42   19    H    AlphaHelix    -58.08    -44.29      69.4      6WTI
+ASG  LEU B   43   20    H    AlphaHelix    -56.64    -49.92      11.5      6WTI
+ASG  ILE B   44   21    H    AlphaHelix    -56.05    -45.80       7.4      6WTI
+ASG  LEU B   45   22    H    AlphaHelix    -73.44    -35.53      80.5      6WTI
+ASG  THR B   46   23    H    AlphaHelix    -66.75    -36.69      61.4      6WTI
+ASG  ALA B   47   24    H    AlphaHelix    -62.62    -44.64       2.2      6WTI
+ASG  PHE B   48   25    H    AlphaHelix    -58.55    -55.00      86.2      6WTI
+ASG  GLY B   49   26    H    AlphaHelix    -67.11    -10.82      41.7      6WTI
+ASG  LEU B   50   27    H    AlphaHelix    -85.48    -35.76      42.6      6WTI
+ASG  MET B   51   28    H    AlphaHelix    -78.63    -22.37      19.4      6WTI
+ASG  LEU B   52   29    H    AlphaHelix    -59.51    -35.35      46.0      6WTI
+ASG  ILE B   53   30    H    AlphaHelix    -57.71    -27.71      98.4      6WTI
+ASG  VAL B   54   31    H    AlphaHelix   -113.96     -4.37      33.4      6WTI
+ASG  VAL B   55   32    H    AlphaHelix    -97.29    -25.66      25.7      6WTI
+ASG  ILE B   56   33    H    AlphaHelix    -72.95    -49.26      74.6      6WTI
+ASG  PRO B   57   34    H    AlphaHelix    -58.93    -30.76      50.5      6WTI
+ASG  ALA B   58   35    H    AlphaHelix    -61.41    -59.08       3.0      6WTI
+ASG  ILE B   59   36    H    AlphaHelix    -59.62    -43.43      46.5      6WTI
+ASG  LEU B   60   37    H    AlphaHelix    -60.71    -50.60     113.3      6WTI
+ASG  MET B   61   38    H    AlphaHelix    -60.58    -32.76      51.2      6WTI
+ASG  ALA B   62   39    H    AlphaHelix    -59.85    -55.52       0.2      6WTI
+ASG  VAL B   63   40    H    AlphaHelix    -67.09    -38.71      80.0      6WTI
+ASG  GLY B   64   41    H    AlphaHelix    -58.82    -46.05      37.0      6WTI
+ASG  PHE B   65   42    H    AlphaHelix    -70.96    -38.51      27.7      6WTI
+ASG  ALA B   66   43    H    AlphaHelix    -51.83    -35.71      12.6      6WTI
+ASG  TRP B   67   44    H    AlphaHelix    -91.05    -44.71     167.3      6WTI
+ASG  LYS B   68   45    H    AlphaHelix    -72.03     -6.42     115.3      6WTI
+ASG  TYR B   69   46    H    AlphaHelix   -136.76     28.85      14.1      6WTI
+ASG  ARG B   70   47    B        Bridge    -66.71    138.78      49.3      6WTI
+ASG  ALA B   71   48    T          Turn    -48.22    -34.81      30.6      6WTI
+ASG  SER B   72   49    T          Turn    -66.71    -17.42      88.5      6WTI
+ASG  ASN B   73   50    T          Turn    -72.46    156.66      20.0      6WTI
+ASG  LYS B   74   51    T          Turn   -118.93    -52.99     155.8      6WTI
+ASG  ASP B   75   52    T          Turn    -54.39    -19.67     140.9      6WTI
+ASG  ALA B   76   53    T          Turn    -55.89    160.37      15.0      6WTI
+ASG  LYS B   77   54    C          Coil    -96.34    105.22     133.0      6WTI
+ASG  TYR B   78   55    C          Coil    -92.86    106.78      58.4      6WTI
+ASG  SER B   79   56    T          Turn   -106.53    110.40      17.2      6WTI
+ASG  PRO B   80   57    T          Turn    -82.72     -4.29      37.9      6WTI
+ASG  ASN B   81   58    T          Turn   -127.90     13.52      94.7      6WTI
+ASG  TRP B   82   59    T          Turn    -86.00     98.13      80.7      6WTI
+ASG  SER B   83   60    C          Coil   -120.90     -4.57      18.0      6WTI
+ASG  HIS B   84   61    C          Coil   -159.22    112.17     119.3      6WTI
+ASG  SER B   85   62    C          Coil   -124.77    120.30      18.2      6WTI
+ASG  ASN B   86   63    H    AlphaHelix    -66.30    -27.93     111.0      6WTI
+ASG  LYS B   87   64    H    AlphaHelix    -58.73    -49.41     152.4      6WTI
+ASG  VAL B   88   65    H    AlphaHelix    -68.06    -38.05      21.0      6WTI
+ASG  GLU B   89   66    H    AlphaHelix    -62.55    -45.52      59.4      6WTI
+ASG  ALA B   90   67    H    AlphaHelix    -54.58    -51.93      44.0      6WTI
+ASG  VAL B   91   68    H    AlphaHelix    -76.11    -17.29      89.6      6WTI
+ASG  VAL B   92   69    H    AlphaHelix    -88.51    -11.74       9.1      6WTI
+ASG  TRP B   93   70    H    AlphaHelix   -101.40    -38.84      63.7      6WTI
+ASG  THR B   94   71    H    AlphaHelix    -62.28    -38.12      65.7      6WTI
+ASG  VAL B   95   72    H    AlphaHelix    -80.08    -44.47      49.9      6WTI
+ASG  PRO B   96   73    H    AlphaHelix    -61.85    -33.60      20.8      6WTI
+ASG  ILE B   97   74    H    AlphaHelix    -64.06    -36.94      75.3      6WTI
+ASG  LEU B   98   75    H    AlphaHelix    -67.83    -49.14      81.2      6WTI
+ASG  ILE B   99   76    H    AlphaHelix    -58.57    -39.73      32.9      6WTI
+ASG  ILE B  100   77    H    AlphaHelix    -76.64    -30.51      18.6      6WTI
+ASG  ILE B  101   78    H    AlphaHelix    -55.25    -52.54      95.9      6WTI
+ASG  PHE B  102   79    H    AlphaHelix    -62.55    -44.96     126.5      6WTI
+ASG  LEU B  103   80    H    AlphaHelix    -61.09    -38.57       4.0      6WTI
+ASG  ALA B  104   81    H    AlphaHelix    -68.70    -37.89      16.7      6WTI
+ASG  VAL B  105   82    H    AlphaHelix    -62.93    -48.97      89.9      6WTI
+ASG  LEU B  106   83    H    AlphaHelix    -56.54    -35.97      58.3      6WTI
+ASG  THR B  107   84    H    AlphaHelix    -73.22    -43.39       0.6      6WTI
+ASG  TRP B  108   85    H    AlphaHelix    -52.62    -55.16     114.4      6WTI
+ASG  LYS B  109   86    H    AlphaHelix    -61.28    -51.05     133.9      6WTI
+ASG  THR B  110   87    H    AlphaHelix    -65.22    -41.45      24.5      6WTI
+ASG  THR B  111   88    H    AlphaHelix    -60.50    -39.29       0.0      6WTI
+ASG  HIS B  112   89    H    AlphaHelix    -71.16    -21.42      63.3      6WTI
+ASG  ALA B  113   90    H    AlphaHelix    -95.46     -2.60      63.3      6WTI
+ASG  LEU B  114   91    C          Coil   -138.54     32.28      20.0      6WTI
+ASG  GLU B  115   92    T          Turn    -65.15    127.26      23.2      6WTI
+ASG  PRO B  116   93    T          Turn    -54.81    -29.22      11.9      6WTI
+ASG  SER B  117   94    T          Turn    -95.91     81.13      29.1      6WTI
+ASG  LYS B  118   95    T          Turn   -165.51    124.54     104.6      6WTI
+ASG  PRO B  119   96    C          Coil    -60.22    160.02      95.4      6WTI
+ASG  LEU B  120   97    C          Coil   -101.21    138.68      48.4      6WTI
+ASG  ALA B  121   98    C          Coil    -90.16     99.24      95.2      6WTI
+ASG  HIS B  122   99    T          Turn   -163.05    149.65     113.3      6WTI
+ASG  ASP B  123  100    T          Turn    -86.28     83.07     146.9      6WTI
+ASG  GLU B  124  101    T          Turn   -152.43   -168.89      96.1      6WTI
+ASG  LYS B  125  102    C          Coil   -119.88    113.47     136.5      6WTI
+ASG  PRO B  126  103    C          Coil    -56.60    145.08      58.8      6WTI
+ASG  ILE B  127  104    E        Strand    -85.02    126.02       8.8      6WTI
+ASG  THR B  128  105    E        Strand    -93.29    126.85      41.3      6WTI
+ASG  ILE B  129  106    E        Strand   -123.01    142.84       0.0      6WTI
+ASG  GLU B  130  107    E        Strand   -114.50    133.02      19.0      6WTI
+ASG  VAL B  131  108    E        Strand   -122.16    120.03       0.0      6WTI
+ASG  VAL B  132  109    E        Strand   -122.05    128.16       0.4      6WTI
+ASG  SER B  133  110    E        Strand    -93.11     87.93       0.0      6WTI
+ASG  MET B  134  111    E        Strand    -76.85    172.91       0.0      6WTI
+ASG  ASP B  135  112    T          Turn    -44.20    -51.00      23.5      6WTI
+ASG  TRP B  136  113    T          Turn   -143.05     43.43      26.9      6WTI
+ASG  LYS B  137  114    E        Strand   -146.21    151.30       0.0      6WTI
+ASG  TRP B  138  115    E        Strand   -103.25    122.24       0.0      6WTI
+ASG  PHE B  139  116    E        Strand   -100.55    135.67       0.0      6WTI
+ASG  PHE B  140  117    E        Strand   -126.73    132.92       0.0      6WTI
+ASG  ILE B  141  118    E        Strand   -121.13    127.04       3.8      6WTI
+ASG  TYR B  142  119    E        Strand    -99.20    104.81       0.0      6WTI
+ASG  PRO B  143  120    T          Turn    -76.81    -44.41      51.7      6WTI
+ASG  GLU B  144  121    T          Turn    -61.78    -14.39     123.3      6WTI
+ASG  GLN B  145  122    T          Turn   -113.74    -13.22      40.1      6WTI
+ASG  GLY B  146  123    T          Turn     69.54     36.91      19.3      6WTI
+ASG  ILE B  147  124    E        Strand   -137.26    167.17       0.0      6WTI
+ASG  ALA B  148  125    E        Strand   -147.76    151.69       0.0      6WTI
+ASG  THR B  149  126    E        Strand   -135.55    151.42       0.0      6WTI
+ASG  VAL B  150  127    E        Strand   -106.36    129.68       0.0      6WTI
+ASG  ASN B  151  128    T          Turn     56.31     29.02       5.7      6WTI
+ASG  GLU B  152  129    E        Strand   -168.91    134.14      32.3      6WTI
+ASG  ILE B  153  130    E        Strand   -135.00    165.67       0.0      6WTI
+ASG  ALA B  154  131    E        Strand   -154.77    151.62       0.2      6WTI
+ASG  PHE B  155  132    E        Strand   -166.80    141.24       3.2      6WTI
+ASG  PRO B  156  133    E        Strand    -65.61    136.55       3.5      6WTI
+ASG  ALA B  157  134    T          Turn    -58.82    153.27       8.2      6WTI
+ASG  ASN B  158  135    T          Turn     65.81     36.46     101.5      6WTI
+ASG  THR B  159  136    T          Turn   -144.36    123.69       6.3      6WTI
+ASG  PRO B  160  137    C          Coil    -56.20    136.22       5.4      6WTI
+ASG  VAL B  161  138    E        Strand   -115.46    124.81       1.0      6WTI
+ASG  TYR B  162  139    E        Strand   -106.09    109.59      37.7      6WTI
+ASG  PHE B  163  140    E        Strand    -97.04    123.70       0.8      6WTI
+ASG  LYS B  164  141    E        Strand   -101.03    141.18      30.5      6WTI
+ASG  VAL B  165  142    E        Strand   -138.24    133.06       0.0      6WTI
+ASG  THR B  166  143    E        Strand   -147.95    154.74       0.4      6WTI
+ASG  SER B  167  144    E        Strand   -108.56    131.57       0.0      6WTI
+ASG  ASN B  168  145    T          Turn    -87.32    -14.73       9.6      6WTI
+ASG  SER B  169  146    T          Turn   -128.46    -73.71      11.4      6WTI
+ASG  VAL B  170  147    T          Turn   -135.73    158.56       3.6      6WTI
+ASG  MET B  171  148    C          Coil    -48.10    110.07      10.9      6WTI
+ASG  ASN B  172  149    E        Strand   -114.43   -179.15       0.0      6WTI
+ASG  SER B  173  150    E        Strand   -142.54    112.76       0.0      6WTI
+ASG  PHE B  174  151    E        Strand    -75.44    126.75       0.4      6WTI
+ASG  PHE B  175  152    E        Strand   -150.27    128.74      10.8      6WTI
+ASG  ILE B  176  153    T          Turn   -115.44     94.55       0.6      6WTI
+ASG  PRO B  177  154    T          Turn    -56.71    -48.26      10.7      6WTI
+ASG  ARG B  178  155    T          Turn    -74.79      0.20      64.6      6WTI
+ASG  LEU B  179  156    T          Turn   -107.40    -35.51       1.8      6WTI
+ASG  GLY B  180  157    T          Turn    178.02   -121.43       0.0      6WTI
+ASG  SER B  181  158    C          Coil   -105.17    158.71       4.3      6WTI
+ASG  GLN B  182  159    E        Strand    -95.63    167.45       0.9      6WTI
+ASG  ILE B  183  160    E        Strand   -155.55    145.79       6.2      6WTI
+ASG  TYR B  184  161    E        Strand    -74.90    168.61       4.0      6WTI
+ASG  ALA B  185  162    E        Strand   -145.11    113.70       0.0      6WTI
+ASG  MET B  186  163    T          Turn   -116.59    149.94       1.0      6WTI
+ASG  ALA B  187  164    T          Turn    -82.05    129.87       4.7      6WTI
+ASG  GLY B  188  165    T          Turn     88.25     14.41       8.5      6WTI
+ASG  MET B  189  166    T          Turn   -144.22    156.62      23.0      6WTI
+ASG  GLN B  190  167    C          Coil   -112.37    143.63       7.5      6WTI
+ASG  THR B  191  168    E        Strand   -131.65    158.21       1.8      6WTI
+ASG  ARG B  192  169    E        Strand   -127.70    135.50      57.6      6WTI
+ASG  LEU B  193  170    E        Strand   -140.91    150.59       1.8      6WTI
+ASG  HIS B  194  171    E        Strand   -131.47    123.76      24.7      6WTI
+ASG  LEU B  195  172    E        Strand   -137.19    166.91       2.4      6WTI
+ASG  ILE B  196  173    C          Coil   -152.71    149.10       7.4      6WTI
+ASG  ALA B  197  174    B        Bridge   -115.59    129.31       0.4      6WTI
+ASG  ASN B  198  175    C          Coil    -89.20    -15.78      46.4      6WTI
+ASG  GLU B  199  176    C          Coil   -143.02    136.92     100.0      6WTI
+ASG  PRO B  200  177    C          Coil    -66.67    136.62      75.8      6WTI
+ASG  GLY B  201  178    E        Strand    169.12   -174.16      28.3      6WTI
+ASG  THR B  202  179    E        Strand   -110.91    130.46      79.7      6WTI
+ASG  TYR B  203  180    E        Strand   -122.72    141.73      18.2      6WTI
+ASG  ASP B  204  181    E        Strand    -84.86    134.94      78.9      6WTI
+ASG  GLY B  205  182    E        Strand   -128.26    153.37       0.2      6WTI
+ASG  ILE B  206  183    E        Strand   -147.30    170.53      34.3      6WTI
+ASG  SER B  207  184    E        Strand    -94.94    118.94       2.5      6WTI
+ASG  ALA B  208  185    C          Coil   -101.75     32.00       0.8      6WTI
+ASG  SER B  209  186    C          Coil   -145.71    125.28       9.4      6WTI
+ASG  TYR B  210  187    C          Coil    -54.96    141.27      20.0      6WTI
+ASG  SER B  211  188    C          Coil   -144.36     34.86       0.9      6WTI
+ASG  GLY B  212  189    T          Turn    100.92   -163.50       4.5      6WTI
+ASG  PRO B  213  190    T          Turn    -56.76    -40.71      65.5      6WTI
+ASG  GLY B  214  191    T          Turn   -107.88     45.00       0.0      6WTI
+ASG  PHE B  215  192    T          Turn    -74.32    -21.45       5.1      6WTI
+ASG  SER B  216  193    T          Turn    -75.29    -20.94       8.5      6WTI
+ASG  GLY B  217  194    T          Turn    -92.90      2.28       5.3      6WTI
+ASG  MET B  218  195    T          Turn    -80.24     55.67       2.2      6WTI
+ASG  LYS B  219  196    E        Strand   -107.75    132.31      90.6      6WTI
+ASG  PHE B  220  197    E        Strand   -130.20    160.98       4.2      6WTI
+ASG  LYS B  221  198    E        Strand   -116.71    127.97     106.3      6WTI
+ASG  ALA B  222  199    E        Strand   -112.59    127.03       0.0      6WTI
+ASG  ILE B  223  200    E        Strand   -102.00    144.78      37.3      6WTI
+ASG  ALA B  224  201    E        Strand   -118.81     95.75       2.1      6WTI
+ASG  THR B  225  202    E        Strand    -67.33    148.69      11.1      6WTI
+ASG  PRO B  226  203    C          Coil    -64.12    -47.16      98.0      6WTI
+ASG  ASP B  227  204    C          Coil   -110.99    172.62     103.5      6WTI
+ASG  ARG B  228  205    H    AlphaHelix    -76.44    -27.59     103.5      6WTI
+ASG  ALA B  229  206    H    AlphaHelix    -54.41    -65.27      47.3      6WTI
+ASG  ALA B  230  207    H    AlphaHelix    -48.40    -36.83      28.1      6WTI
+ASG  PHE B  231  208    H    AlphaHelix    -60.80    -47.19       2.0      6WTI
+ASG  ASP B  232  209    H    AlphaHelix    -61.60    -29.90      91.7      6WTI
+ASG  GLN B  233  210    H    AlphaHelix    -71.73    -37.81     138.8      6WTI
+ASG  TRP B  234  211    H    AlphaHelix    -69.55    -37.77      23.1      6WTI
+ASG  VAL B  235  212    H    AlphaHelix    -62.41    -45.25      19.4      6WTI
+ASG  ALA B  236  213    H    AlphaHelix    -53.74    -45.18      44.1      6WTI
+ASG  LYS B  237  214    H    AlphaHelix    -58.66    -55.53     115.9      6WTI
+ASG  ALA B  238  215    H    AlphaHelix    -54.11    -39.19       0.0      6WTI
+ASG  LYS B  239  216    H    AlphaHelix    -56.09    -12.97      94.6      6WTI
+ASG  GLN B  240  217    C          Coil   -106.64     16.89     153.3      6WTI
+ASG  SER B  241  218    C          Coil    -76.16    152.62      20.8      6WTI
+ASG  PRO B  242  219    C          Coil    -77.65     -2.07     125.8      6WTI
+ASG  ASN B  243  220    C          Coil   -109.29    176.19      73.4      6WTI
+ASG  THR B  244  221    E        Strand   -166.74    140.04      66.2      6WTI
+ASG  MET B  245  222    E        Strand   -119.81     86.00       1.6      6WTI
+ASG  SER B  246  223    C          Coil   -114.76    -49.50      47.2      6WTI
+ASG  ASP B  247  224    C          Coil    -81.25    150.52     116.2      6WTI
+ASG  MET B  248  225    H    AlphaHelix    -61.31    -16.01      45.3      6WTI
+ASG  ALA B  249  226    H    AlphaHelix    -59.29    -44.80      66.0      6WTI
+ASG  ALA B  250  227    H    AlphaHelix    -68.92    -36.11      26.9      6WTI
+ASG  PHE B  251  228    H    AlphaHelix    -56.45    -49.03       0.4      6WTI
+ASG  GLU B  252  229    H    AlphaHelix    -71.42    -23.39     102.2      6WTI
+ASG  LYS B  253  230    H    AlphaHelix    -69.37    -47.92     161.8      6WTI
+ASG  LEU B  254  231    H    AlphaHelix    -68.31    -36.55      24.3      6WTI
+ASG  ALA B  255  232    H    AlphaHelix    -69.93    -11.53      12.6      6WTI
+ASG  ALA B  256  233    C          Coil    -47.46    136.42      50.1      6WTI
+ASG  PRO B  257  234    C          Coil    -54.01    132.46      99.6      6WTI
+ASG  SER B  258  235    C          Coil   -159.48    172.49      41.9      6WTI
+ASG  GLU B  259  236    C          Coil   -143.93    146.82      87.4      6WTI
+ASG  TYR B  260  237    C          Coil     50.59     44.97      69.4      6WTI
+ASG  ASN B  261  238    C          Coil    -58.02    143.34      35.0      6WTI
+ASG  GLN B  262  239    C          Coil    -76.91    152.27     171.8      6WTI
+ASG  VAL B  263  240    C          Coil    -69.22    127.04      67.1      6WTI
+ASG  GLU B  264  241    E        Strand   -127.15    150.42      67.1      6WTI
+ASG  TYR B  265  242    E        Strand   -119.04    152.65      41.8      6WTI
+ASG  PHE B  266  243    E        Strand   -137.17    136.68      10.4      6WTI
+ASG  SER B  267  244    C          Coil    -79.21    -53.39       9.2      6WTI
+ASG  ASN B  268  245    E        Strand   -112.38    154.73      96.1      6WTI
+ASG  VAL B  269  246    E        Strand   -145.82    121.04      21.0      6WTI
+ASG  LYS B  270  247    T          Turn    -42.56    120.76      81.5      6WTI
+ASG  PRO B  271  248    T          Turn    -47.85    -57.02     106.8      6WTI
+ASG  ASP B  272  249    T          Turn   -110.75     64.22     118.6      6WTI
+ASG  LEU B  273  250    H    AlphaHelix    -85.14    -32.59       1.7      6WTI
+ASG  PHE B  274  251    H    AlphaHelix    -56.42    -50.86       4.2      6WTI
+ASG  ALA B  275  252    H    AlphaHelix    -56.69    -39.72      34.0      6WTI
+ASG  ASP B  276  253    H    AlphaHelix    -66.22    -43.54      44.5      6WTI
+ASG  VAL B  277  254    H    AlphaHelix    -53.80    -59.43       0.8      6WTI
+ASG  ILE B  278  255    H    AlphaHelix    -50.43    -37.07       1.6      6WTI
+ASG  ASN B  279  256    H    AlphaHelix    -70.70    -16.48      59.2      6WTI
+ASG  LYS B  280  257    H    AlphaHelix    -56.15    -22.82      67.8      6WTI
+ASG  PHE B  281  258    C          Coil   -114.87     12.27      33.1      6WTI
+ASG  MET B  282  259    C          Coil     53.78     58.34     127.3      6WTI
+ASG  ALA B  283  260    C          Coil   -100.42    144.05      23.8      6WTI
+ASG  HIS B  284  261    C          Coil   -168.78    153.19     135.5      6WTI
+ASG  GLY B  285  262    C          Coil    131.56    360.00      92.0      6WTI
+ASG  HIS C   19    1    C          Coil    360.00    116.65     193.2      6WTI
+ASG  ASP C   20    2    C          Coil   -133.29     87.82     149.1      6WTI
+ASG  ALA C   21    3    H    AlphaHelix    -86.13    -24.01      60.6      6WTI
+ASG  GLY C   22    4    H    AlphaHelix    -59.26    -35.42      19.2      6WTI
+ASG  GLY C   23    5    H    AlphaHelix    -61.15    -50.37      39.2      6WTI
+ASG  THR C   24    6    H    AlphaHelix    -66.90    -34.96      24.9      6WTI
+ASG  LYS C   25    7    H    AlphaHelix    -59.07    -43.77     113.0      6WTI
+ASG  ILE C   26    8    H    AlphaHelix    -71.06    -37.31      43.3      6WTI
+ASG  PHE C   27    9    H    AlphaHelix    -63.09    -44.28       0.4      6WTI
+ASG  GLY C   28   10    H    AlphaHelix    -63.26    -37.39       6.2      6WTI
+ASG  PHE C   29   11    H    AlphaHelix    -65.35    -37.71      40.4      6WTI
+ASG  TRP C   30   12    H    AlphaHelix    -56.38    -44.76       5.6      6WTI
+ASG  ILE C   31   13    H    AlphaHelix    -67.17    -37.95       7.0      6WTI
+ASG  TYR C   32   14    H    AlphaHelix    -60.98    -40.31      89.6      6WTI
+ASG  LEU C   33   15    H    AlphaHelix    -64.70    -33.39       0.8      6WTI
+ASG  MET C   34   16    H    AlphaHelix    -65.03    -43.76      10.2      6WTI
+ASG  SER C   35   17    H    AlphaHelix    -53.58    -41.29       7.0      6WTI
+ASG  ASP C   36   18    H    AlphaHelix    -65.10    -41.05       5.0      6WTI
+ASG  CYS C   37   19    H    AlphaHelix    -55.55    -39.33      18.2      6WTI
+ASG  ILE C   38   20    H    AlphaHelix    -64.99    -48.88       4.4      6WTI
+ASG  LEU C   39   21    H    AlphaHelix    -48.93    -41.11      29.7      6WTI
+ASG  PHE C   40   22    H    AlphaHelix    -77.34    -39.69       5.0      6WTI
+ASG  SER C   41   23    H    AlphaHelix    -58.75    -32.74       7.7      6WTI
+ASG  ILE C   42   24    H    AlphaHelix    -65.11    -43.57       1.8      6WTI
+ASG  LEU C   43   25    H    AlphaHelix    -67.13    -30.78      11.2      6WTI
+ASG  PHE C   44   26    H    AlphaHelix    -62.63    -46.04      33.6      6WTI
+ASG  ALA C   45   27    H    AlphaHelix    -62.57    -35.03       0.6      6WTI
+ASG  THR C   46   28    H    AlphaHelix    -62.77    -52.79       2.0      6WTI
+ASG  TYR C   47   29    H    AlphaHelix    -57.39    -32.49      12.8      6WTI
+ASG  ALA C   48   30    H    AlphaHelix    -64.73    -45.00      39.1      6WTI
+ASG  VAL C   49   31    H    AlphaHelix    -78.16    -20.55      29.1      6WTI
+ASG  LEU C   50   32    H    AlphaHelix   -117.10     20.50       4.7      6WTI
+ASG  VAL C   51   33    T          Turn    -63.50    -53.47      42.4      6WTI
+ASG  ASN C   52   34    T          Turn    -84.08     15.08     143.2      6WTI
+ASG  GLY C   53   35    T          Turn    -85.60     37.90      18.0      6WTI
+ASG  THR C   54   36    T          Turn    -72.30    159.36      39.0      6WTI
+ASG  ALA C   55   37    T          Turn   -122.31     77.55      23.0      6WTI
+ASG  GLY C   56   38    T          Turn     50.00     57.48      76.7      6WTI
+ASG  GLY C   57   39    T          Turn   -143.28   -165.68      26.6      6WTI
+ASG  PRO C   58   40    C          Coil    -71.08    158.30      12.0      6WTI
+ASG  THR C   59   41    T          Turn   -119.00    172.90      54.2      6WTI
+ASG  GLY C   60   42    T          Turn    -58.14    -39.40      10.9      6WTI
+ASG  LYS C   61   43    T          Turn    -64.34    -23.31     121.1      6WTI
+ASG  ASP C   62   44    T          Turn    -95.56     -8.10     109.3      6WTI
+ASG  ILE C   63   45    T          Turn   -125.60    -18.52      26.9      6WTI
+ASG  PHE C   64   46    T          Turn    -82.96    115.40      21.1      6WTI
+ASG  GLU C   65   47    C          Coil   -104.02    120.76     112.7      6WTI
+ASG  LEU C   66   48    H    AlphaHelix    -72.95    -37.68      13.9      6WTI
+ASG  PRO C   67   49    H    AlphaHelix    -53.40    -48.82      79.7      6WTI
+ASG  PHE C   68   50    H    AlphaHelix    -42.54    -55.52      46.0      6WTI
+ASG  VAL C   69   51    H    AlphaHelix    -61.85    -41.55       1.8      6WTI
+ASG  LEU C   70   52    H    AlphaHelix    -67.73    -35.30      43.1      6WTI
+ASG  VAL C   71   53    H    AlphaHelix    -68.83    -41.05      77.6      6WTI
+ASG  GLU C   72   54    H    AlphaHelix    -55.25    -47.01       1.0      6WTI
+ASG  THR C   73   55    H    AlphaHelix    -55.17    -47.95       5.8      6WTI
+ASG  PHE C   74   56    H    AlphaHelix    -69.05    -33.93      50.1      6WTI
+ASG  LEU C   75   57    H    AlphaHelix    -62.52    -43.17      37.2      6WTI
+ASG  LEU C   76   58    H    AlphaHelix    -65.48    -40.40       4.0      6WTI
+ASG  LEU C   77   59    H    AlphaHelix    -63.10    -41.44       1.0      6WTI
+ASG  PHE C   78   60    H    AlphaHelix    -61.91    -39.60      64.7      6WTI
+ASG  SER C   79   61    H    AlphaHelix    -62.26    -42.62       0.0      6WTI
+ASG  SER C   80   62    H    AlphaHelix    -64.88    -34.05       0.4      6WTI
+ASG  ILE C   81   63    H    AlphaHelix    -73.77    -41.90      10.2      6WTI
+ASG  THR C   82   64    H    AlphaHelix    -65.86    -28.78       9.4      6WTI
+ASG  TYR C   83   65    H    AlphaHelix    -73.77    -41.38       1.4      6WTI
+ASG  GLY C   84   66    H    AlphaHelix    -51.75    -45.35       0.0      6WTI
+ASG  MET C   85   67    H    AlphaHelix    -69.27    -35.17      27.6      6WTI
+ASG  ALA C   86   68    H    AlphaHelix    -59.20    -42.94       2.8      6WTI
+ASG  ALA C   87   69    H    AlphaHelix    -62.36    -44.60       0.6      6WTI
+ASG  ILE C   88   70    H    AlphaHelix    -58.18    -44.47      10.4      6WTI
+ASG  ALA C   89   71    H    AlphaHelix    -56.48    -38.40       3.6      6WTI
+ASG  MET C   90   72    H    AlphaHelix    -54.83    -58.74       5.6      6WTI
+ASG  TYR C   91   73    H    AlphaHelix    -61.77     -9.93     102.7      6WTI
+ASG  LYS C   92   74    H    AlphaHelix   -106.73      9.15     129.6      6WTI
+ASG  ASN C   93   75    C          Coil     73.24     26.37     115.1      6WTI
+ASG  ASN C   94   76    C          Coil    -96.03    122.96      67.8      6WTI
+ASG  LYS C   95   77    H    AlphaHelix    -78.75    -52.90      91.4      6WTI
+ASG  SER C   96   78    H    AlphaHelix    -56.40    -41.14      69.8      6WTI
+ASG  GLN C   97   79    H    AlphaHelix    -58.36    -44.87      82.4      6WTI
+ASG  VAL C   98   80    H    AlphaHelix    -64.29    -48.82       0.4      6WTI
+ASG  ILE C   99   81    H    AlphaHelix    -67.02    -25.45      55.3      6WTI
+ASG  SER C  100   82    H    AlphaHelix    -70.71    -57.04      58.9      6WTI
+ASG  TRP C  101   83    H    AlphaHelix    -54.72    -32.67      74.2      6WTI
+ASG  LEU C  102   84    H    AlphaHelix    -68.83    -45.50       2.0      6WTI
+ASG  ALA C  103   85    H    AlphaHelix    -55.31    -44.77      47.1      6WTI
+ASG  LEU C  104   86    H    AlphaHelix    -64.89    -45.20      78.6      6WTI
+ASG  THR C  105   87    H    AlphaHelix    -58.19    -43.65       0.0      6WTI
+ASG  TRP C  106   88    H    AlphaHelix    -65.65    -35.28      97.8      6WTI
+ASG  LEU C  107   89    H    AlphaHelix    -69.26    -40.62     107.2      6WTI
+ASG  PHE C  108   90    H    AlphaHelix    -65.47    -44.20      53.9      6WTI
+ASG  GLY C  109   91    H    AlphaHelix    -61.08    -34.87       0.0      6WTI
+ASG  ALA C  110   92    H    AlphaHelix    -62.46    -40.93      26.6      6WTI
+ASG  GLY C  111   93    H    AlphaHelix    -58.64    -41.42      28.5      6WTI
+ASG  PHE C  112   94    H    AlphaHelix    -56.87    -56.41       0.0      6WTI
+ASG  ILE C  113   95    H    AlphaHelix    -66.62    -29.07      44.3      6WTI
+ASG  GLY C  114   96    H    AlphaHelix    -63.95    -46.62      28.5      6WTI
+ASG  MET C  115   97    H    AlphaHelix    -60.90    -40.54      36.0      6WTI
+ASG  GLU C  116   98    H    AlphaHelix    -62.90    -43.14      12.2      6WTI
+ASG  ILE C  117   99    H    AlphaHelix    -71.20    -37.83     111.6      6WTI
+ASG  TYR C  118  100    H    AlphaHelix    -54.73    -47.67     133.3      6WTI
+ASG  GLU C  119  101    H    AlphaHelix    -71.07    -43.68      32.9      6WTI
+ASG  PHE C  120  102    H    AlphaHelix    -60.60    -40.29      39.3      6WTI
+ASG  HIS C  121  103    H    AlphaHelix    -67.20    -43.12     105.9      6WTI
+ASG  HIS C  122  104    H    AlphaHelix    -59.59    -26.85      89.4      6WTI
+ASG  LEU C  123  105    H    AlphaHelix    -73.98    -55.34      17.2      6WTI
+ASG  ILE C  124  106    H    AlphaHelix    -65.37    -32.91      87.5      6WTI
+ASG  VAL C  125  107    H    AlphaHelix    -72.75     -7.72      85.5      6WTI
+ASG  ASN C  126  108    C          Coil   -112.91     39.73     106.7      6WTI
+ASG  GLY C  127  109    C          Coil     48.55     45.09      51.6      6WTI
+ASG  MET C  128  110    C          Coil   -136.10     34.13      54.1      6WTI
+ASG  GLY C  129  111    T          Turn    -73.64   -179.24       2.8      6WTI
+ASG  PRO C  130  112    T          Turn    -66.64     -6.78      27.5      6WTI
+ASG  ASP C  131  113    T          Turn    -96.24     46.44      94.1      6WTI
+ASG  ARG C  132  114    T          Turn   -142.10    -25.88      75.7      6WTI
+ASG  SER C  133  115    T          Turn   -165.59    148.43       0.0      6WTI
+ASG  GLY C  134  116    H    AlphaHelix    -57.29    -14.42       0.0      6WTI
+ASG  PHE C  135  117    H    AlphaHelix    -79.77    -52.95       2.4      6WTI
+ASG  LEU C  136  118    H    AlphaHelix    -61.32    -31.15       0.0      6WTI
+ASG  SER C  137  119    H    AlphaHelix    -66.11    -45.84       1.1      6WTI
+ASG  ALA C  138  120    H    AlphaHelix    -67.46    -34.81       2.6      6WTI
+ASG  PHE C  139  121    H    AlphaHelix    -61.12    -48.39       2.6      6WTI
+ASG  PHE C  140  122    H    AlphaHelix    -63.17    -41.50      26.2      6WTI
+ASG  ALA C  141  123    H    AlphaHelix    -52.35    -56.45      11.9      6WTI
+ASG  LEU C  142  124    H    AlphaHelix    -64.63    -51.64       0.9      6WTI
+ASG  VAL C  143  125    H    AlphaHelix    -70.78    -31.09       0.9      6WTI
+ASG  GLY C  144  126    H    AlphaHelix    -76.71    -25.98      20.1      6WTI
+ASG  THR C  145  127    H    AlphaHelix    -68.69    -40.91      27.3      6WTI
+ASG  HIS C  146  128    H    AlphaHelix    -66.58    -45.30       0.0      6WTI
+ASG  GLY C  147  129    H    AlphaHelix    -62.69    -32.78      16.1      6WTI
+ASG  LEU C  148  130    H    AlphaHelix    -69.45    -45.39     108.8      6WTI
+ASG  HIS C  149  131    H    AlphaHelix    -55.96    -38.30      26.5      6WTI
+ASG  VAL C  150  132    H    AlphaHelix    -72.23    -38.76       0.2      6WTI
+ASG  THR C  151  133    H    AlphaHelix    -72.65    -30.45      50.1      6WTI
+ASG  SER C  152  134    H    AlphaHelix    -61.20    -46.27      59.3      6WTI
+ASG  GLY C  153  135    H    AlphaHelix    -58.82    -36.25       0.0      6WTI
+ASG  LEU C  154  136    H    AlphaHelix    -61.87    -45.51      11.4      6WTI
+ASG  ILE C  155  137    H    AlphaHelix    -58.74    -52.68      79.4      6WTI
+ASG  TRP C  156  138    H    AlphaHelix    -50.94    -45.88      64.5      6WTI
+ASG  MET C  157  139    H    AlphaHelix    -64.44    -39.61       0.2      6WTI
+ASG  ALA C  158  140    H    AlphaHelix    -68.85    -44.31      42.7      6WTI
+ASG  VAL C  159  141    H    AlphaHelix    -65.21    -40.62      27.3      6WTI
+ASG  LEU C  160  142    H    AlphaHelix    -64.29    -33.57       1.2      6WTI
+ASG  MET C  161  143    H    AlphaHelix    -67.64    -41.80      37.0      6WTI
+ASG  VAL C  162  144    H    AlphaHelix    -69.42    -36.32      69.3      6WTI
+ASG  GLN C  163  145    H    AlphaHelix    -60.44    -41.42      11.5      6WTI
+ASG  ILE C  164  146    H    AlphaHelix    -63.62    -45.77       0.0      6WTI
+ASG  ALA C  165  147    H    AlphaHelix    -63.16    -28.42      52.1      6WTI
+ASG  ARG C  166  148    H    AlphaHelix   -101.71     -6.72     155.8      6WTI
+ASG  ARG C  167  149    H    AlphaHelix   -131.55    -10.77     136.9      6WTI
+ASG  GLY C  168  150    T          Turn     77.56   -178.79      16.2      6WTI
+ASG  LEU C  169  151    T          Turn    -83.86     73.99      30.2      6WTI
+ASG  THR C  170  152    T          Turn    -85.50   -170.75      45.3      6WTI
+ASG  SER C  171  153    H    AlphaHelix    -70.80    -55.71      98.5      6WTI
+ASG  THR C  172  154    H    AlphaHelix    -52.66    -46.20      58.6      6WTI
+ASG  ASN C  173  155    H    AlphaHelix    -63.03    -37.03       7.4      6WTI
+ASG  ARG C  174  156    H    AlphaHelix    -67.23    -46.84      64.7      6WTI
+ASG  THR C  175  157    H    AlphaHelix    -59.08    -36.81      29.7      6WTI
+ASG  ARG C  176  158    H    AlphaHelix    -68.35    -37.50      65.6      6WTI
+ASG  ILE C  177  159    H    AlphaHelix    -61.22    -43.31       3.0      6WTI
+ASG  MET C  178  160    H    AlphaHelix    -63.31    -42.30      19.9      6WTI
+ASG  CYS C  179  161    H    AlphaHelix    -67.82    -41.11      11.2      6WTI
+ASG  LEU C  180  162    H    AlphaHelix    -63.76    -29.99       0.2      6WTI
+ASG  SER C  181  163    H    AlphaHelix    -64.24    -52.08       5.2      6WTI
+ASG  LEU C  182  164    H    AlphaHelix    -49.04    -45.61      20.8      6WTI
+ASG  PHE C  183  165    H    AlphaHelix    -65.83    -47.67      12.8      6WTI
+ASG  TRP C  184  166    H    AlphaHelix    -63.29    -47.01       5.1      6WTI
+ASG  HIS C  185  167    H    AlphaHelix    -59.49    -39.04       1.2      6WTI
+ASG  PHE C  186  168    H    AlphaHelix    -69.22    -34.40      19.6      6WTI
+ASG  LEU C  187  169    H    AlphaHelix    -58.07    -47.11       1.8      6WTI
+ASG  ASP C  188  170    H    AlphaHelix    -64.62    -37.24       5.6      6WTI
+ASG  VAL C  189  171    H    AlphaHelix    -65.39    -38.30      12.6      6WTI
+ASG  VAL C  190  172    H    AlphaHelix    -68.67    -32.65      12.3      6WTI
+ASG  TRP C  191  173    H    AlphaHelix    -66.82    -33.31       2.6      6WTI
+ASG  ILE C  192  174    H    AlphaHelix    -55.51    -47.25       2.8      6WTI
+ASG  CYS C  193  175    H    AlphaHelix    -67.21    -39.67      44.7      6WTI
+ASG  VAL C  194  176    H    AlphaHelix    -63.89    -35.67       0.2      6WTI
+ASG  PHE C  195  177    H    AlphaHelix    -79.19    -26.94       3.0      6WTI
+ASG  THR C  196  178    H    AlphaHelix    -77.68    -34.33       4.4      6WTI
+ASG  VAL C  197  179    H    AlphaHelix    -99.84    -35.89      44.9      6WTI
+ASG  VAL C  198  180    H    AlphaHelix    -88.36    -69.23       0.4      6WTI
+ASG  TYR C  199  181    T          Turn    -71.34    -54.39      13.0      6WTI
+ASG  LEU C  200  182    T          Turn    -65.59    -55.65       0.4      6WTI
+ASG  MET C  201  183    T          Turn    -58.41    -11.40      85.8      6WTI
+ASG  GLY C  202  184    T          Turn    -98.81    -53.92      19.5      6WTI
+ASG  ALA C  203  185    T          Turn    -46.94    -31.57      14.5      6WTI
+ASG  MET C  204  186    C          Coil    -46.14    360.00      68.8      6WTI
+ASG  SER D   11    1    C          Coil    360.00     42.78      13.9      6WTI
+ASG  HIS D   12    2    C          Coil   -109.49    125.13      92.8      6WTI
+ASG  GLY D   13    3    C          Coil   -155.83   -165.70      22.1      6WTI
+ASG  SER D   14    4    C          Coil    -65.56    153.46      73.2      6WTI
+ASG  VAL D   15    5    H    AlphaHelix    -76.16    -28.49      65.3      6WTI
+ASG  LYS D   16    6    H    AlphaHelix    -63.05    -41.26     160.0      6WTI
+ASG  THR D   17    7    H    AlphaHelix    -60.98    -43.33      63.8      6WTI
+ASG  TYR D   18    8    H    AlphaHelix    -64.04    -36.64       0.6      6WTI
+ASG  MET D   19    9    H    AlphaHelix    -73.07    -35.13      72.5      6WTI
+ASG  THR D   20   10    H    AlphaHelix    -59.01    -43.96      78.6      6WTI
+ASG  GLY D   21   11    H    AlphaHelix    -63.62    -39.39       2.2      6WTI
+ASG  PHE D   22   12    H    AlphaHelix    -52.69    -49.81      45.7      6WTI
+ASG  ILE D   23   13    H    AlphaHelix    -65.76    -44.76     105.6      6WTI
+ASG  LEU D   24   14    H    AlphaHelix    -62.74    -40.85      94.0      6WTI
+ASG  SER D   25   15    H    AlphaHelix    -72.94    -32.01       0.0      6WTI
+ASG  ILE D   26   16    H    AlphaHelix    -60.79    -43.01      41.7      6WTI
+ASG  ILE D   27   17    H    AlphaHelix    -62.37    -51.06      82.8      6WTI
+ASG  LEU D   28   18    H    AlphaHelix    -71.59     -4.70      23.7      6WTI
+ASG  THR D   29   19    H    AlphaHelix    -95.17    -49.49       0.0      6WTI
+ASG  VAL D   30   20    H    AlphaHelix    -62.18    -31.05      63.3      6WTI
+ASG  ILE D   31   21    H    AlphaHelix    -72.77    -51.59      63.2      6WTI
+ASG  PRO D   32   22    H    AlphaHelix    -52.82    -37.40       3.6      6WTI
+ASG  PHE D   33   23    H    AlphaHelix    -71.14    -47.78       2.8      6WTI
+ASG  TRP D   34   24    H    AlphaHelix    -57.01    -40.56     144.4      6WTI
+ASG  MET D   35   25    H    AlphaHelix    -60.48    -39.89      40.6      6WTI
+ASG  VAL D   36   26    H    AlphaHelix    -88.32    -35.11      15.1      6WTI
+ASG  MET D   37   27    H    AlphaHelix    -80.82    -41.12      88.6      6WTI
+ASG  THR D   38   28    H    AlphaHelix    -73.62    -33.30      93.8      6WTI
+ASG  GLY D   39   29    C          Coil     83.90     67.60      52.9      6WTI
+ASG  ALA D   40   30    C          Coil    -81.48    -45.33      53.7      6WTI
+ASG  ALA D   41   31    C          Coil   -128.22   -160.40      52.1      6WTI
+ASG  SER D   42   32    C          Coil    -86.78    156.89      55.9      6WTI
+ASG  PRO D   43   33    H    AlphaHelix    -57.26    -25.75      95.5      6WTI
+ASG  ALA D   44   34    H    AlphaHelix    -75.06    -50.97      70.1      6WTI
+ASG  VAL D   45   35    H    AlphaHelix    -60.34    -39.14      80.4      6WTI
+ASG  ILE D   46   36    H    AlphaHelix    -59.41    -55.13       7.2      6WTI
+ASG  LEU D   47   37    H    AlphaHelix    -60.56    -46.67      62.3      6WTI
+ASG  GLY D   48   38    H    AlphaHelix    -53.68    -51.65      38.9      6WTI
+ASG  THR D   49   39    H    AlphaHelix    -67.87    -38.75      33.6      6WTI
+ASG  ILE D   50   40    H    AlphaHelix    -67.58    -42.34       1.4      6WTI
+ASG  LEU D   51   41    H    AlphaHelix    -62.86    -48.36      67.5      6WTI
+ASG  ALA D   52   42    H    AlphaHelix    -55.07    -53.41      49.3      6WTI
+ASG  MET D   53   43    H    AlphaHelix    -63.75    -31.76      37.5      6WTI
+ASG  ALA D   54   44    H    AlphaHelix    -65.16    -48.18      10.6      6WTI
+ASG  VAL D   55   45    H    AlphaHelix    -63.33    -27.43      86.2      6WTI
+ASG  VAL D   56   46    H    AlphaHelix    -75.20    -38.84      67.8      6WTI
+ASG  GLN D   57   47    H    AlphaHelix    -64.99    -38.33       1.4      6WTI
+ASG  VAL D   58   48    H    AlphaHelix    -58.97    -46.75      26.7      6WTI
+ASG  LEU D   59   49    H    AlphaHelix    -62.74    -39.86     113.6      6WTI
+ASG  VAL D   60   50    H    AlphaHelix    -66.84    -38.00      22.9      6WTI
+ASG  HIS D   61   51    H    AlphaHelix    -66.77    -40.29       1.0      6WTI
+ASG  LEU D   62   52    H    AlphaHelix    -73.58    -15.60      12.4      6WTI
+ASG  VAL D   63   53    H    AlphaHelix    -93.71    -66.45      88.1      6WTI
+ASG  CYS D   64   54    H    AlphaHelix    -78.02    -34.80      29.5      6WTI
+ASG  PHE D   65   55    H    AlphaHelix    -91.19    -27.97       0.0      6WTI
+ASG  LEU D   66   56    C          Coil   -105.04    -10.01      17.2      6WTI
+ASG  HIS D   67   57    C          Coil     46.12     59.63      50.8      6WTI
+ASG  MET D   68   58    C          Coil    -93.31    115.19      28.7      6WTI
+ASG  ASN D   69   59    T          Turn   -113.89    166.08      83.5      6WTI
+ASG  THR D   70   60    T          Turn    -92.86      2.57      98.9      6WTI
+ASG  LYS D   71   61    T          Turn   -100.89    -45.26     177.2      6WTI
+ASG  SER D   72   62    T          Turn    -53.72    151.86      38.5      6WTI
+ASG  ASP D   73   63    G      310Helix     52.54     42.80      35.9      6WTI
+ASG  GLU D   74   64    G      310Helix     60.23     22.75     153.2      6WTI
+ASG  GLY D   75   65    G      310Helix     77.18     19.84      18.5      6WTI
+ASG  TRP D   76   66    H    AlphaHelix    -97.97    -19.02      67.1      6WTI
+ASG  ASN D   77   67    H    AlphaHelix    -59.17    -41.67      17.6      6WTI
+ASG  MET D   78   68    H    AlphaHelix    -74.91    -51.31      50.5      6WTI
+ASG  THR D   79   69    H    AlphaHelix    -57.18    -35.35      72.2      6WTI
+ASG  ALA D   80   70    H    AlphaHelix    -58.77    -59.30      15.8      6WTI
+ASG  PHE D   81   71    H    AlphaHelix    -48.31    -62.11      51.7      6WTI
+ASG  VAL D   82   72    H    AlphaHelix    -48.41    -47.70      81.3      6WTI
+ASG  PHE D   83   73    H    AlphaHelix    -51.22    -55.33      70.9      6WTI
+ASG  THR D   84   74    H    AlphaHelix    -49.14    -50.49      12.9      6WTI
+ASG  VAL D   85   75    H    AlphaHelix    -45.78    -58.71      69.7      6WTI
+ASG  LEU D   86   76    H    AlphaHelix    -53.21    -50.20     102.7      6WTI
+ASG  ILE D   87   77    H    AlphaHelix    -54.83    -49.03       7.8      6WTI
+ASG  ILE D   88   78    H    AlphaHelix    -54.98    -51.48      42.5      6WTI
+ASG  ALA D   89   79    H    AlphaHelix    -51.12    -41.71      49.8      6WTI
+ASG  ILE D   90   80    H    AlphaHelix    -63.79    -40.82      51.7      6WTI
+ASG  LEU D   91   81    H    AlphaHelix    -84.18    -62.19       3.6      6WTI
+ASG  VAL D   92   82    H    AlphaHelix    -48.61    -48.51      31.1      6WTI
+ASG  VAL D   93   83    H    AlphaHelix    -67.40    -56.77      97.1      6WTI
+ASG  GLY D   94   84    H    AlphaHelix    -47.92    -59.52      10.6      6WTI
+ASG  SER D   95   85    H    AlphaHelix    -43.35    -62.27       1.0      6WTI
+ASG  ILE D   96   86    H    AlphaHelix    -46.99    -46.37      73.5      6WTI
+ASG  TRP D   97   87    H    AlphaHelix    -57.92    -64.17     102.7      6WTI
+ASG  ILE D   98   88    H    AlphaHelix    -47.31    -59.70       0.0      6WTI
+ASG  MET D   99   89    H    AlphaHelix    -57.81    -47.60       0.6      6WTI
+ASG  TRP D  100   90    H    AlphaHelix    -46.58    -55.34     155.2      6WTI
+ASG  ASN D  101   91    H    AlphaHelix    -59.31    -50.72      31.3      6WTI
+ASG  LEU D  102   92    H    AlphaHelix    -56.55    -18.14       0.2      6WTI
+ASG  ASN D  103   93    H    AlphaHelix    -80.91    -47.32      62.9      6WTI
+ASG  TYR D  104   94    H    AlphaHelix    -61.78    -29.38     129.2      6WTI
+ASG  ASN D  105   95    H    AlphaHelix    -89.00     19.40      36.4      6WTI
+ASG  MET D  106   96    C          Coil   -126.22     15.38       8.2      6WTI
+ASG  MET D  107   97    C          Coil    -92.17    165.47      34.8      6WTI
+ASG  MET D  108   98    C          Coil    -85.73     62.86      49.5      6WTI
+ASG  HIS D  109   99    C          Coil    -64.69    360.00     117.2      6WTI

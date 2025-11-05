@@ -1,0 +1,26 @@
+BEST PARAMETERS FOR PROTEIN BURIAL CLASSIFICATION
+================================================================================
+
+Accuracy: 78.171%
+
+nc6_threshold = 6
+nc10_threshold = 12
+uni6_threshold = 0.30
+uni10_threshold = 0.60
+
+================================================================================
+
+Confusion Matrix:
+                  Predicted
+                  Int(0)  Ext(1)
+   Actual Int(0)     857    290
+   Actual Ext(1)      99    536
+
+              precision    recall  f1-score   support
+
+    Interior       0.90      0.75      0.82      1147
+    Exterior       0.65      0.84      0.73       635
+
+    accuracy                           0.78      1782
+   macro avg       0.77      0.80      0.77      1782
+weighted avg       0.81      0.78      0.79      1782

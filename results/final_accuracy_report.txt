@@ -1,0 +1,9 @@
+FINAL ACCURACY REPORT
+================================================================================
+
+Current Accuracy: 76.044%
+Best Possible: 82.418%
+Best Parameters: nc6=5, nc10=12, uni6=0.25, uni10=0.65
+
+DSSP-STRIDE Agreement: 100.000%
+Performance vs Theoretical Max: 82.4%
