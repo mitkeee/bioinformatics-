@@ -9,80 +9,80 @@ All Features (6Å + 10Å)
 --------------------------------------------------------------------------------
 
 ACCURACY:
-  Training:   91.276% ± 0.400%
-  Validation: 87.745% ± 1.784%
-  Gap:        3.531%
+  Training:   89.691% ± 0.276%
+  Validation: 87.557% ± 0.900%
+  Gap:        2.134%
 
 PRECISION:
-  Training:   91.269% ± 0.392%
-  Validation: 87.750% ± 1.786%
-  Gap:        3.519%
+  Training:   89.675% ± 0.255%
+  Validation: 87.500% ± 0.923%
+  Gap:        2.174%
 
 RECALL:
-  Training:   91.276% ± 0.400%
-  Validation: 87.745% ± 1.784%
-  Gap:        3.531%
+  Training:   89.691% ± 0.276%
+  Validation: 87.557% ± 0.900%
+  Gap:        2.134%
 
 F1:
-  Training:   91.261% ± 0.394%
-  Validation: 87.718% ± 1.810%
-  Gap:        3.543%
+  Training:   89.663% ± 0.263%
+  Validation: 87.485% ± 0.939%
+  Gap:        2.178%
 
 --------------------------------------------------------------------------------
 6Å Features Only
 --------------------------------------------------------------------------------
 
 ACCURACY:
-  Training:   82.733% ± 0.662%
-  Validation: 78.724% ± 0.550%
-  Gap:        4.009%
+  Training:   73.399% ± 0.582%
+  Validation: 69.529% ± 1.871%
+  Gap:        3.870%
 
 PRECISION:
-  Training:   82.608% ± 0.731%
-  Validation: 78.432% ± 0.644%
-  Gap:        4.176%
+  Training:   73.372% ± 0.632%
+  Validation: 69.228% ± 1.698%
+  Gap:        4.144%
 
 RECALL:
-  Training:   82.733% ± 0.662%
-  Validation: 78.724% ± 0.550%
-  Gap:        4.009%
+  Training:   73.399% ± 0.582%
+  Validation: 69.529% ± 1.871%
+  Gap:        3.870%
 
 F1:
-  Training:   82.409% ± 0.638%
-  Validation: 78.271% ± 0.712%
-  Gap:        4.138%
+  Training:   71.936% ± 0.743%
+  Validation: 67.792% ± 2.128%
+  Gap:        4.144%
 
 --------------------------------------------------------------------------------
 10Å Features Only
 --------------------------------------------------------------------------------
 
 ACCURACY:
-  Training:   90.637% ± 0.301%
-  Validation: 88.575% ± 0.508%
-  Gap:        2.062%
+  Training:   88.808% ± 0.335%
+  Validation: 85.663% ± 1.650%
+  Gap:        3.145%
 
 PRECISION:
-  Training:   90.615% ± 0.322%
-  Validation: 88.620% ± 0.505%
-  Gap:        1.996%
+  Training:   88.789% ± 0.305%
+  Validation: 85.717% ± 1.679%
+  Gap:        3.072%
 
 RECALL:
-  Training:   90.637% ± 0.301%
-  Validation: 88.575% ± 0.508%
-  Gap:        2.062%
+  Training:   88.808% ± 0.335%
+  Validation: 85.663% ± 1.650%
+  Gap:        3.145%
 
 F1:
-  Training:   90.617% ± 0.317%
-  Validation: 88.540% ± 0.488%
-  Gap:        2.077%
+  Training:   88.773% ± 0.310%
+  Validation: 85.632% ± 1.680%
+  Gap:        3.142%
 
 ================================================================================
 SUMMARY
 ================================================================================
 
 Validation Accuracy:
-  All features: 87.745%
-  6Å only:      78.724%
-  10Å only:     88.575%
+  All features: 87.557%
+  6Å only:      69.529%
+  10Å only:     85.663%
 
-Best model: 10Å features only
+Best model: All features (6Å + 10Å)

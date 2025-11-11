@@ -214,8 +214,8 @@ def visualize_all_models(df):
     print("="*80)
 
     # Model 1: All features
-    print("\n1. All Features (6Å + 10Å)...")
-    feature_cols_all = ['stride_asa_norm', 'ncps_sphere_6_norm', 'ncps_sphere_10_norm',
+    # All features (6Å + 10Å) - ONLY neighbor-based features (DSSP/STRIDE agnostic)
+    feature_cols_all = ['ncps_sphere_6_norm', 'ncps_sphere_10_norm',
                         'ncps_sphere_6_uni_norm', 'ncps_sphere_10_uni_norm']
     df_clean = df[feature_cols_all + ['dssp_class']].dropna()
     X_all = df_clean[feature_cols_all]
@@ -241,9 +241,9 @@ def visualize_all_models(df):
                                    'All Features',
                                    output_dir / 'importance_all_features.png')
 
-    # Model 2: 10Å only (BEST MODEL based on CV)
+    # Model 2: 10Å only (BEST MODEL) - ONLY neighbor-based features (DSSP/STRIDE agnostic)
     print("\n2. 10Å Features Only (Best Model)...")
-    feature_cols_10A = ['stride_asa_norm', 'ncps_sphere_10_norm', 'ncps_sphere_10_uni_norm']
+    feature_cols_10A = ['ncps_sphere_10_norm', 'ncps_sphere_10_uni_norm']
     df_clean = df[feature_cols_10A + ['dssp_class']].dropna()
     X_10A = df_clean[feature_cols_10A]
     y_10A = df_clean['dssp_class']
@@ -274,9 +274,9 @@ def visualize_all_models(df):
                                acc_10A,
                                output_dir / 'tree_10A_only_graphviz.png')
 
-    # Model 3: 6Å only
+    # Model 3: 6Å only - ONLY neighbor-based features (DSSP/STRIDE agnostic)
     print("\n3. 6Å Features Only...")
-    feature_cols_6A = ['stride_asa_norm', 'ncps_sphere_6_norm', 'ncps_sphere_6_uni_norm']
+    feature_cols_6A = ['ncps_sphere_6_norm', 'ncps_sphere_6_uni_norm']
     df_clean = df[feature_cols_6A + ['dssp_class']].dropna()
     X_6A = df_clean[feature_cols_6A]
     y_6A = df_clean['dssp_class']

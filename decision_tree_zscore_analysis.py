@@ -42,8 +42,9 @@ def load_and_normalize_protein(csv_file, protein_name):
     print(f"\n{protein_name}:")
     print(f"  Total residues: {len(df)}")
 
-    # Features to normalize
-    features = ['stride_asa', 'ncps_sphere_6', 'ncps_sphere_10',
+    # Features to normalize - ONLY neighbor-based features (DSSP/STRIDE agnostic)
+    # NOTE: stride_asa and dssp_asa are NOT used for model training, only for validation
+    features = ['ncps_sphere_6', 'ncps_sphere_10',
                 'ncps_sphere_6_uni', 'ncps_sphere_10_uni']
 
     # Z-score normalization per protein
@@ -72,8 +73,8 @@ def build_decision_tree_all_features(df_combined, max_depth=5):
     print("DECISION TREE - ALL FEATURES (6Å + 10Å)")
     print("="*80)
 
-    # Prepare features (normalized)
-    feature_cols = ['stride_asa_norm', 'ncps_sphere_6_norm', 'ncps_sphere_10_norm',
+    # Prepare features (normalized) - ONLY neighbor-based features (DSSP/STRIDE agnostic)
+    feature_cols = ['ncps_sphere_6_norm', 'ncps_sphere_10_norm',
                     'ncps_sphere_6_uni_norm', 'ncps_sphere_10_uni_norm']
 
     # Remove rows with NaN
@@ -122,8 +123,8 @@ def build_decision_tree_6A_only(df_combined, max_depth=5):
     print("DECISION TREE - 6Å FEATURES ONLY")
     print("="*80)
 
-    # Features: stride + 6Å neighbors + 6Å uniformity
-    feature_cols = ['stride_asa_norm', 'ncps_sphere_6_norm', 'ncps_sphere_6_uni_norm']
+    # Features: 6Å neighbors + 6Å uniformity (DSSP/STRIDE agnostic)
+    feature_cols = ['ncps_sphere_6_norm', 'ncps_sphere_6_uni_norm']
 
     df_clean = df_combined[feature_cols + ['dssp_class']].dropna()
 
@@ -164,8 +165,8 @@ def build_decision_tree_10A_only(df_combined, max_depth=5):
     print("DECISION TREE - 10Å FEATURES ONLY")
     print("="*80)
 
-    # Features: stride + 10Å neighbors + 10Å uniformity
-    feature_cols = ['stride_asa_norm', 'ncps_sphere_10_norm', 'ncps_sphere_10_uni_norm']
+    # Features: 10Å neighbors + 10Å uniformity (DSSP/STRIDE agnostic)
+    feature_cols = ['ncps_sphere_10_norm', 'ncps_sphere_10_uni_norm']
 
     df_clean = df_combined[feature_cols + ['dssp_class']].dropna()
 

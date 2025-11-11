@@ -6,9 +6,9 @@ Interior (0): 1410
 Exterior (1): 865
 
 Training Accuracy:
-  All features: 91.298%
-  6Å only:      82.642%
-  10Å only:     90.781%
+  All features: 89.600%
+  6Å only:      73.115%
+  10Å only:     88.654%
 
 Strategy: Each protein normalized separately (z-score),
           then concatenated together for training.
