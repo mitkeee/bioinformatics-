@@ -10,12 +10,21 @@ Total Residues: 493
 DSSP Classification:
   - Exterior (1): 230 residues
   - Interior (0): 263 residues
+  - DSSP Cutoff Value: ASA ≥ 25% (relative accessible surface area)
+    (If ASA ≥ 25%, classified as Exterior=1; otherwise Interior=0)
+
+STRIDE Classification:
+  - Exterior (1): 148 residues
+  - Interior (0): 345 residues
+  - STRIDE Cutoff Value: ASA ≥ 20% (relative accessible surface area)
+    (If ASA ≥ 20%, classified as Exterior=1; otherwise Interior=0)
 
 NCPS Classification (Our Method):
   - Exterior (1): 360 residues
   - Interior (0): 133 residues
 
 Agreement with DSSP: 68.4% (337/493)
+Agreement with STRIDE: 52.9% (261/493)
 
 Neighbor Count Statistics:
   - 6Å Sphere: Mean=4.9, Median=5, Range=[1-9]
@@ -552,5 +561,1106 @@ CLASSIFICATION PARAMETERS:
   - uni10_threshold = 0.60 (minimum uniformity at 10Å)
   - Exterior if: NC6 < 6 OR NC10 < 12 OR Uni6 < 0.30 OR Uni10 < 0.60
   - Interior otherwise
+
+========================================================================================================================
+
+STATISTICS
+========================================================================================================================
+
+ACCORDING TO DSSP (Ground Truth = DSSP Classifications):
+========================================================================================================================
+
+CONFUSION MATRIX:
+------------------------------------------------------------
+                     | Predicted Interior (0) | Predicted Exterior (1) |
+------------------------------------------------------------
+True Interior (0)    |                  120 |                  143 |        263
+True Exterior (1)    |                   13 |                  217 |        230
+------------------------------------------------------------
+Total                |                  133 |                  360 |        493
+------------------------------------------------------------
+
+CONFUSION MATRIX INTERPRETATION:
+  - True Negatives (TN):   120 - Correctly predicted as Interior (both DSSP and NCPS agree on Interior)
+  - False Positives (FP):  143 - Incorrectly predicted as Exterior (DSSP=Interior, NCPS=Exterior)
+  - False Negatives (FN):   13 - Incorrectly predicted as Interior (DSSP=Exterior, NCPS=Interior)
+  - True Positives (TP):   217 - Correctly predicted as Exterior (both DSSP and NCPS agree on Exterior)
+
+PERFORMANCE METRICS:
+------------------------------------------------------------
+  Overall Accuracy:              68.36% (337/493)
+  Weighted Precision:            76.25%
+  Weighted Recall:               68.36%
+  Weighted F1-Score:             66.65%
+
+PER-CLASS METRICS:
+  Interior (0) - Precision:      90.23%
+  Interior (0) - Recall:         45.63%
+  Interior (0) - F1-Score:       60.61%
+
+  Exterior (1) - Precision:      60.28%
+  Exterior (1) - Recall:         94.35%
+  Exterior (1) - F1-Score:       73.56%
+
+========================================================================================================================
+
+ACCORDING TO STRIDE (Ground Truth = STRIDE Classifications):
+========================================================================================================================
+
+CONFUSION MATRIX:
+------------------------------------------------------------
+                     | Predicted Interior (0) | Predicted Exterior (1) |
+------------------------------------------------------------
+True Interior (0)    |                  123 |                  222 |        345
+True Exterior (1)    |                   10 |                  138 |        148
+------------------------------------------------------------
+Total                |                  133 |                  360 |        493
+------------------------------------------------------------
+
+CONFUSION MATRIX INTERPRETATION:
+  - True Negatives (TN):   123 - Correctly predicted as Interior (both STRIDE and NCPS agree on Interior)
+  - False Positives (FP):  222 - Incorrectly predicted as Exterior (STRIDE=Interior, NCPS=Exterior)
+  - False Negatives (FN):   10 - Incorrectly predicted as Interior (STRIDE=Exterior, NCPS=Interior)
+  - True Positives (TP):   138 - Correctly predicted as Exterior (both STRIDE and NCPS agree on Exterior)
+
+PERFORMANCE METRICS:
+------------------------------------------------------------
+  Overall Accuracy:              52.94% (261/493)
+  Weighted Precision:            76.23%
+  Weighted Recall:               52.94%
+  Weighted F1-Score:             52.32%
+
+PER-CLASS METRICS:
+  Interior (0) - Precision:      92.48%
+  Interior (0) - Recall:         35.65%
+  Interior (0) - F1-Score:       51.46%
+
+  Exterior (1) - Precision:      38.33%
+  Exterior (1) - Recall:         93.24%
+  Exterior (1) - F1-Score:       54.33%
+
+========================================================================================================================
+
+RESIDUE LIST IN AGREEMENT: NCPS-DSSP
+========================================================================================================================
+Total: 337 residues agree
+
+ Res#   ID   Num |  Class |  DSSP ASA  NCPS NC6  NCPS NC10  NCPS Uni6  NCPS Uni10
+------------------------------------------------------------------------------------------------------------------------
+    1  GLY     0 | Exterior |    100.0         3         10      0.303       0.208
+    2  GLN     1 | Exterior |     87.4         3         11      0.306       0.249
+    3  PRO     2 | Exterior |     55.9         5         12      0.552       0.507
+    5  PRO     4 | Exterior |     36.0         3         16      0.526       0.629
+    7  GLN     6 | Interior |      1.0         6         15      0.502       0.885
+   11  ASN    10 | Exterior |     53.5         3         16      0.484       0.685
+   14  GLN    13 | Exterior |     66.7         3          9      0.280       0.543
+   15  ASP    14 | Exterior |     82.2         3          7      0.289       0.323
+   17  ASP    16 | Exterior |     50.9         4         12      0.425       0.514
+   19  THR    18 | Exterior |     45.1         5         14      0.546       0.546
+   20  GLN    19 | Exterior |     30.8         6         16      0.588       0.506
+   21  TYR    20 | Interior |      6.3         8         23      0.870       0.862
+   22  TYR    21 | Interior |     17.6         7         19      0.698       0.906
+   28  ASP    27 | Exterior |     33.1         2         21        nan       0.631
+   29  GLY    28 | Interior |     13.1         7         23      0.741       0.690
+   32  ALA    31 | Interior |      0.0         7         25      0.908       0.855
+   34  TRP    33 | Interior |      3.1         6         23      0.648       0.949
+   37  HIS    36 | Exterior |     65.8         3         13      0.301       0.428
+   39  LEU    38 | Interior |      1.2         7         23      0.674       0.789
+   40  ILE    39 | Interior |     11.8         8         22      0.733       0.939
+   41  SER    40 | Interior |      2.3         6         20      0.625       0.802
+   42  LYS    41 | Exterior |     54.6         4         16      0.269       0.509
+   43  GLN    42 | Exterior |     62.1         5         12      0.339       0.337
+   44  GLY    43 | Interior |      6.0         8         15      0.830       0.608
+   45  ASN    44 | Exterior |     58.6         6         15      0.487       0.542
+   46  ILE    45 | Exterior |     53.8         4         17      0.439       0.566
+   50  PRO    49 | Interior |      0.0         6         20      0.895       0.788
+   51  THR    50 | Exterior |     66.2         5         13      0.333       0.625
+   54  ILE    53 | Interior |     19.5         6         18      0.491       0.876
+   55  ALA    54 | Exterior |     64.2         6         13      0.507       0.530
+   56  SER    55 | Exterior |     59.2         3         15      0.252       0.629
+   59  THR    58 | Exterior |     83.1         3         11      0.558       0.476
+   62  ASP    62 | Interior |      0.6         6         22      0.591       0.796
+   63  GLY    63 | Interior |      0.0         6         21      0.885       0.782
+   64  GLU    64 | Interior |     16.0         8         21      0.611       0.875
+   65  LEU    65 | Interior |      0.0         6         27      0.660       0.921
+   66  TRP    66 | Interior |     13.2         6         23      0.685       0.811
+   68  ALA    68 | Exterior |     34.9         3         17      0.483       0.480
+   69  ARG    69 | Exterior |     34.7         4         13      0.655       0.637
+   70  GLN    70 | Exterior |     81.8         3         16      0.339       0.485
+   71  GLN    71 | Exterior |     37.9         6         12      0.752       0.517
+   73  GLU    73 | Exterior |     68.6         6         12      0.358       0.378
+   74  THR    74 | Exterior |     38.7         6         15      0.401       0.473
+   75  VAL    75 | Interior |      0.7         6         22      0.387       0.838
+   76  SER    76 | Interior |     11.5         7         17      0.476       0.625
+   78  ILE    78 | Interior |      2.4         6         20      0.410       0.733
+   80  ARG    80 | Exterior |     62.9         4         13      0.280       0.574
+   81  THR    81 | Exterior |     40.8         5         13      0.605       0.504
+   82  GLN    82 | Exterior |     69.7         3         12      0.435       0.388
+   83  ASP    83 | Exterior |     42.9         6         13      0.596       0.432
+   84  ASN    84 | Exterior |     59.2         6         14      0.600       0.546
+   85  GLN    85 | Exterior |     58.6         4         17      0.343       0.577
+   87  GLU    87 | Exterior |     38.1         5         17      0.568       0.561
+   88  GLN    88 | Exterior |     49.0         4         15      0.347       0.594
+   91  GLN    91 | Exterior |     34.8         3         16      0.246       0.669
+   92  ILE    92 | Interior |      0.0         6         21      0.840       0.884
+   93  LYS    93 | Interior |     18.0         6         19      0.692       0.874
+   98  LEU    99 | Interior |      1.8         6         21      0.606       0.901
+  100  LYS   101 | Exterior |     70.7         3         15      0.244       0.539
+  102  THR   103 | Exterior |     90.8         2         13        nan       0.340
+  103  VAL   104 | Exterior |     39.4         3         13      0.503       0.439
+  104  SER   105 | Interior |     20.8         7         14      0.705       0.650
+  105  PHE   106 | Interior |      0.5         7         23      0.568       0.950
+  107  GLN   108 | Exterior |     59.1         6         13      0.414       0.563
+  108  ARG   109 | Interior |      0.4         6         20      0.443       0.791
+  110  ASN   111 | Exterior |     63.1         5          9      0.444       0.542
+  111  LYS   112 | Exterior |     49.8         5         15      0.430       0.635
+  112  GLN   114 | Exterior |     46.0         5         14      0.409       0.708
+  113  THR   115 | Exterior |     45.8         6         11      0.490       0.592
+  115  VAL   117 | Interior |     15.5         7         16      0.612       0.777
+  116  THR   118 | Exterior |     73.2         6         11      0.389       0.466
+  117  ASP   119 | Exterior |     76.7         6         11      0.360       0.396
+  119  ASN   121 | Exterior |     52.2         4         15      0.473       0.571
+  123  LEU   125 | Interior |      0.0         6         20      0.517       0.939
+  126  GLU   129 | Exterior |     69.6         3         12      0.385       0.523
+  128  GLN   131 | Exterior |     33.8         4         11      0.390       0.448
+  129  LYS   132 | Exterior |     42.0         3         15      0.547       0.492
+  131  PRO   134 | Exterior |     64.7         3         12      0.427       0.399
+  132  ASN   135 | Exterior |     49.0         5         11      0.477       0.539
+  133  THR   136 | Exterior |     35.9         4         15      0.311       0.668
+  134  VAL   137 | Exterior |     83.8         5         10      0.304       0.304
+  136  LEU   139 | Interior |      0.0         6         17      0.425       0.913
+  138  ASP   141 | Exterior |     56.4         6         11      0.413       0.532
+  139  LEU   142 | Interior |     16.5         6         16      0.431       0.647
+  140  LEU   143 | Interior |      5.5         6         19      0.420       0.879
+  141  ASN   144 | Exterior |     36.9         6         16      0.426       0.510
+  142  LYS   145 | Exterior |     67.3         5         12      0.311       0.443
+  143  VAL   146 | Interior |      7.0         6         15      0.564       0.654
+  145  GLY   149 | Exterior |     39.3         4         10      0.205       0.351
+  146  LYS   150 | Exterior |     53.2         3         11      0.311       0.492
+  147  GLY   151 | Interior |      9.5         7         17      0.698       0.788
+  148  GLU   152 | Exterior |     32.5         4         17      0.451       0.652
+  149  GLY   153 | Interior |      0.0         7         20      0.730       0.838
+  152  HIS   157 | Interior |      4.9         6         21      0.640       0.870
+  153  HIS   158 | Interior |     14.7         7         20      0.841       0.875
+  154  GLN   159 | Interior |     13.6         7         20      0.738       0.677
+  155  ASP   160 | Exterior |     58.3         5         14      0.362       0.465
+  156  ALA   161 | Interior |      2.8         6         18      0.463       0.694
+  157  LEU   162 | Exterior |     61.6         3         16      0.560       0.577
+  159  GLN   164 | Exterior |     46.0         4         15      0.440       0.620
+  160  THR   165 | Exterior |     66.2         5         12      0.564       0.570
+  161  LYS   166 | Exterior |     64.4         5         11      0.422       0.441
+  162  ARG   167 | Exterior |     59.3         5         12      0.408       0.469
+  163  SER   168 | Interior |      1.5         6         16      0.532       0.670
+  164  ARG   169 | Exterior |     62.9         4         15      0.353       0.471
+  165  ASP   170 | Exterior |     31.3         5         21      0.631       0.698
+  166  LEU   171 | Interior |     11.0         6         20      0.766       0.924
+  167  LYS   173 | Exterior |     39.5         3         17      0.254       0.725
+  169  LYS   175 | Exterior |     38.5         4         16      0.801       0.802
+  170  LYS   176 | Exterior |     42.9         2         13        nan       0.664
+  171  PHE   177 | Exterior |     42.1         5         12      0.713       0.711
+  172  GLU   178 | Exterior |     31.4         5         14      0.399       0.645
+  173  ASP   179 | Exterior |     57.7         4         14      0.550       0.442
+  176  ALA   182 | Interior |      0.0         7         23      0.767       0.805
+  178  VAL   184 | Interior |      0.0         6         25      0.638       0.868
+  179  ILE   185 | Exterior |     44.4         6         16      0.522       0.511
+  181  TYR   187 | Exterior |     36.9         3         19      0.517       0.603
+  182  LEU   188 | Exterior |     36.6         5         14      0.453       0.523
+  183  PRO   189 | Exterior |     86.0         4         14      0.332       0.515
+  184  GLY   190 | Interior |     19.0         7         15      0.629       0.695
+  185  LYS   191 | Exterior |     86.8         4         11      0.385       0.360
+  186  GLY   192 | Exterior |     69.0         4          8      0.258       0.179
+  187  LYS   193 | Exterior |     82.4         3          8      0.212       0.171
+  188  TYR   194 | Interior |     25.2         7         14      0.570       0.613
+  189  GLU   195 | Exterior |     80.4         7         10      0.544       0.449
+  190  GLY   196 | Exterior |     92.9         2         12        nan       0.277
+  192  LEU   198 | Interior |      4.9         6         21      0.623       0.901
+  193  GLY   199 | Interior |     21.4         6         22      0.557       0.785
+  194  ALA   200 | Interior |      5.7         6         22      0.940       0.806
+  195  ILE   201 | Interior |      0.0         7         21      0.639       0.959
+  196  LEU   202 | Interior |     28.7         6         18      0.840       0.743
+  197  VAL   203 | Interior |      0.0         8         25      0.778       0.845
+  199  ASN   205 | Interior |      6.4         6         20      0.640       0.705
+  200  GLU   206 | Exterior |     76.3         3         11      0.250       0.361
+  201  GLU   207 | Exterior |     58.8         4         10      0.280       0.324
+  202  GLY   208 | Exterior |     54.8         5         11      0.340       0.327
+  204  THR   210 | Exterior |     47.9         4         19      0.519       0.550
+  206  LYS   212 | Exterior |     67.3         4         19      0.489       0.622
+  207  ILE   213 | Interior |      0.0         6         22      0.617       0.840
+  209  SER   215 | Exterior |     57.7         5         14      0.523       0.535
+  210  GLY   216 | Exterior |     51.2         4         15      0.499       0.575
+  212  SER   218 | Exterior |     35.4         4         11      0.382       0.408
+  213  ASP   219 | Exterior |     66.3         4         12      0.284       0.347
+  214  GLU   220 | Exterior |     71.1         5          9      0.328       0.330
+  216  ARG   222 | Interior |      6.5         8         18      0.635       0.811
+  217  SER   223 | Exterior |     58.5         5         14      0.478       0.458
+  218  THR   224 | Exterior |     78.2         4         11      0.283       0.413
+  221  PRO   227 | Exterior |     35.3         3         17      0.446       0.492
+  222  ILE   228 | Exterior |     55.6         5         16      0.452       0.534
+  224  SER   230 | Interior |      0.0         9         17      0.859       0.740
+  225  LEU   231 | Interior |     18.3         6         22      0.789       0.652
+  226  ILE   232 | Interior |      0.0         7         21      0.737       0.850
+  227  THR   233 | Interior |      1.4         6         18      0.816       0.745
+  228  TYR   234 | Interior |      2.7         7         22      0.719       0.910
+  230  PHE   236 | Interior |      7.6         8         17      0.851       0.873
+  231  THR   237 | Exterior |     34.5         5         17      0.673       0.826
+  233  LYS   239 | Exterior |     34.1         6         12      0.545       0.540
+  234  THR   240 | Exterior |     45.1         5         10      0.453       0.473
+  235  ASN   241 | Exterior |     79.6         3          7      0.327       0.220
+  236  ASN   242 | Exterior |     88.5         3          9      0.282       0.307
+  237  ASN   243 | Exterior |     38.9         5         13      0.330       0.541
+  240  ARG   246 | Interior |     25.8         8         13      0.645       0.686
+  241  PHE   247 | Exterior |     79.7         3         15      0.273       0.447
+  242  ALA   248 | Interior |     18.9         6         23      0.585       0.780
+  243  SER   249 | Interior |     23.1         7         19      0.766       0.774
+  246  ARG   252 | Exterior |     51.6         4         16      0.400       0.545
+  247  ILE   253 | Exterior |     39.1         3         17      0.477       0.485
+  248  ARG   254 | Exterior |     46.4         4         13      0.336       0.387
+  249  VAL   255 | Exterior |     38.7         4         12      0.413       0.359
+  250  ILE   256 | Exterior |     70.4         3         13      0.456       0.347
+  251  TYR   257 | Exterior |     91.0         3         10      0.221       0.237
+  252  ILE     5 | Exterior |     60.9         2         11        nan       0.609
+  254  LEU     7 | Exterior |     80.5         2         10        nan       0.482
+  260  GLN    13 | Exterior |     79.8         2          9        nan       0.606
+  261  ASP    14 | Exterior |     70.6         3          7      0.316       0.316
+  263  ASP    16 | Exterior |     57.7         3         13      0.516       0.554
+  265  THR    18 | Exterior |     38.7         6         15      0.570       0.504
+  266  GLN    19 | Exterior |     46.0         4         16      0.516       0.507
+  267  TYR    20 | Interior |      7.2         8         23      0.859       0.851
+  268  TYR    21 | Interior |     17.6         7         20      0.706       0.872
+  272  LYS    25 | Exterior |     30.7         5         19      0.511       0.762
+  274  ASP    27 | Exterior |     39.3         2         20        nan       0.628
+  275  GLY    28 | Interior |      2.4         7         24      0.728       0.662
+  278  ALA    31 | Interior |      0.9         7         23      0.902       0.843
+  279  TYR    32 | Exterior |     30.2         5         22      0.599       0.783
+  280  TRP    33 | Interior |      3.1         6         23      0.655       0.915
+  283  HIS    36 | Exterior |     73.9         3         12      0.308       0.408
+  284  GLN    37 | Exterior |     36.9         4         17      0.392       0.665
+  285  LEU    38 | Interior |      0.6         7         21      0.662       0.809
+  286  ILE    39 | Interior |     17.8         8         18      0.735       0.832
+  287  SER    40 | Interior |     20.8         6         15      0.619       0.759
+  288  LYS    41 | Exterior |     69.8         3         11      0.222       0.469
+  289  GLN    42 | Exterior |     88.9         4          7      0.268       0.192
+  290  GLY    43 | Exterior |     56.0         5         10      0.372       0.318
+  291  ASN    44 | Exterior |     68.8         5         11      0.398       0.415
+  292  ILE    45 | Exterior |     51.5         4         16      0.447       0.511
+  296  PRO    49 | Interior |      0.0         6         17      0.909       0.746
+  297  THR    50 | Exterior |     71.8         5         12      0.314       0.581
+  301  ALA    54 | Exterior |     42.5         6         16      0.616       0.567
+  302  SER    55 | Exterior |     70.0         3         15      0.515       0.532
+  305  THR    58 | Exterior |     73.9         3         11      0.467       0.437
+  306  THR    59 | Exterior |     41.5         4         13      0.408       0.637
+  309  GLY    63 | Interior |      0.0         7         21      0.896       0.782
+  310  GLU    64 | Interior |     13.9         8         19      0.598       0.871
+  311  LEU    65 | Interior |      0.0         6         25      0.674       0.895
+  312  TRP    66 | Interior |     14.5         6         22      0.682       0.765
+  314  ALA    68 | Exterior |     36.8         3         17      0.466       0.484
+  315  ARG    69 | Exterior |     34.7         4         15      0.665       0.646
+  316  GLN    70 | Exterior |     64.6         3         15      0.333       0.430
+  317  GLN    71 | Exterior |     35.4         6         12      0.781       0.537
+  319  GLU    73 | Exterior |     76.3         5         12      0.300       0.373
+  320  THR    74 | Exterior |     40.1         6         16      0.400       0.472
+  321  VAL    75 | Interior |      0.7         7         23      0.459       0.863
+  322  SER    76 | Interior |     19.2         8         15      0.564       0.602
+  323  GLY    77 | Exterior |     36.9         6         10      0.385       0.519
+  324  ILE    78 | Interior |      1.8         6         19      0.398       0.749
+  325  ALA    79 | Interior |      1.9         6         23      0.354       0.867
+  326  ARG    80 | Exterior |     70.6         5         15      0.302       0.588
+  327  THR    81 | Exterior |     38.0         5         14      0.597       0.497
+  328  GLN    82 | Exterior |     72.2         3         12      0.439       0.379
+  329  ASP    83 | Exterior |     42.3         6         13      0.579       0.416
+  330  ASN    84 | Exterior |     50.3         6         14      0.606       0.545
+  331  GLN    85 | Exterior |     40.9         4         16      0.345       0.509
+  333  GLU    87 | Exterior |     35.1         4         16      0.346       0.560
+  334  GLN    88 | Exterior |     54.0         5         15      0.441       0.581
+  337  GLN    91 | Exterior |     38.4         5         16      0.497       0.657
+  338  ILE    92 | Interior |      0.0         6         20      0.839       0.834
+  340  PHE    94 | Interior |      0.0         6         24      0.846       0.830
+  346  LYS   101 | Exterior |     72.2         3         11      0.237       0.500
+  348  THR   103 | Exterior |     88.0         2         11        nan       0.332
+  349  VAL   104 | Exterior |     47.9         3         15      0.528       0.457
+  350  SER   105 | Interior |     16.2         8         15      0.681       0.652
+  351  PHE   106 | Interior |      0.5         7         23      0.554       0.948
+  353  GLN   108 | Exterior |     40.4         6         12      0.411       0.542
+  354  ARG   109 | Interior |      0.4         7         20      0.533       0.722
+  356  ASN   111 | Exterior |     42.0         5          9      0.449       0.547
+  357  LYS   112 | Exterior |     57.1         5         14      0.429       0.597
+  358  GLN   114 | Exterior |     49.5         5         15      0.430       0.713
+  359  THR   115 | Exterior |     43.0         6          9      0.488       0.585
+  360  LEU   116 | Interior |     17.1         6         16      0.357       0.768
+  361  VAL   117 | Interior |     15.5         7         16      0.614       0.765
+  362  THR   118 | Exterior |     63.4         6         11      0.399       0.516
+  363  ASP   119 | Exterior |     78.5         6         11      0.359       0.407
+  364  THR   120 | Interior |      9.2         7         16      0.668       0.627
+  372  GLU   129 | Exterior |     72.2         3         12      0.389       0.530
+  374  GLN   131 | Exterior |     39.4         4         12      0.381       0.490
+  375  LYS   132 | Exterior |     53.7         3         15      0.551       0.508
+  377  PRO   134 | Exterior |     67.6         3         13      0.418       0.402
+  378  ASN   135 | Exterior |     44.6         5         11      0.482       0.502
+  379  THR   136 | Exterior |     46.5         4         15      0.299       0.660
+  380  VAL   137 | Exterior |     76.8         5         10      0.320       0.315
+  382  LEU   139 | Interior |      0.0         6         18      0.424       0.918
+  383  PHE   140 | Interior |     24.4         7         15      0.468       0.614
+  384  ASP   141 | Exterior |     65.6         6         11      0.423       0.552
+  385  LEU   142 | Interior |     18.9         6         17      0.417       0.661
+  386  LEU   143 | Interior |      2.4         7         22      0.608       0.842
+  387  ASN   144 | Exterior |     49.0         7         16      0.469       0.534
+  388  LYS   145 | Exterior |     73.7         5         12      0.306       0.438
+  389  VAL   146 | Interior |      7.7         6         17      0.563       0.643
+  391  GLY   149 | Exterior |     38.1         4          9      0.203       0.304
+  392  LYS   150 | Exterior |     57.1         3         12      0.318       0.474
+  393  GLY   151 | Interior |      4.8         6         19      0.645       0.730
+  395  GLY   153 | Interior |      0.0         7         22      0.768       0.827
+  398  HIS   157 | Interior |      6.0         6         20      0.606       0.806
+  399  HIS   158 | Interior |     19.6         6         19      0.781       0.860
+  400  GLN   159 | Interior |     11.1         7         20      0.744       0.690
+  401  ASP   160 | Exterior |     54.6         5         16      0.367       0.443
+  402  ALA   161 | Interior |      1.9         7         16      0.606       0.658
+  403  LEU   162 | Exterior |     64.0         3         15      0.548       0.539
+  405  GLN   164 | Exterior |     53.0         2         12        nan       0.566
+  406  THR   165 | Exterior |     83.1         3          7      0.455       0.475
+  407  SER   168 | Exterior |     53.8         4         11      0.288       0.480
+  408  ARG   169 | Exterior |     77.4         3         13      0.265       0.473
+  409  ASP   170 | Interior |     23.3         6         18      0.766       0.663
+  410  LEU   171 | Interior |     14.6         6         17      0.731       0.886
+  413  LYS   175 | Exterior |     37.6         3         18      0.498       0.786
+  414  LYS   176 | Exterior |     39.0         4         20      0.608       0.751
+  415  PHE   177 | Exterior |     36.5         4         20      0.560       0.759
+  416  GLU   178 | Exterior |     61.3         4         11      0.348       0.477
+  417  ASP   179 | Exterior |     59.5         4         13      0.513       0.427
+  419  GLU   181 | Exterior |     35.6         4         20      0.538       0.591
+  420  ALA   182 | Interior |      1.9         7         23      0.766       0.803
+  422  VAL   184 | Interior |      0.7         7         24      0.795       0.800
+  423  ILE   185 | Exterior |     49.1         5         16      0.444       0.495
+  424  ALA   186 | Exterior |     33.0         3         15      0.508       0.432
+  425  TYR   187 | Exterior |     39.2         4         19      0.471       0.557
+  426  LEU   188 | Exterior |     37.8         4         14      0.452       0.499
+  427  PRO   189 | Exterior |     84.6         4         13      0.347       0.455
+  428  GLY   190 | Interior |     21.4         7         15      0.671       0.716
+  429  LYS   191 | Exterior |     87.8         4         11      0.367       0.371
+  430  GLY   192 | Exterior |     65.5         4          8      0.275       0.190
+  431  LYS   193 | Exterior |     83.4         3          8      0.198       0.163
+  433  GLU   195 | Exterior |     78.9         7         11      0.540       0.418
+  434  GLY   196 | Exterior |     95.2         2         12        nan       0.276
+  436  LEU   198 | Interior |      6.1         6         22      0.615       0.875
+  437  GLY   199 | Interior |     21.4         6         23      0.677       0.794
+  438  ALA   200 | Interior |      3.8         7         23      0.920       0.828
+  440  LEU   202 | Interior |     24.4         8         19      0.767       0.777
+  441  VAL   203 | Interior |      0.0         8         24      0.812       0.856
+  443  ASN   205 | Interior |      7.6         6         20      0.641       0.696
+  444  GLU   206 | Exterior |     77.3         3         11      0.253       0.352
+  445  GLU   207 | Exterior |     54.1         4         10      0.280       0.326
+  446  GLY   208 | Exterior |     52.4         4         11      0.317       0.328
+  448  THR   210 | Exterior |     52.8         4         17      0.522       0.513
+  450  LYS   212 | Exterior |     66.8         5         19      0.522       0.676
+  451  ILE   213 | Interior |      0.6         6         22      0.608       0.898
+  452  GLY   214 | Exterior |     38.1         4         19      0.671       0.664
+  453  SER   215 | Exterior |     43.1         5         16      0.538       0.537
+  454  GLY   216 | Exterior |     47.6         4         16      0.506       0.576
+  456  SER   218 | Exterior |     32.3         4         11      0.398       0.411
+  457  ASP   219 | Exterior |     88.3         4         12      0.271       0.326
+  458  GLU   220 | Exterior |     76.8         6         10      0.387       0.309
+  459  GLU   221 | Interior |     25.8         8         13      0.638       0.694
+  460  ARG   222 | Interior |      4.4         8         21      0.626       0.777
+  461  SER   223 | Exterior |     56.9         5         14      0.471       0.454
+  462  THR   224 | Exterior |     76.1         5         11      0.294       0.409
+  465  PRO   227 | Exterior |     52.2         4         16      0.553       0.465
+  466  ILE   228 | Exterior |     55.0         5         14      0.430       0.429
+  467  GLY   229 | Exterior |     61.9         3         12      0.315       0.346
+  468  SER   230 | Interior |     14.6         6         15      0.503       0.615
+  469  LEU   231 | Exterior |     35.4         5         19      0.637       0.599
+  470  ILE   232 | Interior |      0.0         7         20      0.732       0.875
+  471  THR   233 | Interior |      0.7         6         17      0.807       0.747
+  472  TYR   234 | Interior |      0.9         7         22      0.735       0.897
+  474  PHE   236 | Interior |      5.1         8         18      0.853       0.927
+  477  LYS   239 | Interior |     23.4         6         15      0.557       0.640
+  479  ASN   241 | Exterior |     98.1         3          8      0.222       0.228
+  480  ASN   242 | Exterior |     79.6         4          7      0.283       0.290
+  481  ASN   243 | Exterior |     57.3         5         13      0.352       0.599
+  482  ILE   244 | Exterior |     33.7         5         18      0.401       0.796
+  484  ARG   246 | Interior |     20.2         7         19      0.493       0.809
+  487  SER   249 | Interior |     13.1         7         21      0.722       0.761
+  489  VAL   251 | Exterior |     30.3         4         16      0.395       0.543
+  490  ARG   252 | Exterior |     50.8         4         15      0.394       0.517
+  491  ILE   253 | Exterior |     40.8         3         16      0.463       0.484
+  492  ARG   254 | Exterior |     31.0         4         11      0.538       0.406
+  493  VAL   255 | Exterior |    100.0         1          6        nan       0.107
+
+========================================================================================================================
+
+RESIDUE LIST IN DISAGREEMENT: NCPS-DSSP
+========================================================================================================================
+Total: 156 residues disagree
+
+ Res#   ID   Num |     DSSP     NCPS |  DSSP ASA  NCPS NC6  NCPS NC10  NCPS Uni6  NCPS Uni10
+------------------------------------------------------------------------------------------------------------------------
+    4  PRO     3 | Interior Exterior |     10.3         3         20      0.485       0.653
+    6  ILE     5 | Interior Exterior |     11.2         4         18      0.603       0.823
+    8  LEU     7 | Interior Exterior |     28.7         5         15      0.433       0.527
+    9  ALA     8 | Interior Exterior |     10.4         5         14      0.451       0.590
+   10  THR     9 | Interior Exterior |     24.6         3         13      0.686       0.561
+   12  TYR    11 | Interior Exterior |     18.0         4         17      0.659       0.814
+   13  ARG    12 | Interior Exterior |     24.2         3         12      0.552       0.680
+   16  ILE    15 | Interior Exterior |     13.0         4         11      0.590       0.586
+   18  VAL    17 | Interior Exterior |      4.9         5         20      0.452       0.773
+   23  VAL    22 | Interior Exterior |      0.0         5         24      0.583       0.854
+   24  SER    23 | Interior Exterior |      6.9         5         17      0.877       0.806
+   25  GLU    24 | Interior Exterior |     22.7         5         20      0.477       0.742
+   26  LYS    25 | Interior Exterior |     14.1         5         17      0.520       0.799
+   27  LEU    26 | Interior Exterior |     11.0         4         21      0.798       0.835
+   30  ILE    29 | Interior Exterior |     21.9         4         19      0.339       0.741
+   31  ARG    30 | Interior Exterior |     14.5         4         19      0.451       0.684
+   33  TYR    32 | Interior Exterior |      6.3         5         27      0.588       0.931
+   35  ASN    34 | Interior Exterior |     29.3         5         17      0.430       0.626
+   36  GLY    35 | Interior Exterior |     10.7         6         12      0.638       0.570
+   38  GLN    37 | Interior Exterior |     27.3         4         18      0.376       0.668
+   47  PHE    46 | Interior Exterior |     10.7         5         19      0.582       0.910
+   48  THR    47 | Interior Exterior |     21.1         5         19      0.665       0.725
+   49  ALA    48 | Interior Exterior |     14.2         4         22      0.455       0.844
+   52  TRP    51 | Interior Exterior |     17.2         5         20      0.316       0.764
+   53  PHE    52 | Interior Exterior |      0.0         5         23      0.307       0.898
+   57  PHE    56 | Interior Exterior |      7.6         4         21      0.526       0.874
+   58  PRO    57 | Interior Exterior |     19.1         3         14      0.501       0.675
+   60  THR    59 | Interior Exterior |     28.2         4         14      0.357       0.654
+   61  ALA    60 | Interior Exterior |      9.4         5         17      0.684       0.777
+   67  ILE    67 | Interior Exterior |     11.8         3         20      0.679       0.609
+   72  PHE    72 | Interior Exterior |     25.9         7         16      0.608       0.584
+   77  GLY    77 | Interior Exterior |     23.8         7         11      0.463       0.500
+   79  ALA    79 | Interior Exterior |      2.8         5         23      0.314       0.828
+   86  ASN    86 | Interior Exterior |      7.0         5         17      0.755       0.646
+   89  TRP    89 | Interior Exterior |      0.0         5         21      0.456       0.857
+   90  LYS    90 | Interior Exterior |     13.2         5         18      0.400       0.860
+   94  PHE    94 | Interior Exterior |      0.0         5         24      0.689       0.825
+   95  ILE    96 | Interior Exterior |      0.0         4         20      0.503       0.845
+   96  PHE    97 | Interior Exterior |     19.8         5         17      0.502       0.849
+   97  ASP    98 | Interior Exterior |      1.8         3         18      0.563       0.787
+   99  PRO   100 | Interior Exterior |      7.4         3         21      0.267       0.895
+  101  SER   102 | Interior Exterior |     23.8         5         15      0.700       0.578
+  106  GLU   107 | Exterior Interior |     41.8         6         17      0.489       0.618
+  109  ILE   110 | Interior Exterior |      5.9         5         19      0.322       0.844
+  114  LEU   116 | Interior Exterior |     12.8         5         16      0.298       0.771
+  118  THR   120 | Interior Exterior |     16.9         5         15      0.380       0.619
+  120  SER   122 | Interior Exterior |      4.6         5         20      0.618       0.869
+  121  PRO   123 | Interior Exterior |      0.0         3         21      0.229       0.883
+  122  TYR   124 | Interior Exterior |      2.7         5         24      0.590       0.911
+  124  GLN   126 | Interior Exterior |     21.7         2         18        nan       0.730
+  125  ILE   128 | Interior Exterior |      6.5         3         18      0.547       0.728
+  127  GLN   130 | Interior Exterior |     14.1         5         15      0.501       0.612
+  130  ILE   133 | Interior Exterior |      9.5         3         16      0.547       0.661
+  135  ALA   138 | Interior Exterior |     28.3         6         12      0.410       0.546
+  137  PHE   140 | Exterior Interior |     51.3         6         15      0.414       0.648
+  144  VAL   147 | Interior Exterior |     28.2         7         15      0.564       0.546
+  150  LEU   154 | Interior Exterior |      1.8         5         21      0.639       0.748
+  151  LEU   156 | Interior Exterior |      0.0         5         24      0.431       0.930
+  158  TYR   163 | Interior Exterior |     14.4         2         22        nan       0.786
+  168  LEU   174 | Interior Exterior |      6.1         5         20      0.708       0.884
+  174  ALA   180 | Interior Exterior |     20.8         4         14      0.369       0.510
+  175  GLU   181 | Interior Exterior |     23.2         4         19      0.535       0.602
+  177  THR   183 | Exterior Interior |     38.0         7         24      0.738       0.716
+  180  ALA   186 | Interior Exterior |     28.3         4         16      0.422       0.489
+  191  LEU   197 | Exterior Interior |     39.0         7         20      0.709       0.639
+  198  LYS   204 | Exterior Interior |     50.7         7         18      0.716       0.754
+  203  VAL   209 | Interior Exterior |     16.2         5         13      0.405       0.629
+  205  PHE   211 | Interior Exterior |      5.1         4         19      0.390       0.627
+  208  GLY   214 | Interior Exterior |     28.6         3         17      0.641       0.634
+  211  PHE   217 | Interior Exterior |      9.6         4         19      0.884       0.681
+  215  GLU   221 | Exterior Interior |     30.4         8         13      0.643       0.728
+  219  PRO   225 | Interior Exterior |     26.5         4         17      0.539       0.616
+  220  PRO   226 | Interior Exterior |      2.2         2         20        nan       0.774
+  223  GLY   229 | Interior Exterior |     28.6         6         16      0.563       0.477
+  229  ARG   235 | Exterior Interior |     36.7         6         19      0.714       0.750
+  232  GLY   238 | Interior Exterior |     21.4         3         16      0.376       0.759
+  238  ILE   244 | Interior Exterior |     27.8         5         18      0.433       0.811
+  239  PRO   245 | Interior Exterior |      3.7         5         24      0.616       0.852
+  244  PHE   250 | Interior Exterior |      3.6         4         19      0.587       0.887
+  245  VAL   251 | Interior Exterior |     25.4         4         16      0.404       0.551
+  253  GLN     6 | Interior Exterior |      7.6         3         11      0.582       0.682
+  255  ALA     8 | Interior Exterior |     25.5         4         14      0.738       0.607
+  256  THR     9 | Interior Exterior |     21.1         3         15      0.751       0.650
+  257  ASN    10 | Interior Exterior |     28.0         4         18      0.699       0.842
+  258  TYR    11 | Interior Exterior |      1.4         4         22      0.625       0.869
+  259  ARG    12 | Interior Exterior |     28.6         3         15      0.578       0.721
+  262  ILE    15 | Interior Exterior |     27.8         2         11        nan       0.634
+  264  VAL    17 | Interior Exterior |      2.1         4         20      0.387       0.762
+  269  VAL    22 | Interior Exterior |      0.0         5         24      0.576       0.905
+  270  SER    23 | Interior Exterior |     11.5         5         19      0.894       0.829
+  271  GLU    24 | Interior Exterior |     21.6         3         21      0.429       0.722
+  273  LEU    26 | Interior Exterior |      9.1         3         21      0.532       0.843
+  276  ILE    29 | Interior Exterior |     13.0         4         19      0.346       0.709
+  277  ARG    30 | Interior Exterior |     14.5         4         17      0.448       0.615
+  281  ASN    34 | Interior Exterior |     24.2         5         15      0.426       0.576
+  282  GLY    35 | Interior Exterior |      4.8         6         11      0.683       0.619
+  293  PHE    46 | Interior Exterior |     11.2         5         20      0.588       0.912
+  294  THR    47 | Interior Exterior |     20.4         5         20      0.648       0.705
+  295  ALA    48 | Interior Exterior |     12.3         4         23      0.453       0.826
+  298  TRP    51 | Interior Exterior |     15.4         5         21      0.314       0.772
+  299  PHE    52 | Interior Exterior |      0.0         5         23      0.318       0.888
+  300  ILE    53 | Interior Exterior |     23.1         5         18      0.480       0.866
+  303  PHE    56 | Interior Exterior |     10.2         4         19      0.567       0.838
+  304  PRO    57 | Interior Exterior |     16.2         3         16      0.520       0.658
+  307  ALA    60 | Interior Exterior |      3.8         4         15      0.344       0.840
+  308  ASP    62 | Interior Exterior |      3.1         4         18      0.599       0.812
+  313  ILE    67 | Interior Exterior |     12.4         4         21      0.734       0.588
+  318  PHE    72 | Interior Exterior |     29.9         7         16      0.592       0.579
+  332  ASN    86 | Interior Exterior |     12.1         5         16      0.756       0.566
+  335  TRP    89 | Interior Exterior |      0.0         5         21      0.450       0.861
+  336  LYS    90 | Interior Exterior |     15.6         5         18      0.376       0.870
+  339  LYS    93 | Interior Exterior |     13.7         5         20      0.615       0.853
+  341  ILE    96 | Interior Exterior |      0.0         4         20      0.512       0.852
+  342  PHE    97 | Interior Exterior |     22.3         4         17      0.553       0.851
+  343  ASP    98 | Interior Exterior |      3.7         4         16      0.578       0.787
+  344  LEU    99 | Interior Exterior |      4.9         4         19      0.471       0.875
+  345  PRO   100 | Interior Exterior |     12.5         4         20      0.427       0.851
+  347  SER   102 | Interior Exterior |     26.2         5         15      0.655       0.560
+  352  GLU   107 | Exterior Interior |     33.0         6         18      0.480       0.638
+  355  ILE   110 | Interior Exterior |      7.7         5         19      0.321       0.839
+  365  ASN   121 | Interior Exterior |     28.7         4         19      0.436       0.710
+  366  SER   122 | Interior Exterior |      7.7         5         24      0.609       0.952
+  367  PRO   123 | Interior Exterior |      2.9         4         23      0.657       0.849
+  368  TYR   124 | Interior Exterior |      0.5         5         22      0.648       0.864
+  369  LEU   125 | Interior Exterior |      0.0         5         21      0.554       0.814
+  370  GLN   126 | Interior Exterior |     23.7         2         17        nan       0.721
+  371  ILE   128 | Interior Exterior |      7.7         3         17      0.553       0.718
+  373  GLN   130 | Interior Exterior |     13.6         5         15      0.507       0.605
+  376  ILE   133 | Interior Exterior |      7.1         4         18      0.462       0.633
+  381  ALA   138 | Interior Exterior |     25.5         6         12      0.421       0.554
+  390  VAL   147 | Interior Exterior |     29.6         6         16      0.500       0.564
+  394  GLU   152 | Interior Exterior |     21.6         4         18      0.525       0.668
+  396  LEU   154 | Interior Exterior |      0.6         5         21      0.651       0.750
+  397  LEU   156 | Interior Exterior |      0.0         5         25      0.447       0.922
+  404  TYR   163 | Interior Exterior |     22.5         2         18        nan       0.728
+  411  LYS   173 | Interior Exterior |     28.3         4         20      0.470       0.833
+  412  LEU   174 | Interior Exterior |      1.8         5         21      0.658       0.881
+  418  ALA   180 | Interior Exterior |     19.8         4         16      0.371       0.521
+  421  THR   183 | Exterior Interior |     41.5         6         22      0.698       0.670
+  432  TYR   194 | Exterior Interior |     30.2         6         14      0.503       0.604
+  435  LEU   197 | Exterior Interior |     38.4         7         19      0.729       0.653
+  439  ILE   201 | Interior Exterior |      0.0         5         22      0.514       0.951
+  442  LYS   204 | Exterior Interior |     52.7         6         17      0.672       0.746
+  447  VAL   209 | Interior Exterior |     13.4         5         13      0.408       0.634
+  449  PHE   211 | Interior Exterior |      6.6         4         20      0.378       0.613
+  455  PHE   217 | Interior Exterior |     12.7         4         19      0.918       0.663
+  463  PRO   225 | Interior Exterior |     23.5         5         18      0.725       0.684
+  464  PRO   226 | Interior Exterior |      0.7         2         21        nan       0.747
+  473  ARG   235 | Exterior Interior |     35.9         6         20      0.763       0.796
+  475  THR   237 | Interior Exterior |      6.3         4         19      0.683       0.939
+  476  GLY   238 | Interior Exterior |     21.4         4         21      0.624       0.752
+  478  THR   240 | Interior Exterior |     22.5         5         12      0.382       0.665
+  483  PRO   245 | Interior Exterior |      5.1         4         22      0.627       0.877
+  485  PHE   247 | Interior Exterior |     26.4         3         18      0.284       0.641
+  486  ALA   248 | Interior Exterior |     17.0         5         23      0.561       0.777
+  488  PHE   250 | Interior Exterior |      2.0         4         22      0.601       0.845
+
+========================================================================================================================
+
+RESIDUE LIST IN AGREEMENT: NCPS-STRIDE
+========================================================================================================================
+Total: 261 residues agree
+
+ Res#   ID   Num |  Class |  STRIDE ASA  NCPS NC6  NCPS NC10  NCPS Uni6  NCPS Uni10
+------------------------------------------------------------------------------------------------------------------------
+    2  GLN     1 | Exterior |      125.1         3         11      0.306       0.249
+    3  PRO     2 | Exterior |       42.2         5         12      0.552       0.507
+    7  GLN     6 | Interior |        0.0         6         15      0.502       0.885
+   14  GLN    13 | Exterior |       98.8         3          9      0.280       0.543
+   15  ASP    14 | Exterior |      112.6         3          7      0.289       0.323
+   17  ASP    16 | Exterior |       63.1         4         12      0.425       0.514
+   19  THR    18 | Exterior |       38.3         5         14      0.546       0.546
+   20  GLN    19 | Exterior |       28.8         6         16      0.588       0.506
+   21  TYR    20 | Interior |        0.0         8         23      0.870       0.862
+   22  TYR    21 | Interior |        0.8         7         19      0.698       0.906
+   29  GLY    28 | Interior |        0.0         7         23      0.741       0.690
+   32  ALA    31 | Interior |        0.0         7         25      0.908       0.855
+   34  TRP    33 | Interior |        6.8         6         23      0.648       0.949
+   37  HIS    36 | Exterior |       79.1         3         13      0.301       0.428
+   39  LEU    38 | Interior |        0.0         7         23      0.674       0.789
+   40  ILE    39 | Interior |        0.0         8         22      0.733       0.939
+   41  SER    40 | Interior |        0.8         6         20      0.625       0.802
+   43  GLN    42 | Exterior |       73.2         5         12      0.339       0.337
+   44  GLY    43 | Interior |        0.0         8         15      0.830       0.608
+   45  ASN    44 | Exterior |       39.7         6         15      0.487       0.542
+   50  PRO    49 | Interior |        0.0         6         20      0.895       0.788
+   51  THR    50 | Exterior |       25.1         5         13      0.333       0.625
+   54  ILE    53 | Interior |        8.4         6         18      0.491       0.876
+   55  ALA    54 | Exterior |       30.5         6         13      0.507       0.530
+   59  THR    58 | Exterior |       94.7         3         11      0.558       0.476
+   62  ASP    62 | Interior |        0.0         6         22      0.591       0.796
+   63  GLY    63 | Interior |        0.0         6         21      0.885       0.782
+   64  GLU    64 | Interior |        0.0         8         21      0.611       0.875
+   65  LEU    65 | Interior |        0.0         6         27      0.660       0.921
+   66  TRP    66 | Interior |        0.0         6         23      0.685       0.811
+   69  ARG    69 | Exterior |       24.1         4         13      0.655       0.637
+   70  GLN    70 | Exterior |       77.5         3         16      0.339       0.485
+   71  GLN    71 | Exterior |       55.3         6         12      0.752       0.517
+   72  PHE    72 | Exterior |       28.9         7         16      0.608       0.584
+   73  GLU    73 | Exterior |       85.7         6         12      0.358       0.378
+   75  VAL    75 | Interior |        0.0         6         22      0.387       0.838
+   76  SER    76 | Interior |        0.0         7         17      0.476       0.625
+   78  ILE    78 | Interior |        0.0         6         20      0.410       0.733
+   80  ARG    80 | Exterior |       36.2         4         13      0.280       0.574
+   84  ASN    84 | Exterior |       45.0         6         14      0.600       0.546
+   85  GLN    85 | Exterior |       54.1         4         17      0.343       0.577
+   92  ILE    92 | Interior |        0.0         6         21      0.840       0.884
+   93  LYS    93 | Interior |        0.0         6         19      0.692       0.874
+   98  LEU    99 | Interior |        0.0         6         21      0.606       0.901
+  102  THR   103 | Exterior |       37.5         2         13        nan       0.340
+  103  VAL   104 | Exterior |       30.4         3         13      0.503       0.439
+  104  SER   105 | Interior |        0.0         7         14      0.705       0.650
+  105  PHE   106 | Interior |        0.0         7         23      0.568       0.950
+  107  GLN   108 | Exterior |       83.1         6         13      0.414       0.563
+  108  ARG   109 | Interior |        0.0         6         20      0.443       0.791
+  110  ASN   111 | Exterior |       49.0         5          9      0.444       0.542
+  111  LYS   112 | Exterior |       38.7         5         15      0.430       0.635
+  113  THR   115 | Exterior |       27.5         6         11      0.490       0.592
+  115  VAL   117 | Interior |        0.0         7         16      0.612       0.777
+  116  THR   118 | Exterior |       60.3         6         11      0.389       0.466
+  117  ASP   119 | Exterior |       69.2         6         11      0.360       0.396
+  123  LEU   125 | Interior |        0.0         6         20      0.517       0.939
+  126  GLU   129 | Exterior |       33.5         3         12      0.385       0.523
+  131  PRO   134 | Exterior |       63.0         3         12      0.427       0.399
+  133  THR   136 | Exterior |       32.4         4         15      0.311       0.668
+  134  VAL   137 | Exterior |       88.3         5         10      0.304       0.304
+  136  LEU   139 | Interior |        0.0         6         17      0.425       0.913
+  139  LEU   142 | Interior |        0.0         6         16      0.431       0.647
+  140  LEU   143 | Interior |        0.0         6         19      0.420       0.879
+  142  LYS   145 | Exterior |       25.1         5         12      0.311       0.443
+  143  VAL   146 | Interior |        0.0         6         15      0.564       0.654
+  145  GLY   149 | Exterior |       30.7         4         10      0.205       0.351
+  146  LYS   150 | Exterior |      104.8         3         11      0.311       0.492
+  147  GLY   151 | Interior |        3.2         7         17      0.698       0.788
+  148  GLU   152 | Exterior |       27.3         4         17      0.451       0.652
+  149  GLY   153 | Interior |        0.0         7         20      0.730       0.838
+  152  HIS   157 | Interior |        0.0         6         21      0.640       0.870
+  153  HIS   158 | Interior |        0.0         7         20      0.841       0.875
+  154  GLN   159 | Interior |        6.5         7         20      0.738       0.677
+  156  ALA   161 | Interior |        0.0         6         18      0.463       0.694
+  157  LEU   162 | Exterior |       41.0         3         16      0.560       0.577
+  159  GLN   164 | Exterior |       45.6         4         15      0.440       0.620
+  161  LYS   166 | Exterior |      109.7         5         11      0.422       0.441
+  162  ARG   167 | Exterior |       91.9         5         12      0.408       0.469
+  163  SER   168 | Interior |        0.0         6         16      0.532       0.670
+  164  ARG   169 | Exterior |      117.7         4         15      0.353       0.471
+  166  LEU   171 | Interior |        0.0         6         20      0.766       0.924
+  170  LYS   176 | Exterior |       41.1         2         13        nan       0.664
+  171  PHE   177 | Exterior |       45.6         5         12      0.713       0.711
+  176  ALA   182 | Interior |        0.0         7         23      0.767       0.805
+  177  THR   183 | Interior |        0.0         7         24      0.738       0.716
+  178  VAL   184 | Interior |        0.0         6         25      0.638       0.868
+  181  TYR   187 | Exterior |       50.1         3         19      0.517       0.603
+  182  LEU   188 | Exterior |       24.7         5         14      0.453       0.523
+  183  PRO   189 | Exterior |       56.2         4         14      0.332       0.515
+  184  GLY   190 | Interior |        1.1         7         15      0.629       0.695
+  185  LYS   191 | Exterior |       64.3         4         11      0.385       0.360
+  186  GLY   192 | Exterior |       35.4         4          8      0.258       0.179
+  187  LYS   193 | Exterior |       94.9         3          8      0.212       0.171
+  188  TYR   194 | Interior |        0.8         7         14      0.570       0.613
+  189  GLU   195 | Exterior |       74.9         7         10      0.544       0.449
+  191  LEU   197 | Interior |        9.6         7         20      0.709       0.639
+  192  LEU   198 | Interior |        8.4         6         21      0.623       0.901
+  193  GLY   199 | Interior |        0.0         6         22      0.557       0.785
+  194  ALA   200 | Interior |        0.0         6         22      0.940       0.806
+  195  ILE   201 | Interior |        0.0         7         21      0.639       0.959
+  197  VAL   203 | Interior |        0.0         8         25      0.778       0.845
+  198  LYS   204 | Interior |        7.0         7         18      0.716       0.754
+  199  ASN   205 | Interior |        5.4         6         20      0.640       0.705
+  200  GLU   206 | Exterior |       66.7         3         11      0.250       0.361
+  201  GLU   207 | Exterior |       93.9         4         10      0.280       0.324
+  204  THR   210 | Exterior |       30.6         4         19      0.519       0.550
+  206  LYS   212 | Exterior |       95.6         4         19      0.489       0.622
+  207  ILE   213 | Interior |        0.0         6         22      0.617       0.840
+  209  SER   215 | Exterior |       50.0         5         14      0.523       0.535
+  213  ASP   219 | Exterior |       50.3         4         12      0.284       0.347
+  214  GLU   220 | Exterior |      101.4         5          9      0.328       0.330
+  215  GLU   221 | Interior |        2.1         8         13      0.643       0.728
+  216  ARG   222 | Interior |        2.1         8         18      0.635       0.811
+  217  SER   223 | Exterior |       25.4         5         14      0.478       0.458
+  218  THR   224 | Exterior |       50.8         4         11      0.283       0.413
+  219  PRO   225 | Exterior |       34.8         4         17      0.539       0.616
+  221  PRO   227 | Exterior |       38.3         3         17      0.446       0.492
+  222  ILE   228 | Exterior |       55.8         5         16      0.452       0.534
+  224  SER   230 | Interior |        0.0         9         17      0.859       0.740
+  225  LEU   231 | Interior |        0.0         6         22      0.789       0.652
+  226  ILE   232 | Interior |        0.0         7         21      0.737       0.850
+  227  THR   233 | Interior |        0.0         6         18      0.816       0.745
+  228  TYR   234 | Interior |        0.0         7         22      0.719       0.910
+  230  PHE   236 | Interior |        1.2         8         17      0.851       0.873
+  235  ASN   241 | Exterior |       96.7         3          7      0.327       0.220
+  236  ASN   242 | Exterior |       94.0         3          9      0.282       0.307
+  237  ASN   243 | Exterior |       38.9         5         13      0.330       0.541
+  241  PHE   247 | Exterior |      117.7         3         15      0.273       0.447
+  242  ALA   248 | Interior |        2.1         6         23      0.585       0.780
+  243  SER   249 | Interior |       23.0         7         19      0.766       0.774
+  246  ARG   252 | Exterior |       35.4         4         16      0.400       0.545
+  247  ILE   253 | Exterior |       27.0         3         17      0.477       0.485
+  249  VAL   255 | Exterior |       38.1         4         12      0.413       0.359
+  250  ILE   256 | Exterior |      102.9         3         13      0.456       0.347
+  251  TYR   257 | Exterior |       52.3         3         10      0.221       0.237
+  260  GLN    13 | Exterior |       98.8         2          9        nan       0.606
+  261  ASP    14 | Exterior |      112.6         3          7      0.316       0.316
+  263  ASP    16 | Exterior |       63.1         3         13      0.516       0.554
+  265  THR    18 | Exterior |       38.3         6         15      0.570       0.504
+  266  GLN    19 | Exterior |       28.8         4         16      0.516       0.507
+  267  TYR    20 | Interior |        0.0         8         23      0.859       0.851
+  268  TYR    21 | Interior |        0.8         7         20      0.706       0.872
+  275  GLY    28 | Interior |        0.0         7         24      0.728       0.662
+  278  ALA    31 | Interior |        0.0         7         23      0.902       0.843
+  280  TRP    33 | Interior |        6.8         6         23      0.655       0.915
+  283  HIS    36 | Exterior |       79.1         3         12      0.308       0.408
+  285  LEU    38 | Interior |        0.0         7         21      0.662       0.809
+  286  ILE    39 | Interior |        0.0         8         18      0.735       0.832
+  287  SER    40 | Interior |        0.8         6         15      0.619       0.759
+  289  GLN    42 | Exterior |       73.2         4          7      0.268       0.192
+  291  ASN    44 | Exterior |       39.7         5         11      0.398       0.415
+  296  PRO    49 | Interior |        0.0         6         17      0.909       0.746
+  297  THR    50 | Exterior |       25.1         5         12      0.314       0.581
+  301  ALA    54 | Exterior |       30.5         6         16      0.616       0.567
+  305  THR    58 | Exterior |       94.7         3         11      0.467       0.437
+  309  GLY    63 | Interior |        0.0         7         21      0.896       0.782
+  310  GLU    64 | Interior |        0.0         8         19      0.598       0.871
+  311  LEU    65 | Interior |        0.0         6         25      0.674       0.895
+  312  TRP    66 | Interior |        0.0         6         22      0.682       0.765
+  315  ARG    69 | Exterior |       24.1         4         15      0.665       0.646
+  316  GLN    70 | Exterior |       77.5         3         15      0.333       0.430
+  317  GLN    71 | Exterior |       55.3         6         12      0.781       0.537
+  318  PHE    72 | Exterior |       28.9         7         16      0.592       0.579
+  319  GLU    73 | Exterior |       85.7         5         12      0.300       0.373
+  321  VAL    75 | Interior |        0.0         7         23      0.459       0.863
+  322  SER    76 | Interior |        0.0         8         15      0.564       0.602
+  324  ILE    78 | Interior |        0.0         6         19      0.398       0.749
+  325  ALA    79 | Interior |        1.7         6         23      0.354       0.867
+  326  ARG    80 | Exterior |       36.2         5         15      0.302       0.588
+  330  ASN    84 | Exterior |       45.0         6         14      0.606       0.545
+  331  GLN    85 | Exterior |       54.1         4         16      0.345       0.509
+  338  ILE    92 | Interior |        0.0         6         20      0.839       0.834
+  340  PHE    94 | Interior |        0.0         6         24      0.846       0.830
+  348  THR   103 | Exterior |       37.5         2         11        nan       0.332
+  349  VAL   104 | Exterior |       30.4         3         15      0.528       0.457
+  350  SER   105 | Interior |        0.0         8         15      0.681       0.652
+  351  PHE   106 | Interior |        0.0         7         23      0.554       0.948
+  353  GLN   108 | Exterior |       83.1         6         12      0.411       0.542
+  354  ARG   109 | Interior |        0.0         7         20      0.533       0.722
+  356  ASN   111 | Exterior |       49.0         5          9      0.449       0.547
+  357  LYS   112 | Exterior |       38.7         5         14      0.429       0.597
+  359  THR   115 | Exterior |       27.5         6          9      0.488       0.585
+  360  LEU   116 | Interior |        7.0         6         16      0.357       0.768
+  361  VAL   117 | Interior |        0.0         7         16      0.614       0.765
+  362  THR   118 | Exterior |       60.3         6         11      0.399       0.516
+  363  ASP   119 | Exterior |       69.2         6         11      0.359       0.407
+  364  THR   120 | Interior |        0.0         7         16      0.668       0.627
+  372  GLU   129 | Exterior |       33.5         3         12      0.389       0.530
+  377  PRO   134 | Exterior |       63.0         3         13      0.418       0.402
+  379  THR   136 | Exterior |       32.4         4         15      0.299       0.660
+  380  VAL   137 | Exterior |       88.3         5         10      0.320       0.315
+  382  LEU   139 | Interior |        0.0         6         18      0.424       0.918
+  385  LEU   142 | Interior |        0.0         6         17      0.417       0.661
+  386  LEU   143 | Interior |        0.0         7         22      0.608       0.842
+  388  LYS   145 | Exterior |       25.1         5         12      0.306       0.438
+  389  VAL   146 | Interior |        0.0         6         17      0.563       0.643
+  391  GLY   149 | Exterior |       30.7         4          9      0.203       0.304
+  392  LYS   150 | Exterior |      104.8         3         12      0.318       0.474
+  393  GLY   151 | Interior |        3.2         6         19      0.645       0.730
+  394  GLU   152 | Exterior |       27.3         4         18      0.525       0.668
+  395  GLY   153 | Interior |        0.0         7         22      0.768       0.827
+  398  HIS   157 | Interior |        0.0         6         20      0.606       0.806
+  399  HIS   158 | Interior |        0.0         6         19      0.781       0.860
+  400  GLN   159 | Interior |        6.5         7         20      0.744       0.690
+  402  ALA   161 | Interior |        0.0         7         16      0.606       0.658
+  403  LEU   162 | Exterior |       41.0         3         15      0.548       0.539
+  405  GLN   164 | Exterior |       45.6         2         12        nan       0.566
+  408  ARG   169 | Exterior |      117.7         3         13      0.265       0.473
+  409  ASP   170 | Interior |        0.0         6         18      0.766       0.663
+  410  LEU   171 | Interior |        0.0         6         17      0.731       0.886
+  414  LYS   176 | Exterior |       41.1         4         20      0.608       0.751
+  415  PHE   177 | Exterior |       45.6         4         20      0.560       0.759
+  420  ALA   182 | Interior |        0.0         7         23      0.766       0.803
+  421  THR   183 | Interior |        0.0         6         22      0.698       0.670
+  422  VAL   184 | Interior |        0.0         7         24      0.795       0.800
+  425  TYR   187 | Exterior |       50.1         4         19      0.471       0.557
+  426  LEU   188 | Exterior |       24.7         4         14      0.452       0.499
+  427  PRO   189 | Exterior |       56.2         4         13      0.347       0.455
+  428  GLY   190 | Interior |        1.1         7         15      0.671       0.716
+  429  LYS   191 | Exterior |       64.3         4         11      0.367       0.371
+  430  GLY   192 | Exterior |       35.4         4          8      0.275       0.190
+  431  LYS   193 | Exterior |       94.9         3          8      0.198       0.163
+  432  TYR   194 | Interior |        0.8         6         14      0.503       0.604
+  433  GLU   195 | Exterior |       74.9         7         11      0.540       0.418
+  435  LEU   197 | Interior |        9.6         7         19      0.729       0.653
+  436  LEU   198 | Interior |        8.4         6         22      0.615       0.875
+  437  GLY   199 | Interior |        0.0         6         23      0.677       0.794
+  438  ALA   200 | Interior |        0.0         7         23      0.920       0.828
+  441  VAL   203 | Interior |        0.0         8         24      0.812       0.856
+  442  LYS   204 | Interior |        7.0         6         17      0.672       0.746
+  443  ASN   205 | Interior |        5.4         6         20      0.641       0.696
+  444  GLU   206 | Exterior |       66.7         3         11      0.253       0.352
+  445  GLU   207 | Exterior |       93.9         4         10      0.280       0.326
+  448  THR   210 | Exterior |       30.6         4         17      0.522       0.513
+  450  LYS   212 | Exterior |       95.6         5         19      0.522       0.676
+  451  ILE   213 | Interior |        0.0         6         22      0.608       0.898
+  453  SER   215 | Exterior |       50.0         5         16      0.538       0.537
+  457  ASP   219 | Exterior |       50.3         4         12      0.271       0.326
+  458  GLU   220 | Exterior |      101.4         6         10      0.387       0.309
+  459  GLU   221 | Interior |        2.1         8         13      0.638       0.694
+  460  ARG   222 | Interior |        2.1         8         21      0.626       0.777
+  461  SER   223 | Exterior |       25.4         5         14      0.471       0.454
+  462  THR   224 | Exterior |       50.8         5         11      0.294       0.409
+  463  PRO   225 | Exterior |       34.8         5         18      0.725       0.684
+  465  PRO   227 | Exterior |       38.3         4         16      0.553       0.465
+  466  ILE   228 | Exterior |       55.8         5         14      0.430       0.429
+  468  SER   230 | Interior |        0.0         6         15      0.503       0.615
+  470  ILE   232 | Interior |        0.0         7         20      0.732       0.875
+  471  THR   233 | Interior |        0.0         6         17      0.807       0.747
+  472  TYR   234 | Interior |        0.0         7         22      0.735       0.897
+  474  PHE   236 | Interior |        1.2         8         18      0.853       0.927
+  477  LYS   239 | Interior |       15.3         6         15      0.557       0.640
+  479  ASN   241 | Exterior |       96.7         3          8      0.222       0.228
+  480  ASN   242 | Exterior |       94.0         4          7      0.283       0.290
+  481  ASN   243 | Exterior |       38.9         5         13      0.352       0.599
+  485  PHE   247 | Exterior |      117.7         3         18      0.284       0.641
+  487  SER   249 | Interior |       23.0         7         21      0.722       0.761
+  490  ARG   252 | Exterior |       35.4         4         15      0.394       0.517
+  491  ILE   253 | Exterior |       27.0         3         16      0.463       0.484
+  493  VAL   255 | Exterior |       38.1         1          6        nan       0.107
+
+========================================================================================================================
+
+RESIDUE LIST IN DISAGREEMENT: NCPS-STRIDE
+========================================================================================================================
+Total: 232 residues disagree
+
+ Res#   ID   Num |   STRIDE     NCPS |  STRIDE ASA  NCPS NC6  NCPS NC10  NCPS Uni6  NCPS Uni10
+------------------------------------------------------------------------------------------------------------------------
+    1  GLY     0 | Interior Exterior |        4.5         3         10      0.303       0.208
+    4  PRO     3 | Interior Exterior |        1.1         3         20      0.485       0.653
+    5  PRO     4 | Interior Exterior |       13.6         3         16      0.526       0.629
+    6  ILE     5 | Interior Exterior |        0.0         4         18      0.603       0.823
+    8  LEU     7 | Interior Exterior |       18.8         5         15      0.433       0.527
+    9  ALA     8 | Interior Exterior |        0.0         5         14      0.451       0.590
+   10  THR     9 | Interior Exterior |       12.3         3         13      0.686       0.561
+   11  ASN    10 | Interior Exterior |       13.3         3         16      0.484       0.685
+   12  TYR    11 | Interior Exterior |        2.1         4         17      0.659       0.814
+   13  ARG    12 | Interior Exterior |       13.9         3         12      0.552       0.680
+   16  ILE    15 | Interior Exterior |        8.3         4         11      0.590       0.586
+   18  VAL    17 | Interior Exterior |        0.0         5         20      0.452       0.773
+   23  VAL    22 | Interior Exterior |        0.0         5         24      0.583       0.854
+   24  SER    23 | Interior Exterior |        0.0         5         17      0.877       0.806
+   25  GLU    24 | Interior Exterior |        0.0         5         20      0.477       0.742
+   26  LYS    25 | Interior Exterior |        0.0         5         17      0.520       0.799
+   27  LEU    26 | Interior Exterior |        0.0         4         21      0.798       0.835
+   28  ASP    27 | Interior Exterior |       12.9         2         21        nan       0.631
+   30  ILE    29 | Interior Exterior |       21.3         4         19      0.339       0.741
+   31  ARG    30 | Interior Exterior |        0.0         4         19      0.451       0.684
+   33  TYR    32 | Interior Exterior |        0.0         5         27      0.588       0.931
+   35  ASN    34 | Interior Exterior |        3.2         5         17      0.430       0.626
+   36  GLY    35 | Interior Exterior |        8.8         6         12      0.638       0.570
+   38  GLN    37 | Interior Exterior |        1.7         4         18      0.376       0.668
+   42  LYS    41 | Interior Exterior |        6.8         4         16      0.269       0.509
+   46  ILE    45 | Interior Exterior |       12.3         4         17      0.439       0.566
+   47  PHE    46 | Interior Exterior |        5.5         5         19      0.582       0.910
+   48  THR    47 | Interior Exterior |        0.0         5         19      0.665       0.725
+   49  ALA    48 | Interior Exterior |        0.0         4         22      0.455       0.844
+   52  TRP    51 | Interior Exterior |        0.0         5         20      0.316       0.764
+   53  PHE    52 | Interior Exterior |        0.0         5         23      0.307       0.898
+   56  SER    55 | Interior Exterior |        0.0         3         15      0.252       0.629
+   57  PHE    56 | Interior Exterior |        2.1         4         21      0.526       0.874
+   58  PRO    57 | Interior Exterior |        0.0         3         14      0.501       0.675
+   60  THR    59 | Interior Exterior |        1.7         4         14      0.357       0.654
+   61  ALA    60 | Interior Exterior |        0.0         5         17      0.684       0.777
+   67  ILE    67 | Interior Exterior |        0.8         3         20      0.679       0.609
+   68  ALA    68 | Interior Exterior |       18.3         3         17      0.483       0.480
+   74  THR    74 | Interior Exterior |        6.8         6         15      0.401       0.473
+   77  GLY    77 | Interior Exterior |        1.7         7         11      0.463       0.500
+   79  ALA    79 | Interior Exterior |        1.7         5         23      0.314       0.828
+   81  THR    81 | Interior Exterior |        2.5         5         13      0.605       0.504
+   82  GLN    82 | Interior Exterior |       17.9         3         12      0.435       0.388
+   83  ASP    83 | Interior Exterior |        0.8         6         13      0.596       0.432
+   86  ASN    86 | Interior Exterior |        0.0         5         17      0.755       0.646
+   87  GLU    87 | Interior Exterior |       15.0         5         17      0.568       0.561
+   88  GLN    88 | Interior Exterior |       10.9         4         15      0.347       0.594
+   89  TRP    89 | Interior Exterior |        0.0         5         21      0.456       0.857
+   90  LYS    90 | Interior Exterior |        0.0         5         18      0.400       0.860
+   91  GLN    91 | Interior Exterior |        0.0         3         16      0.246       0.669
+   94  PHE    94 | Interior Exterior |        0.0         5         24      0.689       0.825
+   95  ILE    96 | Interior Exterior |        0.0         4         20      0.503       0.845
+   96  PHE    97 | Interior Exterior |        0.0         5         17      0.502       0.849
+   97  ASP    98 | Interior Exterior |        0.0         3         18      0.563       0.787
+   99  PRO   100 | Interior Exterior |        0.0         3         21      0.267       0.895
+  100  LYS   101 | Interior Exterior |       21.2         3         15      0.244       0.539
+  101  SER   102 | Interior Exterior |        0.0         5         15      0.700       0.578
+  106  GLU   107 | Exterior Interior |       25.4         6         17      0.489       0.618
+  109  ILE   110 | Interior Exterior |        0.0         5         19      0.322       0.844
+  112  GLN   114 | Interior Exterior |       21.6         5         14      0.409       0.708
+  114  LEU   116 | Interior Exterior |        7.0         5         16      0.298       0.771
+  118  THR   120 | Interior Exterior |        0.0         5         15      0.380       0.619
+  119  ASN   121 | Interior Exterior |       11.5         4         15      0.473       0.571
+  120  SER   122 | Interior Exterior |        0.0         5         20      0.618       0.869
+  121  PRO   123 | Interior Exterior |        0.0         3         21      0.229       0.883
+  122  TYR   124 | Interior Exterior |        0.0         5         24      0.590       0.911
+  124  GLN   126 | Interior Exterior |       10.0         2         18        nan       0.730
+  125  ILE   128 | Interior Exterior |        0.0         3         18      0.547       0.728
+  127  GLN   130 | Interior Exterior |        0.0         5         15      0.501       0.612
+  128  GLN   131 | Interior Exterior |        7.0         4         11      0.390       0.448
+  129  LYS   132 | Interior Exterior |       15.5         3         15      0.547       0.492
+  130  ILE   133 | Interior Exterior |        0.8         3         16      0.547       0.661
+  132  ASN   135 | Interior Exterior |       11.3         5         11      0.477       0.539
+  135  ALA   138 | Interior Exterior |        2.9         6         12      0.410       0.546
+  137  PHE   140 | Exterior Interior |       56.3         6         15      0.414       0.648
+  138  ASP   141 | Interior Exterior |       21.2         6         11      0.413       0.532
+  141  ASN   144 | Interior Exterior |       21.8         6         16      0.426       0.510
+  144  VAL   147 | Interior Exterior |        0.8         7         15      0.564       0.546
+  150  LEU   154 | Interior Exterior |        0.0         5         21      0.639       0.748
+  151  LEU   156 | Interior Exterior |        0.0         5         24      0.431       0.930
+  155  ASP   160 | Interior Exterior |       22.2         5         14      0.362       0.465
+  158  TYR   163 | Interior Exterior |        0.0         2         22        nan       0.786
+  160  THR   165 | Interior Exterior |        5.3         5         12      0.564       0.570
+  165  ASP   170 | Interior Exterior |        0.0         5         21      0.631       0.698
+  167  LYS   173 | Interior Exterior |        4.5         3         17      0.254       0.725
+  168  LEU   174 | Interior Exterior |        1.2         5         20      0.708       0.884
+  169  LYS   175 | Interior Exterior |       19.5         4         16      0.801       0.802
+  172  GLU   178 | Interior Exterior |        3.4         5         14      0.399       0.645
+  173  ASP   179 | Interior Exterior |        1.1         4         14      0.550       0.442
+  174  ALA   180 | Interior Exterior |        0.0         4         14      0.369       0.510
+  175  GLU   181 | Interior Exterior |        4.3         4         19      0.535       0.602
+  179  ILE   185 | Interior Exterior |       24.0         6         16      0.522       0.511
+  180  ALA   186 | Interior Exterior |       20.3         4         16      0.422       0.489
+  190  GLY   196 | Interior Exterior |       22.0         2         12        nan       0.277
+  196  LEU   202 | Exterior Interior |       49.3         6         18      0.840       0.743
+  202  GLY   208 | Interior Exterior |       11.6         5         11      0.340       0.327
+  203  VAL   209 | Interior Exterior |        9.7         5         13      0.405       0.629
+  205  PHE   211 | Interior Exterior |        1.7         4         19      0.390       0.627
+  208  GLY   214 | Interior Exterior |        9.7         3         17      0.641       0.634
+  210  GLY   216 | Interior Exterior |        8.5         4         15      0.499       0.575
+  211  PHE   217 | Interior Exterior |        0.0         4         19      0.884       0.681
+  212  SER   218 | Interior Exterior |        7.5         4         11      0.382       0.408
+  220  PRO   226 | Interior Exterior |        0.0         2         20        nan       0.774
+  223  GLY   229 | Interior Exterior |        5.1         6         16      0.563       0.477
+  229  ARG   235 | Exterior Interior |       47.3         6         19      0.714       0.750
+  231  THR   237 | Interior Exterior |       13.5         5         17      0.673       0.826
+  232  GLY   238 | Interior Exterior |        0.0         3         16      0.376       0.759
+  233  LYS   239 | Interior Exterior |       15.3         6         12      0.545       0.540
+  234  THR   240 | Interior Exterior |       20.0         5         10      0.453       0.473
+  238  ILE   244 | Interior Exterior |       17.1         5         18      0.433       0.811
+  239  PRO   245 | Interior Exterior |        0.0         5         24      0.616       0.852
+  240  ARG   246 | Exterior Interior |       31.3         8         13      0.645       0.686
+  244  PHE   250 | Interior Exterior |        0.0         4         19      0.587       0.887
+  245  VAL   251 | Interior Exterior |        1.1         4         16      0.404       0.551
+  248  ARG   254 | Interior Exterior |       22.5         4         13      0.336       0.387
+  252  ILE     5 | Interior Exterior |        0.0         2         11        nan       0.609
+  253  GLN     6 | Interior Exterior |        0.0         3         11      0.582       0.682
+  254  LEU     7 | Interior Exterior |       18.8         2         10        nan       0.482
+  255  ALA     8 | Interior Exterior |        0.0         4         14      0.738       0.607
+  256  THR     9 | Interior Exterior |       12.3         3         15      0.751       0.650
+  257  ASN    10 | Interior Exterior |       13.3         4         18      0.699       0.842
+  258  TYR    11 | Interior Exterior |        2.1         4         22      0.625       0.869
+  259  ARG    12 | Interior Exterior |       13.9         3         15      0.578       0.721
+  262  ILE    15 | Interior Exterior |        8.3         2         11        nan       0.634
+  264  VAL    17 | Interior Exterior |        0.0         4         20      0.387       0.762
+  269  VAL    22 | Interior Exterior |        0.0         5         24      0.576       0.905
+  270  SER    23 | Interior Exterior |        0.0         5         19      0.894       0.829
+  271  GLU    24 | Interior Exterior |        0.0         3         21      0.429       0.722
+  272  LYS    25 | Interior Exterior |        0.0         5         19      0.511       0.762
+  273  LEU    26 | Interior Exterior |        0.0         3         21      0.532       0.843
+  274  ASP    27 | Interior Exterior |       12.9         2         20        nan       0.628
+  276  ILE    29 | Interior Exterior |       21.3         4         19      0.346       0.709
+  277  ARG    30 | Interior Exterior |        0.0         4         17      0.448       0.615
+  279  TYR    32 | Interior Exterior |        0.0         5         22      0.599       0.783
+  281  ASN    34 | Interior Exterior |        3.2         5         15      0.426       0.576
+  282  GLY    35 | Interior Exterior |        8.8         6         11      0.683       0.619
+  284  GLN    37 | Interior Exterior |        1.7         4         17      0.392       0.665
+  288  LYS    41 | Interior Exterior |        6.8         3         11      0.222       0.469
+  290  GLY    43 | Interior Exterior |        0.0         5         10      0.372       0.318
+  292  ILE    45 | Interior Exterior |       12.3         4         16      0.447       0.511
+  293  PHE    46 | Interior Exterior |        5.5         5         20      0.588       0.912
+  294  THR    47 | Interior Exterior |        0.0         5         20      0.648       0.705
+  295  ALA    48 | Interior Exterior |        0.0         4         23      0.453       0.826
+  298  TRP    51 | Interior Exterior |        0.0         5         21      0.314       0.772
+  299  PHE    52 | Interior Exterior |        0.0         5         23      0.318       0.888
+  300  ILE    53 | Interior Exterior |        8.4         5         18      0.480       0.866
+  302  SER    55 | Interior Exterior |        0.0         3         15      0.515       0.532
+  303  PHE    56 | Interior Exterior |        2.1         4         19      0.567       0.838
+  304  PRO    57 | Interior Exterior |        0.0         3         16      0.520       0.658
+  306  THR    59 | Interior Exterior |        1.7         4         13      0.408       0.637
+  307  ALA    60 | Interior Exterior |        0.0         4         15      0.344       0.840
+  308  ASP    62 | Interior Exterior |        0.0         4         18      0.599       0.812
+  313  ILE    67 | Interior Exterior |        0.8         4         21      0.734       0.588
+  314  ALA    68 | Interior Exterior |       18.3         3         17      0.466       0.484
+  320  THR    74 | Interior Exterior |        6.8         6         16      0.400       0.472
+  323  GLY    77 | Interior Exterior |        1.7         6         10      0.385       0.519
+  327  THR    81 | Interior Exterior |        2.5         5         14      0.597       0.497
+  328  GLN    82 | Interior Exterior |       17.9         3         12      0.439       0.379
+  329  ASP    83 | Interior Exterior |        0.8         6         13      0.579       0.416
+  332  ASN    86 | Interior Exterior |        0.0         5         16      0.756       0.566
+  333  GLU    87 | Interior Exterior |       15.0         4         16      0.346       0.560
+  334  GLN    88 | Interior Exterior |       10.9         5         15      0.441       0.581
+  335  TRP    89 | Interior Exterior |        0.0         5         21      0.450       0.861
+  336  LYS    90 | Interior Exterior |        0.0         5         18      0.376       0.870
+  337  GLN    91 | Interior Exterior |        0.0         5         16      0.497       0.657
+  339  LYS    93 | Interior Exterior |        0.0         5         20      0.615       0.853
+  341  ILE    96 | Interior Exterior |        0.0         4         20      0.512       0.852
+  342  PHE    97 | Interior Exterior |        0.0         4         17      0.553       0.851
+  343  ASP    98 | Interior Exterior |        0.0         4         16      0.578       0.787
+  344  LEU    99 | Interior Exterior |        0.0         4         19      0.471       0.875
+  345  PRO   100 | Interior Exterior |        0.0         4         20      0.427       0.851
+  346  LYS   101 | Interior Exterior |       21.2         3         11      0.237       0.500
+  347  SER   102 | Interior Exterior |        0.0         5         15      0.655       0.560
+  352  GLU   107 | Exterior Interior |       25.4         6         18      0.480       0.638
+  355  ILE   110 | Interior Exterior |        0.0         5         19      0.321       0.839
+  358  GLN   114 | Interior Exterior |       21.6         5         15      0.430       0.713
+  365  ASN   121 | Interior Exterior |       11.5         4         19      0.436       0.710
+  366  SER   122 | Interior Exterior |        0.0         5         24      0.609       0.952
+  367  PRO   123 | Interior Exterior |        0.0         4         23      0.657       0.849
+  368  TYR   124 | Interior Exterior |        0.0         5         22      0.648       0.864
+  369  LEU   125 | Interior Exterior |        0.0         5         21      0.554       0.814
+  370  GLN   126 | Interior Exterior |       10.0         2         17        nan       0.721
+  371  ILE   128 | Interior Exterior |        0.0         3         17      0.553       0.718
+  373  GLN   130 | Interior Exterior |        0.0         5         15      0.507       0.605
+  374  GLN   131 | Interior Exterior |        7.0         4         12      0.381       0.490
+  375  LYS   132 | Interior Exterior |       15.5         3         15      0.551       0.508
+  376  ILE   133 | Interior Exterior |        0.8         4         18      0.462       0.633
+  378  ASN   135 | Interior Exterior |       11.3         5         11      0.482       0.502
+  381  ALA   138 | Interior Exterior |        2.9         6         12      0.421       0.554
+  383  PHE   140 | Exterior Interior |       56.3         7         15      0.468       0.614
+  384  ASP   141 | Interior Exterior |       21.2         6         11      0.423       0.552
+  387  ASN   144 | Interior Exterior |       21.8         7         16      0.469       0.534
+  390  VAL   147 | Interior Exterior |        0.8         6         16      0.500       0.564
+  396  LEU   154 | Interior Exterior |        0.0         5         21      0.651       0.750
+  397  LEU   156 | Interior Exterior |        0.0         5         25      0.447       0.922
+  401  ASP   160 | Interior Exterior |       22.2         5         16      0.367       0.443
+  404  TYR   163 | Interior Exterior |        0.0         2         18        nan       0.728
+  406  THR   165 | Interior Exterior |        5.3         3          7      0.455       0.475
+  407  SER   168 | Interior Exterior |        0.0         4         11      0.288       0.480
+  411  LYS   173 | Interior Exterior |        4.5         4         20      0.470       0.833
+  412  LEU   174 | Interior Exterior |        1.2         5         21      0.658       0.881
+  413  LYS   175 | Interior Exterior |       19.5         3         18      0.498       0.786
+  416  GLU   178 | Interior Exterior |        3.4         4         11      0.348       0.477
+  417  ASP   179 | Interior Exterior |        1.1         4         13      0.513       0.427
+  418  ALA   180 | Interior Exterior |        0.0         4         16      0.371       0.521
+  419  GLU   181 | Interior Exterior |        4.3         4         20      0.538       0.591
+  423  ILE   185 | Interior Exterior |       24.0         5         16      0.444       0.495
+  424  ALA   186 | Interior Exterior |       20.3         3         15      0.508       0.432
+  434  GLY   196 | Interior Exterior |       22.0         2         12        nan       0.276
+  439  ILE   201 | Interior Exterior |        0.0         5         22      0.514       0.951
+  440  LEU   202 | Exterior Interior |       49.3         8         19      0.767       0.777
+  446  GLY   208 | Interior Exterior |       11.6         4         11      0.317       0.328
+  447  VAL   209 | Interior Exterior |        9.7         5         13      0.408       0.634
+  449  PHE   211 | Interior Exterior |        1.7         4         20      0.378       0.613
+  452  GLY   214 | Interior Exterior |        9.7         4         19      0.671       0.664
+  454  GLY   216 | Interior Exterior |        8.5         4         16      0.506       0.576
+  455  PHE   217 | Interior Exterior |        0.0         4         19      0.918       0.663
+  456  SER   218 | Interior Exterior |        7.5         4         11      0.398       0.411
+  464  PRO   226 | Interior Exterior |        0.0         2         21        nan       0.747
+  467  GLY   229 | Interior Exterior |        5.1         3         12      0.315       0.346
+  469  LEU   231 | Interior Exterior |        0.0         5         19      0.637       0.599
+  473  ARG   235 | Exterior Interior |       47.3         6         20      0.763       0.796
+  475  THR   237 | Interior Exterior |       13.5         4         19      0.683       0.939
+  476  GLY   238 | Interior Exterior |        0.0         4         21      0.624       0.752
+  478  THR   240 | Interior Exterior |       20.0         5         12      0.382       0.665
+  482  ILE   244 | Interior Exterior |       17.1         5         18      0.401       0.796
+  483  PRO   245 | Interior Exterior |        0.0         4         22      0.627       0.877
+  484  ARG   246 | Exterior Interior |       31.3         7         19      0.493       0.809
+  486  ALA   248 | Interior Exterior |        2.1         5         23      0.561       0.777
+  488  PHE   250 | Interior Exterior |        0.0         4         22      0.601       0.845
+  489  VAL   251 | Interior Exterior |        1.1         4         16      0.395       0.543
+  492  ARG   254 | Interior Exterior |       22.5         4         11      0.538       0.406
+
+========================================================================================================================
 
 ========================================================================================================================
