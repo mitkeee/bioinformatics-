@@ -3,5 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/dssp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/dssp/build/_deps/cifpp-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/dssp/build/_deps/mcfp-src" vcs="Git" />
   </component>
 </project>

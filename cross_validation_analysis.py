@@ -119,8 +119,8 @@ def compare_all_models(df):
 
     results_all_models = {}
 
-    # Model 1: All features (6Å + 10Å)
-    feature_cols_all = ['stride_asa_norm', 'ncps_sphere_6_norm', 'ncps_sphere_10_norm',
+    # All features (6Å + 10Å) - ONLY neighbor-based features (DSSP/STRIDE agnostic)
+    feature_cols_all = ['ncps_sphere_6_norm', 'ncps_sphere_10_norm',
                         'ncps_sphere_6_uni_norm', 'ncps_sphere_10_uni_norm']
     df_clean = df[feature_cols_all + ['dssp_class']].dropna()
     X_all = df_clean[feature_cols_all]
@@ -130,8 +130,8 @@ def compare_all_models(df):
                                                 "All Features (6Å + 10Å)", n_folds=5)
     results_all_models['all'] = results_all
 
-    # Model 2: 6Å only
-    feature_cols_6A = ['stride_asa_norm', 'ncps_sphere_6_norm', 'ncps_sphere_6_uni_norm']
+    # Model 2: 6Å only - ONLY neighbor-based features (DSSP/STRIDE agnostic)
+    feature_cols_6A = ['ncps_sphere_6_norm', 'ncps_sphere_6_uni_norm']
     df_clean = df[feature_cols_6A + ['dssp_class']].dropna()
     X_6A = df_clean[feature_cols_6A]
     y_6A = df_clean['dssp_class']
@@ -140,8 +140,8 @@ def compare_all_models(df):
                                               "6Å Features Only", n_folds=5)
     results_all_models['6A'] = results_6A
 
-    # Model 3: 10Å only
-    feature_cols_10A = ['stride_asa_norm', 'ncps_sphere_10_norm', 'ncps_sphere_10_uni_norm']
+    # Model 3: 10Å only - ONLY neighbor-based features (DSSP/STRIDE agnostic)
+    feature_cols_10A = ['ncps_sphere_10_norm', 'ncps_sphere_10_uni_norm']
     df_clean = df[feature_cols_10A + ['dssp_class']].dropna()
     X_10A = df_clean[feature_cols_10A]
     y_10A = df_clean['dssp_class']
