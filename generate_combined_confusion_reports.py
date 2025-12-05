@@ -184,10 +184,30 @@ def save_individual_report(result, params: BurialParameters, output_dir: Path):
         f.write(f"CONFUSION MATRICES FOR PROTEIN: {protein_id.upper()}\n")
         f.write("="*80 + "\n\n")
         
+        f.write(f"Total Residues: {result['n_residues']}\n\n")
+
+        # Classification Parameters Section
+        f.write("="*80 + "\n")
+        f.write("CLASSIFICATION PARAMETERS\n")
+        f.write("="*80 + "\n\n")
+        f.write("RASA/ASA Cutoff Values Used:\n")
+        f.write(f"  DSSP ASA Cutoff:   {params.dssp_asa_cutoff:.1f} Ų\n")
+        f.write(f"    → Residues with ASA ≤ {params.dssp_asa_cutoff:.1f} Ų are classified as INTERIOR (0)\n")
+        f.write(f"    → Residues with ASA > {params.dssp_asa_cutoff:.1f} Ų are classified as EXTERIOR (1)\n\n")
+        f.write(f"  STRIDE ASA Cutoff: {params.stride_asa_cutoff:.1f} Ų\n")
+        f.write(f"    → Residues with ASA ≤ {params.stride_asa_cutoff:.1f} Ų are classified as INTERIOR (0)\n")
+        f.write(f"    → Residues with ASA > {params.stride_asa_cutoff:.1f} Ų are classified as EXTERIOR (1)\n\n")
+        f.write("NCPS Burial Classification Algorithm:\n")
+        f.write(f"  NC6 Threshold:     {params.nc6_threshold:.1f} neighbors (within 6 Ų)\n")
+        f.write(f"  NC10 Threshold:    {params.nc10_threshold:.1f} neighbors (within 10 Ų)\n")
+        f.write(f"  Uni6 Threshold:    {params.uni6_threshold:.2f} (uniformity in 6 Ų)\n")
+        f.write(f"  Uni10 Threshold:   {params.uni10_threshold:.2f} (uniformity in 10 Ų)\n\n")
+
         # PDB Validation Information
         pdb_val = result.get('pdb_validation', {})
+        f.write("="*80 + "\n")
         f.write("PDB FILE VALIDATION:\n")
-        f.write("-" * 80 + "\n")
+        f.write("="*80 + "\n\n")
         f.write(f"  File is valid PDB:     {'YES' if pdb_val.get('is_valid_pdb') else 'NO'}\n")
         f.write(f"  PDB ID from file:      {pdb_val.get('pdb_id', 'Not found')}\n")
         f.write(f"  Has HEADER record:     {'YES' if pdb_val.get('has_header') else 'NO'}\n")
@@ -197,6 +217,21 @@ def save_individual_report(result, params: BurialParameters, output_dir: Path):
         f.write(f"  File size:             {pdb_val.get('file_size_kb', 0):.2f} KB\n")
         if pdb_val.get('error'):
             f.write(f"  Error:                 {pdb_val.get('error')}\n")
+        f.write("\n")
+
+        # Auxiliary Files Information
+        aux_files = result.get('auxiliary_files', {})
+        f.write("="*80 + "\n")
+        f.write("AUXILIARY FILES STATUS:\n")
+        f.write("="*80 + "\n\n")
+        f.write(f"  DSSP file available:   {'YES' if aux_files.get('has_dssp') else 'NO'}\n")
+        if aux_files.get('has_dssp'):
+            f.write(f"    File: {aux_files.get('dssp_file')}\n")
+            f.write(f"    Size: {aux_files.get('dssp_size', 0)} bytes\n")
+        f.write(f"  STRIDE file available: {'YES' if aux_files.get('has_stride') else 'NO'}\n")
+        if aux_files.get('has_stride'):
+            f.write(f"    File: {aux_files.get('stride_file')}\n")
+            f.write(f"    Size: {aux_files.get('stride_size', 0)} bytes\n")
         f.write("\n")
 
         # Auxiliary Files Information
