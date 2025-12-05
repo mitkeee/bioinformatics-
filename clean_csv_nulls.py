@@ -74,7 +74,7 @@ def main():
 
     # Show example of cleaned data
     print("\nExample from 3pte_results.csv (first 5 rows):")
-    df_sample = pd.read_csv('results/3pte_results.csv')
+    df_sample = pd.read_csv('holder/results/3pte_results.csv')
     print(df_sample.head(5).to_string())
 
 if __name__ == "__main__":

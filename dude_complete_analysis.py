@@ -47,7 +47,7 @@ class DUDEAnalysisConfig:
     optimization_reference: str = 'dssp'  # 'dssp' or 'stride'
     
     # Output
-    output_base_dir: Path = Path("results/dude_analysis")
+    output_base_dir: Path = Path("holder/results/dude_analysis")
     save_individual_csvs: bool = True
     save_confusion_matrices: bool = True
 

@@ -22,7 +22,7 @@ def load_normalized_data():
     """
     Load the pre-normalized combined dataset.
     """
-    data_file = Path('results/decision_tree/combined_normalized.csv')
+    data_file = Path('holder/results/decision_tree/combined_normalized.csv')
 
     if not data_file.exists():
         print("❌ Error: combined_normalized.csv not found!")
@@ -184,7 +184,7 @@ def visualize_cv_comparison(results_all_models):
     """
     Create visualization comparing cross-validation results.
     """
-    output_dir = Path('results/decision_tree')
+    output_dir = Path('holder/results/decision_tree')
 
     # Prepare data for plotting
     models = ['All Features', '6Å Only', '10Å Only']
@@ -233,7 +233,7 @@ def save_cv_report(results_all_models):
     """
     Save detailed cross-validation report to text file.
     """
-    output_dir = Path('results/decision_tree')
+    output_dir = Path('holder/results/decision_tree')
     output_file = output_dir / 'cross_validation_report.txt'
 
     with open(output_file, 'w') as f:

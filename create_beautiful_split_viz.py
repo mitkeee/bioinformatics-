@@ -11,7 +11,7 @@ from sklearn.preprocessing import KBinsDiscretizer
 import sys
 
 # Configuration
-OUTPUT_DIR = Path('results/decision_tree/beautiful_viz')
+OUTPUT_DIR = Path('holder/results/decision_tree/beautiful_viz')
 FEATURE_COLS = ['stride_asa_norm', 'ncps_sphere_6_norm', 'ncps_sphere_10_norm',
                 'ncps_sphere_6_uni_norm', 'ncps_sphere_10_uni_norm']
 
@@ -26,7 +26,7 @@ FEATURE_NAMES = {
 
 def load_data():
     """Load and prepare data with error handling."""
-    data_file = Path('results/decision_tree/combined_normalized.csv')
+    data_file = Path('holder/results/decision_tree/combined_normalized.csv')
 
     if not data_file.exists():
         print(f"❌ Error: Data file not found: {data_file}")

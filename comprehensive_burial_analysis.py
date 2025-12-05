@@ -101,6 +101,10 @@ MAX_ASA = {
 
 def extract_ca_atoms(pdb_path: Path) -> pd.DataFrame:
     """Extract CA atoms with coordinates and residue info."""
+    # Convert to Path if string
+    if isinstance(pdb_path, str):
+        pdb_path = Path(pdb_path)
+
     parser = PDBParser(QUIET=True)
     structure = parser.get_structure(pdb_path.stem, str(pdb_path))
 
@@ -178,129 +182,212 @@ def calculate_uniformity(coords: np.ndarray, radius: float) -> np.ndarray:
 
 def extract_dssp_data(pdb_path: Path, df: pd.DataFrame, asa_cutoff: float = 30.0) -> pd.DataFrame:
     """Extract DSSP ASA and classify as buried/exposed."""
-    if not HAS_DSSP:
-        df['dssp_asa'] = np.nan
-        df['dssp_class'] = np.nan
-        df['dssp_ss'] = ''
-        return df
+    # Convert to Path if string
+    if isinstance(pdb_path, str):
+        pdb_path = Path(pdb_path)
 
+    # Try BioPython first
+    if HAS_DSSP:
+        try:
+            parser = PDBParser(QUIET=True)
+            structure = parser.get_structure(pdb_path.stem, str(pdb_path))
+            model = structure[0]
+            file_ext = pdb_path.suffix.lower()
+            file_type = 'PDB' if file_ext in ['.pdb', '.ent'] else 'mmCIF'
+            dssp = DSSP(model, str(pdb_path), file_type=file_type)
+
+            dssp_map = {}
+            for key in dssp.keys():
+                chain_id, res_id = key
+                hetflag, resseq, icode = res_id
+                rec = dssp[key]
+                try:
+                    rel_asa = float(rec[3]) if rec[3] != 'NA' and rec[3] is not None else 0.0
+                except (ValueError, TypeError):
+                    rel_asa = 0.0
+                aa = rec[1] if len(rec) > 1 else 'ALA'
+                ss = rec[2] if len(rec) > 2 else '-'
+                max_asa = MAX_ASA.get(aa, 100.0)
+                asa = rel_asa * max_asa
+                dssp_map[(chain_id, int(resseq), icode.strip() or '')] = {'asa': asa, 'ss': ss}
+
+            dssp_asa = []
+            dssp_ss = []
+            for _, row in df.iterrows():
+                key = (row['chain_id'], int(row['resseq']), row['icode'])
+                if key in dssp_map:
+                    dssp_asa.append(dssp_map[key]['asa'])
+                    dssp_ss.append(dssp_map[key]['ss'])
+                else:
+                    dssp_asa.append(np.nan)
+                    dssp_ss.append('-')
+            df['dssp_asa'] = dssp_asa
+            df['dssp_ss'] = dssp_ss
+
+            def _rasa_dssp(row):
+                aa = str(row['resname']).strip().upper()
+                max_asa = MAX_ASA.get(aa)
+                if max_asa is None or pd.isna(row['dssp_asa']):
+                    return np.nan
+                return float(row['dssp_asa']) / max_asa
+
+            df['RASA_dssp'] = df.apply(_rasa_dssp, axis=1)
+            df['dssp_class'] = df['RASA_dssp'].apply(
+                lambda r: 1 if pd.notna(r) and r >= 0.25 else (0 if pd.notna(r) else np.nan)
+            )
+            return df
+        except Exception as e:
+            pass  # Fall through to command-line approach
+
+    # Fallback: Try command-line DSSP
     try:
-        parser = PDBParser(QUIET=True)
-        structure = parser.get_structure(pdb_path.stem, str(pdb_path))
-        model = structure[0]
-
-        file_ext = pdb_path.suffix.lower()
-        file_type = 'PDB' if file_ext in ['.pdb', '.ent'] else 'mmCIF'
-
-        dssp = DSSP(model, str(pdb_path), file_type=file_type)
-
-        dssp_map = {}
-        for key in dssp.keys():
-            chain_id, res_id = key
-            hetflag, resseq, icode = res_id
-            rec = dssp[key]
-
-            try:
-                rel_asa = float(rec[3]) if rec[3] != 'NA' and rec[3] is not None else 0.0
-            except (ValueError, TypeError):
-                rel_asa = 0.0
-
-            aa = rec[1] if len(rec) > 1 else 'ALA'
-            ss = rec[2] if len(rec) > 2 else '-'
-
-            max_asa = MAX_ASA.get(aa, 100.0)
-            asa = rel_asa * max_asa
-
-            dssp_map[(chain_id, int(resseq), icode.strip() or '')] = {
-                'asa': asa,
-                'ss': ss
-            }
-
-        dssp_asa = []
-        dssp_ss = []
-        for _, row in df.iterrows():
-            key = (row['chain_id'], int(row['resseq']), row['icode'])
-            if key in dssp_map:
-                dssp_asa.append(dssp_map[key]['asa'])
-                dssp_ss.append(dssp_map[key]['ss'])
-            else:
-                dssp_asa.append(np.nan)
-                dssp_ss.append('-')
-
-        df['dssp_asa'] = dssp_asa
-        df['dssp_ss'] = dssp_ss
-
-        # RASA based on Tien et al. maxASA (Gly-X-Gly model)
-        # If residue not in table, RASA will be NaN
-        def _rasa_dssp(row):
-            aa = str(row['resname']).strip().upper()
-            max_asa = MAX_ASA.get(aa)
-            if max_asa is None or pd.isna(row['dssp_asa']):
-                return np.nan
-            return float(row['dssp_asa']) / max_asa
-
-        df['RASA_dssp'] = df.apply(_rasa_dssp, axis=1)
-
-        # Classification by RASA (1 = exposed/surface, 0 = buried)
-        df['dssp_class'] = df['RASA_dssp'].apply(
-            lambda r: 1 if pd.notna(r) and r >= 0.25 else (0 if pd.notna(r) else np.nan)
+        import subprocess
+        result = subprocess.run(
+            ['dssp', '-i', str(pdb_path)],
+            capture_output=True,
+            text=True,
+            timeout=60
         )
 
-    except Exception as e:
-        print(f"  DSSP error: {e}")
-        df['dssp_asa'] = np.nan
-        df['dssp_class'] = np.nan
-        df['dssp_ss'] = ''
-        df['RASA_dssp'] = np.nan
+        if result.returncode == 0:
+            dssp_map = {}
+            for line in result.stdout.split('\n'):
+                if line.startswith('#') or not line.strip():
+                    continue
+                try:
+                    parts = line.split()
+                    if len(parts) < 6:
+                        continue
+                    resseq = int(parts[1])
+                    chain = parts[2] if len(parts) > 2 else ' '
+                    ss = parts[4] if len(parts) > 4 else 'C'
+                    asa = float(parts[5]) if len(parts) > 5 else 0.0
 
+                    for c in [chain, ' ', '', '-', 'A']:
+                        dssp_map[(c, resseq, '')] = {'asa': asa, 'ss': ss if ss != '-' else 'C'}
+                except (ValueError, IndexError):
+                    continue
+
+            if dssp_map:
+                dssp_asa = []
+                dssp_ss = []
+                for _, row in df.iterrows():
+                    resseq_int = int(row['resseq'])
+                    chain = row['chain_id']
+                    found = False
+                    for try_chain in [chain, chain.strip(), '', ' ', 'A', '-']:
+                        if (try_chain, resseq_int, '') in dssp_map:
+                            dssp_asa.append(dssp_map[(try_chain, resseq_int, '')]['asa'])
+                            dssp_ss.append(dssp_map[(try_chain, resseq_int, '')]['ss'])
+                            found = True
+                            break
+                    if not found:
+                        dssp_asa.append(np.nan)
+                        dssp_ss.append('-')
+
+                df['dssp_asa'] = dssp_asa
+                df['dssp_ss'] = dssp_ss
+
+                def _rasa_dssp(row):
+                    aa = str(row['resname']).strip().upper()
+                    max_asa = MAX_ASA.get(aa)
+                    if max_asa is None or pd.isna(row['dssp_asa']):
+                        return np.nan
+                    return float(row['dssp_asa']) / max_asa
+
+                df['RASA_dssp'] = df.apply(_rasa_dssp, axis=1)
+                df['dssp_class'] = df['RASA_dssp'].apply(
+                    lambda r: 1 if pd.notna(r) and r >= 0.25 else (0 if pd.notna(r) else np.nan)
+                )
+                return df
+    except:
+        pass
+
+    # No DSSP data available
+    df['dssp_asa'] = np.nan
+    df['dssp_class'] = np.nan
+    df['dssp_ss'] = ''
+    df['RASA_dssp'] = np.nan
     return df
 
 
 def extract_stride_data(pdb_path: Path, df: pd.DataFrame, asa_cutoff: float = 24.0) -> pd.DataFrame:
     """Extract STRIDE ASA and classify as buried/exposed."""
+    # Convert to Path if string
+    if isinstance(pdb_path, str):
+        pdb_path = Path(pdb_path)
+
     try:
         stride_file = None
+        stride_content = None
+
+        # Try to find existing STRIDE file with valid ASG data
         for name_variant in [pdb_path.stem.lower(), pdb_path.stem.upper(), pdb_path.stem]:
             test_file = pdb_path.parent / f"{name_variant}.stride"
             if test_file.exists():
-                stride_file = test_file
-                break
+                with open(test_file, 'r') as f:
+                    content = f.read()
+                # Check if file has ASG lines (full STRIDE output)
+                if any(line.startswith('ASG') for line in content.split('\n')):
+                    stride_file = test_file
+                    stride_content = content
+                    break
 
-        if stride_file is not None:
-            with open(stride_file, 'r') as f:
-                stride_content = f.read()
-        elif HAS_STRIDE:
-            result = subprocess.run(
-                ['stride', str(pdb_path)],
-                capture_output=True,
-                text=True,
-                timeout=30
-            )
-            stride_content = result.stdout
-        else:
-            raise Exception("No STRIDE data available")
+        # If no valid STRIDE file found, try running STRIDE
+        if stride_content is None:
+            if HAS_STRIDE:
+                result = subprocess.run(
+                    ['stride', str(pdb_path)],
+                    capture_output=True,
+                    text=True,
+                    timeout=30
+                )
+                if result.returncode == 0:
+                    stride_content = result.stdout
+                    # Save for future use if it has ASG data
+                    if any(line.startswith('ASG') for line in stride_content.split('\n')):
+                        stride_path_to_save = pdb_path.parent / f"{pdb_path.stem}.stride"
+                        try:
+                            with open(stride_path_to_save, 'w') as f:
+                                f.write(stride_content)
+                        except:
+                            pass
+
+            if stride_content is None:
+                raise Exception("No STRIDE data available")
 
         stride_map = {}
         for line in stride_content.split('\n'):
             if line.startswith('ASG'):
                 try:
-                    chain_id = line[9:10].strip()
-                    chain_id_raw = line[9:10]  # Keep raw (might be space)
-                    resseq = int(line[11:15].strip())
+                    # Parse ASG line
+                    # Format: ASG  ALA -  954    1    C          Coil    360.00    156.38      75.6      ~~~~
+                    chain_id = line[9:10]  # Get raw chain ID (could be - or space)
+                    resseq = int(line[11:15].strip())  # Get PDB residue number
                     ss = line[24:25].strip() if len(line) > 24 else 'C'
+
                     parts = line.split()
-                    # ASA is the second-to-last field; last field is protein ID
                     asa = float(parts[-2]) if len(parts) >= 10 else 0.0
 
                     data = {'asa': asa, 'ss': ss if ss else 'C'}
 
                     # Store with multiple key variations to handle chain ID mismatches
+                    # Key: (chain_id, resseq, icode)
+
+                    # Store exact chain ID
                     stride_map[(chain_id, resseq, '')] = data
-                    stride_map[(chain_id_raw, resseq, '')] = data
-                    if chain_id == '':
-                        stride_map[('A', resseq, '')] = data  # Default to A if empty
-                        stride_map[(' ', resseq, '')] = data
-                except (ValueError, IndexError):
+
+                    # Store stripped chain ID
+                    stride_map[(chain_id.strip(), resseq, '')] = data
+
+                    # Store common variations
+                    if chain_id.strip() == '' or chain_id.strip() == '-':
+                        stride_map[(' ', resseq, '')] = data  # Space chain
+                        stride_map[('', resseq, '')] = data   # Empty chain
+                        stride_map[('A', resseq, '')] = data  # Default to A
+                        stride_map[('-', resseq, '')] = data  # Keep dash too
+
+                except (ValueError, IndexError) as e:
                     continue
 
         stride_asa = []
@@ -312,9 +399,11 @@ def extract_stride_data(pdb_path: Path, df: pd.DataFrame, asa_cutoff: float = 24
             # Try multiple chain ID variations to handle mismatches
             possible_keys = [
                 (chain, resseq_int, ''),           # Original chain ID
-                ('', resseq_int, ''),               # Empty chain ID
-                ('A', resseq_int, ''),              # Default chain A
-                (' ', resseq_int, ''),              # Space as chain ID
+                (chain.strip(), resseq_int, ''),   # Stripped chain ID
+                ('', resseq_int, ''),              # Empty chain ID
+                (' ', resseq_int, ''),             # Space chain ID
+                ('A', resseq_int, ''),             # Default chain A
+                ('-', resseq_int, ''),             # Dash chain ID
             ]
 
             found = False

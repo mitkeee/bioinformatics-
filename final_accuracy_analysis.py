@@ -12,7 +12,7 @@ def analyze_accuracy():
     """Complete accuracy analysis."""
 
     # Load data
-    df = pd.read_csv('results/combined_results.csv')
+    df = pd.read_csv('holder/results/combined_results.csv')
     df_dssp = df[df['dssp_class'].notna()].copy()
     df_stride = df[df['stride_class'].notna()].copy()
     df_both = df[(df['dssp_class'].notna()) & (df['stride_class'].notna())].copy()
@@ -185,7 +185,7 @@ def analyze_accuracy():
     print("="*80)
 
     # Save report
-    with open('results/final_accuracy_report.txt', 'w') as f:
+    with open('holder/results/final_accuracy_report.txt', 'w') as f:
         f.write("FINAL ACCURACY REPORT\n")
         f.write("="*80 + "\n\n")
         f.write(f"Current Accuracy: {current_acc_dssp:.3%}\n")

@@ -16,7 +16,7 @@ warnings.filterwarnings('ignore')
 
 def load_normalized_data():
     """Load the pre-normalized combined dataset."""
-    data_file = Path('results/decision_tree/combined_normalized.csv')
+    data_file = Path('holder/results/decision_tree/combined_normalized.csv')
     if not data_file.exists():
         print("❌ Error: Run decision_tree_analysis.py first to generate normalized data")
         return None

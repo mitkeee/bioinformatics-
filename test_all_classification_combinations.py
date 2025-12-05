@@ -123,7 +123,7 @@ def print_summary(results_df, protein_name):
 
 def main():
     print(f"{'='*80}\nCLASSIFICATION COMBINATION TESTING\n{'='*80}\n")
-    results_dir = Path('results')
+    results_dir = Path('holder/results')
     csv_files = [f for f in [results_dir / '3pte_results.csv', results_dir / '4d05_results.csv', results_dir / '6wti_results.csv', results_dir / '7upo_results.csv'] if f.exists()]
     if not csv_files:
         print("❌ No result files found"); return

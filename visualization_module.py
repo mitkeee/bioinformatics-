@@ -398,7 +398,7 @@ def generate_all_visualizations(results_dir: Path):
 
 if __name__ == "__main__":
     # Generate visualizations from results
-    results_dir = Path("results/comprehensive_analysis")
+    results_dir = Path("holder/results/comprehensive_analysis")
     if results_dir.exists():
         generate_all_visualizations(results_dir)
     else:
@@ -800,7 +800,7 @@ def generate_all_visualizations(results_dir: Path):
 
 if __name__ == "__main__":
     # Generate visualizations from results
-    results_dir = Path("results/comprehensive_analysis")
+    results_dir = Path("holder/results/comprehensive_analysis")
     if results_dir.exists():
         generate_all_visualizations(results_dir)
     else:

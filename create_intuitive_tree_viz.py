@@ -238,7 +238,7 @@ def load_data_and_create_intuitive_trees():
     print("="*80)
 
     # Load normalized data
-    data_file = Path('results/decision_tree/combined_normalized.csv')
+    data_file = Path('holder/results/decision_tree/combined_normalized.csv')
     if not data_file.exists():
         print("❌ Error: Run decision_tree_analysis.py first")
         return
@@ -246,7 +246,7 @@ def load_data_and_create_intuitive_trees():
     df = pd.read_csv(data_file)
     print(f"\n✅ Loaded data: {len(df)} residues")
 
-    output_dir = Path('results/decision_tree/intuitive_viz')
+    output_dir = Path('holder/results/decision_tree/intuitive_viz')
     output_dir.mkdir(exist_ok=True)
 
     # Create intuitive visualizations for 10Å model (BEST MODEL)

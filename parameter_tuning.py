@@ -12,7 +12,7 @@ import itertools
 
 def load_results():
     """Load the combined results from previous run."""
-    df = pd.read_csv("results/combined_results.csv")
+    df = pd.read_csv("holder/results/combined_results.csv")
     # Filter to only residues with DSSP reference data
     df = df[df['dssp_class'].notna()].copy()
     return df
@@ -135,7 +135,7 @@ def grid_search():
     print(f"\n✅ Full results saved to: results/parameter_tuning_results.csv")
 
     # Save best parameters
-    with open('results/best_parameters.txt', 'w') as f:
+    with open('holder/results/best_parameters.txt', 'w') as f:
         f.write("BEST PARAMETERS FOR PROTEIN BURIAL CLASSIFICATION\n")
         f.write("="*80 + "\n\n")
         f.write(f"Accuracy: {best_accuracy:.3%}\n\n")

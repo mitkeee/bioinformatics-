@@ -13,7 +13,7 @@ print("VERIFYING DECISION TREE INTERPRETATION")
 print("="*80)
 
 # Load data
-df = pd.read_csv('results/3PTE_results.csv')
+df = pd.read_csv('holder/results/3PTE_results.csv')
 df = df[df['dssp_class'].notna()].copy()
 
 print(f"\nLoaded 3PTE: {len(df)} residues")

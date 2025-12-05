@@ -29,7 +29,7 @@ plt.rcParams['font.sans-serif'] = ['Arial', 'Helvetica', 'DejaVu Sans']
 
 def load_data():
     """Load the combined normalized dataset."""
-    data_path = Path('results/decision_tree/combined_normalized.csv')
+    data_path = Path('holder/results/decision_tree/combined_normalized.csv')
     df = pd.read_csv(data_path)
     return df
 
@@ -425,7 +425,7 @@ def main():
 
     # Load data
     df = load_data()
-    output_dir = Path('results/decision_tree/enhanced_viz')
+    output_dir = Path('holder/results/decision_tree/enhanced_viz')
     output_dir.mkdir(exist_ok=True)
 
     # Train models

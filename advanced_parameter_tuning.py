@@ -12,7 +12,7 @@ from pathlib import Path
 
 def load_data():
     """Load and prepare data."""
-    df = pd.read_csv("results/combined_results.csv")
+    df = pd.read_csv("holder/results/combined_results.csv")
 
     # Only residues with DSSP data
     df_dssp = df[df['dssp_class'].notna()].copy()

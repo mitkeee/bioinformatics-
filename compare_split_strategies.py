@@ -24,7 +24,7 @@ warnings.filterwarnings('ignore')
 
 def load_combined_data():
     """Load the pre-normalized combined dataset."""
-    data_path = Path('results/decision_tree/combined_normalized.csv')
+    data_path = Path('holder/results/decision_tree/combined_normalized.csv')
     if not data_path.exists():
         print("❌ Please run decision_tree_analysis.py first to generate combined_normalized.csv")
         return None
@@ -261,7 +261,7 @@ def main():
     if df is None:
         return
 
-    output_dir = Path('results/decision_tree')
+    output_dir = Path('holder/results/decision_tree')
     output_dir.mkdir(exist_ok=True)
 
     # Test all strategies

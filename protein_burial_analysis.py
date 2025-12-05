@@ -430,7 +430,7 @@ def process_protein(pdb_path: Path,
 # Step 7: Batch processing and optimization
 # ==============================
 
-def process_multiple_proteins(pdb_files: List[Path], output_dir: Path = Path("results")):
+def process_multiple_proteins(pdb_files: List[Path], output_dir: Path = Path("holder/results")):
     """Process multiple proteins and save results."""
 
     output_dir.mkdir(exist_ok=True)
