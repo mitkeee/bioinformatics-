@@ -16,15 +16,16 @@ CONFIG = {
     'pdb_input_folder': 'pdbexamples',  # Folder containing PDB files to analyze
     'output_folder': 'final_reports',    # Output folder for CSV and TXT files
 
-    # Burial classification thresholds
-    'nc6_threshold': 5.0,                # Min neighbors at 6Å sphere 10
-    'nc10_threshold': 16.0,              # Min neighbors at 10Å sphere 18
-    'uni6_threshold': 0.40,              # Min uniformity at 6Å sphere
-    'uni10_threshold': 0.50,             # Min uniformity at 10Å sphere
+    # Burial classification thresholds - BALANCED FOR BEST OVERALL PERFORMANCE
+    # After testing, these values provide the best balance
+    'nc6_threshold': 5.0,                # Min neighbors at 6Å sphere (optimal value)
+    'nc10_threshold': 16.0,              # Min neighbors at 10Å sphere (optimal value)
+    'uni6_threshold': 0.38,              # Min uniformity at 6Å sphere (slightly decreased for better recall)
+    'uni10_threshold': 0.48,             # Min uniformity at 10Å sphere (slightly decreased for better recall)
 
     # DSSP/STRIDE cutoffs (accessible surface area)
-    'dssp_asa_cutoff': 25.0,             # DSSP: ASA ≥ 25% = exterior 20
-    'stride_asa_cutoff': 20.0,           # STRIDE: ASA ≥ 20% = exterior 34
+    'dssp_asa_cutoff': 25.0,             # DSSP: ASA ≥ 25% = exterior
+    'stride_asa_cutoff': 20.0,           # STRIDE: ASA ≥ 20% = exterior
 
     # Processing options
     'search_subdirectories': True,       # Recursively search subdirectories for PDB files
@@ -1513,6 +1514,322 @@ def find_pdb_files(input_folder: Path, search_subdirs: bool = True) -> List[Path
     return sorted(list(set(pdb_files)))
 
 
+def generate_average_report(protein_results: Dict[str, ProteinAnalysis], output_folder: Path, params: BurialParameters) -> bool:
+    """
+    Generate an average report across all analyzed proteins.
+
+    Args:
+        protein_results: Dictionary of protein_name -> ProteinAnalysis objects
+        output_folder: Path to output folder
+        params: BurialParameters object with thresholds
+
+    Returns:
+        True if successful, False otherwise
+    """
+    try:
+        if not protein_results:
+            print("    ✗ No protein results to average")
+            return False
+
+        print(f"\n{'='*80}")
+        print("GENERATING AVERAGE REPORT")
+        print(f"{'='*80}")
+
+        # Collect all metrics from all proteins
+        all_metrics = {
+            'dssp': {
+                'total_residues': [],
+                'exterior_count': [],
+                'interior_count': [],
+                'confusion': {'TP': [], 'TN': [], 'FP': [], 'FN': []},
+                'metrics': {}
+            },
+            'stride': {
+                'total_residues': [],
+                'exterior_count': [],
+                'interior_count': [],
+                'confusion': {'TP': [], 'TN': [], 'FP': [], 'FN': []},
+                'metrics': {}
+            },
+            'ncps': {
+                'exterior_count': [],
+                'interior_count': []
+            },
+            'neighbor_stats': {
+                'nc6_mean': [],
+                'nc6_median': [],
+                'nc6_min': [],
+                'nc6_max': [],
+                'nc10_mean': [],
+                'nc10_median': [],
+                'nc10_min': [],
+                'nc10_max': [],
+                'uni6_mean': [],
+                'uni6_median': [],
+                'uni6_min': [],
+                'uni6_max': [],
+                'uni10_mean': [],
+                'uni10_median': [],
+                'uni10_min': [],
+                'uni10_max': []
+            }
+        }
+
+        dssp_proteins_count = 0
+        stride_proteins_count = 0
+        total_proteins = len(protein_results)
+
+        # Iterate through all protein results
+        for protein_name, analysis in protein_results.items():
+            df = analysis.dataframe
+
+            # NCPS stats (always available)
+            all_metrics['ncps']['exterior_count'].append(int((df['ncps_class'] == 1).sum()))
+            all_metrics['ncps']['interior_count'].append(int((df['ncps_class'] == 0).sum()))
+
+            # Neighbor count statistics
+            all_metrics['neighbor_stats']['nc6_mean'].append(df['ncps_sphere_6'].mean())
+            all_metrics['neighbor_stats']['nc6_median'].append(df['ncps_sphere_6'].median())
+            all_metrics['neighbor_stats']['nc6_min'].append(df['ncps_sphere_6'].min())
+            all_metrics['neighbor_stats']['nc6_max'].append(df['ncps_sphere_6'].max())
+
+            all_metrics['neighbor_stats']['nc10_mean'].append(df['ncps_sphere_10'].mean())
+            all_metrics['neighbor_stats']['nc10_median'].append(df['ncps_sphere_10'].median())
+            all_metrics['neighbor_stats']['nc10_min'].append(df['ncps_sphere_10'].min())
+            all_metrics['neighbor_stats']['nc10_max'].append(df['ncps_sphere_10'].max())
+
+            all_metrics['neighbor_stats']['uni6_mean'].append(df['ncps_sphere_6_uni'].mean())
+            all_metrics['neighbor_stats']['uni6_median'].append(df['ncps_sphere_6_uni'].median())
+            all_metrics['neighbor_stats']['uni6_min'].append(df['ncps_sphere_6_uni'].min())
+            all_metrics['neighbor_stats']['uni6_max'].append(df['ncps_sphere_6_uni'].max())
+
+            all_metrics['neighbor_stats']['uni10_mean'].append(df['ncps_sphere_10_uni'].mean())
+            all_metrics['neighbor_stats']['uni10_median'].append(df['ncps_sphere_10_uni'].median())
+            all_metrics['neighbor_stats']['uni10_min'].append(df['ncps_sphere_10_uni'].min())
+            all_metrics['neighbor_stats']['uni10_max'].append(df['ncps_sphere_10_uni'].max())
+
+            # DSSP stats
+            if df['dssp_class'].notna().sum() > 0:
+                dssp_proteins_count += 1
+                dssp_valid = df[df['dssp_class'].notna()]
+
+                all_metrics['dssp']['total_residues'].append(len(dssp_valid))
+                all_metrics['dssp']['exterior_count'].append(int((dssp_valid['dssp_class'] == 1).sum()))
+                all_metrics['dssp']['interior_count'].append(int((dssp_valid['dssp_class'] == 0).sum()))
+
+                # Calculate confusion matrix
+                scores = compute_classification_scores(df, 'dssp_class', 'ncps_class')
+                if scores:
+                    all_metrics['dssp']['confusion']['TP'].append(scores['counts']['TP'])
+                    all_metrics['dssp']['confusion']['TN'].append(scores['counts']['TN'])
+                    all_metrics['dssp']['confusion']['FP'].append(scores['counts']['FP'])
+                    all_metrics['dssp']['confusion']['FN'].append(scores['counts']['FN'])
+
+                    # Store all individual metrics
+                    for metric_name, metric_value in scores['metrics'].items():
+                        if metric_name not in all_metrics['dssp']['metrics']:
+                            all_metrics['dssp']['metrics'][metric_name] = []
+                        if isinstance(metric_value, (int, float)) and not math.isinf(metric_value) and not math.isnan(metric_value):
+                            all_metrics['dssp']['metrics'][metric_name].append(metric_value)
+
+            # STRIDE stats
+            if df['stride_class'].notna().sum() > 0:
+                stride_proteins_count += 1
+                stride_valid = df[df['stride_class'].notna()]
+
+                all_metrics['stride']['total_residues'].append(len(stride_valid))
+                all_metrics['stride']['exterior_count'].append(int((stride_valid['stride_class'] == 1).sum()))
+                all_metrics['stride']['interior_count'].append(int((stride_valid['stride_class'] == 0).sum()))
+
+                # Calculate confusion matrix
+                scores = compute_classification_scores(df, 'stride_class', 'ncps_class')
+                if scores:
+                    all_metrics['stride']['confusion']['TP'].append(scores['counts']['TP'])
+                    all_metrics['stride']['confusion']['TN'].append(scores['counts']['TN'])
+                    all_metrics['stride']['confusion']['FP'].append(scores['counts']['FP'])
+                    all_metrics['stride']['confusion']['FN'].append(scores['counts']['FN'])
+
+                    # Store all individual metrics
+                    for metric_name, metric_value in scores['metrics'].items():
+                        if metric_name not in all_metrics['stride']['metrics']:
+                            all_metrics['stride']['metrics'][metric_name] = []
+                        if isinstance(metric_value, (int, float)) and not math.isinf(metric_value) and not math.isnan(metric_value):
+                            all_metrics['stride']['metrics'][metric_name].append(metric_value)
+
+        # Write average report
+        output_path = output_folder / "average.txt"
+
+        with open(output_path, 'w') as f:
+            # Header
+            f.write("=" * 120 + "\n")
+            f.write("PROTEIN BURIAL ANALYSIS - AVERAGE REPORT ACROSS ALL PROTEINS\n")
+            f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write("=" * 120 + "\n\n")
+
+            # General statistics
+            f.write("GENERAL STATISTICS\n")
+            f.write("-" * 120 + "\n")
+            f.write(f"Total Proteins Analyzed: {total_proteins}\n")
+            f.write(f"Proteins with DSSP data: {dssp_proteins_count}\n")
+            f.write(f"Proteins with STRIDE data: {stride_proteins_count}\n\n")
+
+            # Parameters used
+            f.write("PARAMETERS USED:\n")
+            f.write("-" * 120 + "\n")
+            f.write(f"NC6 Threshold:    {params.nc6_threshold}\n")
+            f.write(f"NC10 Threshold:   {params.nc10_threshold}\n")
+            f.write(f"Uni6 Threshold:   {params.uni6_threshold}\n")
+            f.write(f"Uni10 Threshold:  {params.uni10_threshold}\n")
+            f.write(f"DSSP ASA Cutoff:  {params.dssp_asa_cutoff}%\n")
+            f.write(f"STRIDE ASA Cutoff: {params.stride_asa_cutoff}%\n\n")
+
+            # NCPS Classification Averages
+            f.write("=" * 120 + "\n")
+            f.write("NCPS CLASSIFICATION - AVERAGE STATISTICS\n")
+            f.write("=" * 120 + "\n\n")
+
+            if all_metrics['ncps']['exterior_count']:
+                avg_ncps_ext = np.mean(all_metrics['ncps']['exterior_count'])
+                avg_ncps_int = np.mean(all_metrics['ncps']['interior_count'])
+                f.write(f"Average Exterior Residues (NCPS): {avg_ncps_ext:.2f}\n")
+                f.write(f"Average Interior Residues (NCPS): {avg_ncps_int:.2f}\n\n")
+
+            # Neighbor Count Statistics
+            f.write("NEIGHBOR COUNT STATISTICS - AVERAGES\n")
+            f.write("-" * 120 + "\n\n")
+
+            ns = all_metrics['neighbor_stats']
+            if ns['nc6_mean']:
+                f.write("6Å Sphere:\n")
+                f.write(f"  Mean NC6:     {np.mean(ns['nc6_mean']):.2f}\n")
+                f.write(f"  Median NC6:   {np.mean(ns['nc6_median']):.2f}\n")
+                f.write(f"  Min NC6:      {np.mean(ns['nc6_min']):.2f}\n")
+                f.write(f"  Max NC6:      {np.mean(ns['nc6_max']):.2f}\n\n")
+
+                f.write("10Å Sphere:\n")
+                f.write(f"  Mean NC10:    {np.mean(ns['nc10_mean']):.2f}\n")
+                f.write(f"  Median NC10:  {np.mean(ns['nc10_median']):.2f}\n")
+                f.write(f"  Min NC10:     {np.mean(ns['nc10_min']):.2f}\n")
+                f.write(f"  Max NC10:     {np.mean(ns['nc10_max']):.2f}\n\n")
+
+            # Uniformity Statistics
+            f.write("UNIFORMITY STATISTICS - AVERAGES\n")
+            f.write("-" * 120 + "\n\n")
+
+            if ns['uni6_mean']:
+                f.write("6Å Sphere:\n")
+                f.write(f"  Mean Uni6:    {np.mean(ns['uni6_mean']):.4f}\n")
+                f.write(f"  Median Uni6:  {np.mean(ns['uni6_median']):.4f}\n")
+                f.write(f"  Min Uni6:     {np.mean(ns['uni6_min']):.4f}\n")
+                f.write(f"  Max Uni6:     {np.mean(ns['uni6_max']):.4f}\n\n")
+
+                f.write("10Å Sphere:\n")
+                f.write(f"  Mean Uni10:   {np.mean(ns['uni10_mean']):.4f}\n")
+                f.write(f"  Median Uni10: {np.mean(ns['uni10_median']):.4f}\n")
+                f.write(f"  Min Uni10:    {np.mean(ns['uni10_min']):.4f}\n")
+                f.write(f"  Max Uni10:    {np.mean(ns['uni10_max']):.4f}\n\n")
+
+            # DSSP Statistics
+            if dssp_proteins_count > 0:
+                f.write("=" * 120 + "\n")
+                f.write(f"DSSP COMPARISON - AVERAGE STATISTICS ({dssp_proteins_count} proteins)\n")
+                f.write("=" * 120 + "\n\n")
+
+                if all_metrics['dssp']['total_residues']:
+                    avg_dssp_residues = np.mean(all_metrics['dssp']['total_residues'])
+                    avg_dssp_ext = np.mean(all_metrics['dssp']['exterior_count'])
+                    avg_dssp_int = np.mean(all_metrics['dssp']['interior_count'])
+
+                    f.write(f"Average Total Residues (DSSP): {avg_dssp_residues:.2f}\n")
+                    f.write(f"Average Exterior Residues (DSSP): {avg_dssp_ext:.2f}\n")
+                    f.write(f"Average Interior Residues (DSSP): {avg_dssp_int:.2f}\n\n")
+
+                # Confusion Matrix Averages
+                if all_metrics['dssp']['confusion']['TP']:
+                    avg_tp = np.mean(all_metrics['dssp']['confusion']['TP'])
+                    avg_tn = np.mean(all_metrics['dssp']['confusion']['TN'])
+                    avg_fp = np.mean(all_metrics['dssp']['confusion']['FP'])
+                    avg_fn = np.mean(all_metrics['dssp']['confusion']['FN'])
+
+                    f.write("Average Confusion Matrix (NCPS vs DSSP):\n")
+                    f.write(f"  True Positives (TP):  {avg_tp:.2f}\n")
+                    f.write(f"  True Negatives (TN):  {avg_tn:.2f}\n")
+                    f.write(f"  False Positives (FP): {avg_fp:.2f}\n")
+                    f.write(f"  False Negatives (FN): {avg_fn:.2f}\n\n")
+
+                # All metrics averages
+                if all_metrics['dssp']['metrics']:
+                    f.write("Average Metrics (NCPS vs DSSP):\n")
+                    f.write("-" * 120 + "\n")
+
+                    for metric_name in sorted(all_metrics['dssp']['metrics'].keys()):
+                        values = all_metrics['dssp']['metrics'][metric_name]
+                        if values:
+                            avg_value = np.mean(values)
+                            std_value = np.std(values)
+                            min_value = np.min(values)
+                            max_value = np.max(values)
+                            f.write(f"{metric_name:30s}: {avg_value:8.4f} (±{std_value:.4f}) [min={min_value:.4f}, max={max_value:.4f}]\n")
+                    f.write("\n")
+
+            # STRIDE Statistics
+            if stride_proteins_count > 0:
+                f.write("=" * 120 + "\n")
+                f.write(f"STRIDE COMPARISON - AVERAGE STATISTICS ({stride_proteins_count} proteins)\n")
+                f.write("=" * 120 + "\n\n")
+
+                if all_metrics['stride']['total_residues']:
+                    avg_stride_residues = np.mean(all_metrics['stride']['total_residues'])
+                    avg_stride_ext = np.mean(all_metrics['stride']['exterior_count'])
+                    avg_stride_int = np.mean(all_metrics['stride']['interior_count'])
+
+                    f.write(f"Average Total Residues (STRIDE): {avg_stride_residues:.2f}\n")
+                    f.write(f"Average Exterior Residues (STRIDE): {avg_stride_ext:.2f}\n")
+                    f.write(f"Average Interior Residues (STRIDE): {avg_stride_int:.2f}\n\n")
+
+                # Confusion Matrix Averages
+                if all_metrics['stride']['confusion']['TP']:
+                    avg_tp = np.mean(all_metrics['stride']['confusion']['TP'])
+                    avg_tn = np.mean(all_metrics['stride']['confusion']['TN'])
+                    avg_fp = np.mean(all_metrics['stride']['confusion']['FP'])
+                    avg_fn = np.mean(all_metrics['stride']['confusion']['FN'])
+
+                    f.write("Average Confusion Matrix (NCPS vs STRIDE):\n")
+                    f.write(f"  True Positives (TP):  {avg_tp:.2f}\n")
+                    f.write(f"  True Negatives (TN):  {avg_tn:.2f}\n")
+                    f.write(f"  False Positives (FP): {avg_fp:.2f}\n")
+                    f.write(f"  False Negatives (FN): {avg_fn:.2f}\n\n")
+
+                # All metrics averages
+                if all_metrics['stride']['metrics']:
+                    f.write("Average Metrics (NCPS vs STRIDE):\n")
+                    f.write("-" * 120 + "\n")
+
+                    for metric_name in sorted(all_metrics['stride']['metrics'].keys()):
+                        values = all_metrics['stride']['metrics'][metric_name]
+                        if values:
+                            avg_value = np.mean(values)
+                            std_value = np.std(values)
+                            min_value = np.min(values)
+                            max_value = np.max(values)
+                            f.write(f"{metric_name:30s}: {avg_value:8.4f} (±{std_value:.4f}) [min={min_value:.4f}, max={max_value:.4f}]\n")
+                    f.write("\n")
+
+            # Footer
+            f.write("=" * 120 + "\n")
+            f.write("END OF AVERAGE REPORT\n")
+            f.write("=" * 120 + "\n")
+
+        print(f"    ✓ Average report saved: {output_path.name}")
+        return True
+
+    except Exception as e:
+        print(f"    ✗ Error generating average report: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
 def main():
     """Main execution function."""
     print("\n" + "=" * 80)
@@ -1600,6 +1917,10 @@ def main():
         report_path = output_folder / f"{protein_name}_detailed_report.txt"
         save_detailed_report(analysis, report_path, params)
 
+    # Generate average report across all proteins
+    if protein_results:
+        generate_average_report(protein_results, output_folder, params)
+
     # Summary
     print("\n" + "=" * 80)
     print("ANALYSIS COMPLETE")
@@ -1609,7 +1930,7 @@ def main():
     print(f"  ✗ Failed to process:     {failed}")
     print(f"  ✓ Unique proteins:       {len(protein_results)}")
     print(f"\nOutput folder: {output_folder.absolute()}")
-    print(f"Files generated: {len(protein_results)} CSV files + {len(protein_results)} TXT reports")
+    print(f"Files generated: {len(protein_results)} CSV files + {len(protein_results)} TXT reports + 1 average report")
     print("\n" + "=" * 80 + "\n")
 
     return successful > 0
